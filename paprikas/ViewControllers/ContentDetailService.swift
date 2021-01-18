@@ -1,0 +1,86 @@
+//
+//  ContentDetailService.swift
+//  paprikas
+//
+//  Created by 박소현 on 2021/01/11.
+//
+
+import Foundation
+
+class ContentDetailService {
+
+    func requestPostLike() {
+        print("request post like")
+    }
+
+    func setData(idx: Int, completionHandler: @escaping (Content) -> Void) {
+        let content = try! JSONDecoder().decode(Content.self, from: jsonContent)
+        completionHandler(content)
+    }
+
+}
+protocol ContentDetailView: class {
+    func setViewData(content: Content)
+}
+class ContentDetailPresenter {
+    var idx: Int = 0
+    var content: Content?
+    private let contentDetailService: ContentDetailService
+    private weak var contentDetailview: ContentDetailView?
+    init(contentDetailService: ContentDetailService) {
+        self.contentDetailService = contentDetailService
+    }
+    func setIdx(idx: Int) {
+        self.idx = idx
+    }
+    func sendLikeAction(method: Bool) {
+        print("like method : \(method), idx : \(content?.content?.contentid)")
+        contentDetailService.requestPostLike()
+    }
+    func attachView(view: ContentDetailView) {
+        contentDetailview = view
+    }
+    func getContentData() {
+        print("contentDetail - getContentData idx : \(self.idx)")
+        contentDetailService.setData(idx: self.idx) { [weak self] content in
+            self?.content = content
+            self?.contentDetailview?.setViewData(content: content)
+        }
+
+    }
+}
+
+let jsonContent = """
+{
+"user": {
+    "nickname": "user1",
+    "userphoto": "meta1.jpg",
+    "userid": 126
+},
+"content": {
+    "text": "It is  Content 1",
+    "contentid": 129
+},
+"date": "2021-01-07",
+"likeCount": 2,
+"commentCount": 2,
+"photo": [
+    "photo1.jpg",
+    "photo2.jpg"
+],
+"comment": [
+    {
+        "com": {
+            "text": "It is  comment 1",
+            "userid": 0
+        },
+        "user": {
+            "nickname": "user2",
+            "userphoto": "meta2.jpg"
+        },
+        "date": "2021-01-07"
+    },
+]
+}
+
+""".data(using: .utf8)!
