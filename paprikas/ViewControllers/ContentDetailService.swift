@@ -9,7 +9,7 @@ import Foundation
 
 class ContentDetailService {
 
-    func requestPostLike() {
+    func requestPostLike(method: Bool, idx: Int) {
         print("request post like")
     }
 
@@ -34,8 +34,10 @@ class ContentDetailPresenter {
         self.idx = idx
     }
     func sendLikeAction(method: Bool) {
-        print("like method : \(method), idx : \(content?.content?.contentid)")
-        contentDetailService.requestPostLike()
+        if let idx = content?.content?.contentid {
+            print("like method : \(method) , idx : \(idx)")
+            contentDetailService.requestPostLike(method: method, idx: idx)
+        }
     }
     func attachView(view: ContentDetailView) {
         contentDetailview = view

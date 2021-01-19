@@ -26,9 +26,11 @@ struct ContentDetail: Codable {
     let contentid: Int?
 }
 struct commentList: Codable {
+    let commentCount: Int?
     let com: commentDetail?
     let user: commentUserDetail?
     let date: String?
+    let isWrite: Bool?
 }
 struct commentDetail: Codable {
     let text: String?

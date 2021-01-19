@@ -49,6 +49,7 @@
 		DCD65F1A25B0359800E1EFF6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD65F1925B0359800E1EFF6 /* BaseViewController.swift */; };
 		DCE0DF0825B51B5D0038E718 /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DF0725B51B5D0038E718 /* FeedService.swift */; };
 		DCE0DF0D25B5B4850038E718 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DF0C25B5B4850038E718 /* CommentService.swift */; };
+		DCE0DF1525B5CF640038E718 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DF1425B5CF630038E718 /* Comment.swift */; };
 		F55A6C8F28AE0DE4E78C5CA0 /* Pods_paprikas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D966368C57C19C3FC2F61EA6 /* Pods_paprikas.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +125,7 @@
 		DCD65F1925B0359800E1EFF6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DCE0DF0725B51B5D0038E718 /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
 		DCE0DF0C25B5B4850038E718 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
+		DCE0DF1425B5CF630038E718 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		F6B688FCA1747D5E7295B70C /* Pods-paprikasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paprikasTests.release.xcconfig"; path = "Target Support Files/Pods-paprikasTests/Pods-paprikasTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -247,6 +249,7 @@
 				DC74DE5725A2E83D002353D7 /* Auth.swift */,
 				DC5230B225A3582F0075FE48 /* Post.swift */,
 				DCC82D8325A971A4006C5F4C /* Content.swift */,
+				DCE0DF1425B5CF630038E718 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				DCAB277925A56ABF0028F248 /* NewContentDetailViewController.swift in Sources */,
 				DC5230B325A3582F0075FE48 /* Post.swift in Sources */,
 				DC433C6E259C18BF00B0B083 /* SceneDelegate.swift in Sources */,
+				DCE0DF1525B5CF640038E718 /* Comment.swift in Sources */,
 				DC74DE0F25A2D903002353D7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

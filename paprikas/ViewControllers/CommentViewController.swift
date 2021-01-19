@@ -12,6 +12,7 @@ class CommentViewController: BaseViewController {
 
     @IBOutlet weak var myProfileImgView: UIImageView!
     @IBOutlet weak var newCommentTextField: UITextField!
+    @IBOutlet weak var commentTableView: UITableView!
 
     let presenter = CommentPresenter(CommentService: CommentService())
     var isWrite: Bool?
@@ -20,6 +21,8 @@ class CommentViewController: BaseViewController {
         presenter.attachView(view: self)
         self.newCommentTextField.text = ""
         self.view.addGestureRecognizer(keyboardDismissTapGesture)
+        commentTableView.delegate = self
+        commentTableView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -46,12 +49,14 @@ class CommentViewController: BaseViewController {
 extension CommentViewController: CommentView {
 
 }
-// extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = feedCollectionView.dequeueReusableCell(withReuseIdentifier: "FeedCollectionViewCell", for: indexPath) as! FeedCollectionViewCell
-//    }
-// }
+extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+ }

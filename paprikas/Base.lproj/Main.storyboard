@@ -562,7 +562,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="767"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="168" id="bgd-Gx-e3H">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CommentTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="168" id="bgd-Gx-e3H" customClass="CommentTableViewCell" customModule="paprikas" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="168"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bgd-Gx-e3H" id="lIf-K5-rtc">
@@ -618,6 +618,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="commentTableView" destination="UNy-4V-875" id="ANX-lw-3rR"/>
                         <outlet property="myProfileImgView" destination="6Uo-Z5-UiV" id="vTX-Y5-Wk3"/>
                         <outlet property="newCommentTextField" destination="aSe-Wr-SRW" id="c4N-DH-C07"/>
                     </connections>
