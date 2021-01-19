@@ -622,21 +622,42 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dx-kr-QVx">
                                 <rect key="frame" x="0.0" y="811" width="414" height="85"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Uo-Z5-UiV">
-                                        <rect key="frame" x="21" y="8" width="55" height="55"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Uo-Z5-UiV">
+                                        <rect key="frame" x="10" y="10" width="55" height="55"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="6Uo-Z5-UiV" secondAttribute="height" multiplier="1:1" id="DXA-xc-aMI"/>
+                                            <constraint firstAttribute="width" constant="55" id="ySF-XB-JQb"/>
+                                        </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="userName으로 댓글달기" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aSe-Wr-SRW">
-                                        <rect key="frame" x="84" y="8" width="322" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="userName으로 댓글달기" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aSe-Wr-SRW">
+                                        <rect key="frame" x="75" y="20.5" width="289" height="34"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="newCommentBtnAction:" destination="gkG-ZB-fYJ" eventType="editingDidEnd" id="m9D-P1-sFU"/>
+                                        </connections>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4AQ-1j-6VT">
+                                        <rect key="frame" x="364" y="5" width="50" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="TMc-hA-I8o"/>
+                                            <constraint firstAttribute="height" constant="65" id="tTw-uz-kf3"/>
+                                        </constraints>
+                                        <state key="normal" title="📩"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4AQ-1j-6VT" secondAttribute="trailing" id="0OC-Ok-03B"/>
                                     <constraint firstAttribute="height" constant="85" id="NTd-VL-ffs"/>
+                                    <constraint firstItem="6Uo-Z5-UiV" firstAttribute="leading" secondItem="5dx-kr-QVx" secondAttribute="leading" constant="10" id="Nng-hn-Tbb"/>
+                                    <constraint firstItem="aSe-Wr-SRW" firstAttribute="centerY" secondItem="6Uo-Z5-UiV" secondAttribute="centerY" id="UbT-J9-Uf9"/>
+                                    <constraint firstItem="4AQ-1j-6VT" firstAttribute="leading" secondItem="aSe-Wr-SRW" secondAttribute="trailing" id="X6Y-Tx-3bs"/>
+                                    <constraint firstItem="aSe-Wr-SRW" firstAttribute="centerY" secondItem="4AQ-1j-6VT" secondAttribute="centerY" id="Zhm-Me-SjB"/>
+                                    <constraint firstItem="6Uo-Z5-UiV" firstAttribute="top" secondItem="5dx-kr-QVx" secondAttribute="top" constant="10" id="goZ-oA-7hN"/>
+                                    <constraint firstItem="aSe-Wr-SRW" firstAttribute="leading" secondItem="6Uo-Z5-UiV" secondAttribute="trailing" constant="10" id="r7b-Fe-zAk"/>
                                 </constraints>
                             </view>
                         </subviews>

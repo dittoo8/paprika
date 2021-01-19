@@ -60,6 +60,8 @@ class CommentViewController: BaseViewController {
         view.endEditing(true)
         return true
     }
+    @IBAction func newCommentBtnAction(_ sender: UIButton) {
+    }
 }
 extension CommentViewController: CommentView {
     func stopNetworking() {
