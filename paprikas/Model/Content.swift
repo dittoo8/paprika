@@ -14,29 +14,33 @@ struct Content: Codable {
     let likeCount: Int?
     let commentCount: Int?
     let photo: [String]?
-    let comment: [commentList]?
+    let comment: CommentList?
 }
 struct User: Codable {
     let userphoto: String?
     let nickname: String?
     let userid: Double?
 }
+struct CommentList: Codable {
+    let commentCount: Int?
+    let comment: [Comment]?
+}
+struct Comment: Codable {
+    let com: commentDetail?
+    let user: commentUserDetail?
+    let date: String?
+    let isWriter: Bool?
+}
 struct ContentDetail: Codable {
     let text: String?
     let contentid: Int?
 }
-struct commentList: Codable {
-    let commentCount: Int?
-    let com: commentDetail?
-    let user: commentUserDetail?
-    let date: String?
-    let isWrite: Bool?
-}
 struct commentDetail: Codable {
     let text: String?
-    let userid: Int?
+    let commentid: Int?
 }
 struct commentUserDetail: Codable {
     let nickname: String?
     let userphoto: String?
+    let userid: Int?
 }

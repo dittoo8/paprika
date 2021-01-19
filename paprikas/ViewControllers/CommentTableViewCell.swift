@@ -9,15 +9,21 @@ import UIKit
 
 class CommentTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var commentUserProfileImgView: UIImageView! {
+        didSet {
+            self.commentUserProfileImgView.layer.cornerRadius = self.commentUserProfileImgView.frame.height/2
+            self.commentUserProfileImgView.clipsToBounds = true
+        }
     }
+    @IBOutlet weak var commentContentLabel: UILabel!
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configureWith(commentID: Int, text: String, userID: Int, userNickname: String, userPhoto: String, date: String, isWriter: Bool) {
+        commentUserProfileImgView.image = UIImage(named: userPhoto)
+        let attributedString = NSMutableAttributedString()
+            .bold("\(userNickname)", fontSize: 17)
+            .normal(" \(text)", fontSize: 17)
+        commentContentLabel.attributedText = attributedString
+        commentUserProfileImgView.tag = userID
+        tag = commentID
     }
-
 }

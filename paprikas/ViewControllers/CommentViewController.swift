@@ -10,7 +10,12 @@ import UIKit
 
 class CommentViewController: BaseViewController {
 
-    @IBOutlet weak var myProfileImgView: UIImageView!
+    @IBOutlet weak var myProfileImgView: UIImageView! {
+        didSet {
+            self.myProfileImgView.layer.cornerRadius = self.myProfileImgView.frame.height/2
+            self.myProfileImgView.clipsToBounds = true
+        }
+    }
     @IBOutlet weak var newCommentTextField: UITextField!
     @IBOutlet weak var commentTableView: UITableView!
 
@@ -23,6 +28,7 @@ class CommentViewController: BaseViewController {
         self.view.addGestureRecognizer(keyboardDismissTapGesture)
         commentTableView.delegate = self
         commentTableView.dataSource = self
+        presenter.loadCommentData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -52,11 +58,17 @@ extension CommentViewController: CommentView {
 extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
+        presenter.configureCell(cell, forRowAt: indexPath)
         return cell
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return presenter.numberOfRows(in: section)
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("gggggg")
+        }
     }
 
  }

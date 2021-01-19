@@ -81,7 +81,7 @@ extension ContentDetailViewController: ContentDetailView {
 
         let attributedcontentText = NSMutableAttributedString()
             .bold("\(content.user?.nickname! ?? "") ", fontSize: 17)
-            .normal((content.content?.text!)!, fontSize: 17)
+            .normal((content.content?.text)!, fontSize: 17)
 
         self.contentTextLabel.attributedText = attributedcontentText
         self.commentCountLabel.text = "\(content.commentCount ?? 0)개의 댓글 모두보기"

@@ -74,11 +74,12 @@ let jsonContent = """
     {
         "com": {
             "text": "It is  comment 1",
-            "userid": 0
+            "commentid": 0
         },
         "user": {
             "nickname": "user2",
-            "userphoto": "meta2.jpg"
+            "userphoto": "meta2.jpg",
+            "userid": 1
         },
         "date": "2021-01-07"
     },
