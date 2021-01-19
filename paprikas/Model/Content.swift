@@ -23,7 +23,7 @@ struct User: Codable {
 }
 struct CommentList: Codable {
     let commentCount: Int?
-    let comment: [Comment]?
+    var comment: [Comment]?
 }
 struct Comment: Codable {
     let com: commentDetail?

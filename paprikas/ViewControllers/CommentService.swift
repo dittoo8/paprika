@@ -14,8 +14,12 @@ class CommentService {
         let commentList = try! JSONDecoder().decode(CommentList.self, from: jsonComment)
         completionHandler(commentList)
     }
+    func requestRemoveComment(idx: Int) {
+        // 댓글 삭제 api
+    }
 }
 protocol CommentView: class {
+    func stopNetworking()
 }
 class CommentPresenter {
     var idx: Int?
@@ -42,7 +46,7 @@ class CommentPresenter {
 
     // MARK: - TableView Methods
     func numberOfRows(in section: Int) -> Int {
-        return comments?.commentCount ?? 0
+        return comments?.comment?.count ?? 0
     }
 
     func configureCell(_ cell: CommentTableViewCell, forRowAt indexPath: IndexPath) {
@@ -50,6 +54,24 @@ class CommentPresenter {
         if let commentID = comment?.com?.commentid, let text = comment?.com?.text, let userID = comment?.user?.userid, let userNickname = comment?.user?.nickname, let userPhoto = comment?.user?.userphoto, let date = comment?.date, let isWriter = comment?.isWriter {
             cell.configureWith(commentID: commentID, text: text, userID: userID, userNickname: userNickname, userPhoto: userPhoto, date: date, isWriter: isWriter)
         }
+    }
+    func checkEditRow(_ cell: CommentTableViewCell, forRowAt indexPath: IndexPath) -> Bool {
+        let comment = comments?.comment?[indexPath.row]
+        if (comment?.isWriter)! {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    func removeCommentCell(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        tableView.beginUpdates()
+        if let commentId = comments?.comment?[indexPath.row].com?.commentid {
+            CommentService.requestRemoveComment(idx: commentId)
+            comments?.comment?.remove(at: commentId)
+        }
+        tableView.deleteRows(at: [indexPath], with: .left)
+        tableView.endUpdates()
     }
 }
 

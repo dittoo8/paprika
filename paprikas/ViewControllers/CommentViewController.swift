@@ -28,7 +28,11 @@ class CommentViewController: BaseViewController {
         self.view.addGestureRecognizer(keyboardDismissTapGesture)
         commentTableView.delegate = self
         commentTableView.dataSource = self
-        presenter.loadCommentData()
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        commentTableView.refreshControl = refreshControl
+        handleRefresh()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -46,6 +50,11 @@ class CommentViewController: BaseViewController {
         self.tabBarController?.tabBar.isHidden = false
         keyboardWillHideHandle()
     }
+    // MARK: - selector Methods
+    @objc fileprivate func handleRefresh() {
+        presenter.loadCommentData()
+        stopNetworking()
+    }
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         view.endEditing(true)
@@ -53,6 +62,11 @@ class CommentViewController: BaseViewController {
     }
 }
 extension CommentViewController: CommentView {
+    func stopNetworking() {
+        print("stop networking")
+        self.commentTableView.reloadData()
+        self.commentTableView?.refreshControl?.endRefreshing()
+    }
 
 }
 extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
@@ -66,9 +80,11 @@ extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
         return presenter.numberOfRows(in: section)
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            print("gggggg")
-        }
+        presenter.removeCommentCell(tableView, commit: .delete, forRowAt: indexPath)
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
+        return presenter.checkEditRow(cell, forRowAt: indexPath)
     }
 
  }

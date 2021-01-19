@@ -562,7 +562,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="767"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CommentTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentTableViewCell" rowHeight="168" id="bgd-Gx-e3H" customClass="CommentTableViewCell" customModule="paprikas" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CommentTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentTableViewCell" rowHeight="168" id="bgd-Gx-e3H" customClass="CommentTableViewCell" customModule="paprikas" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="168"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bgd-Gx-e3H" id="lIf-K5-rtc">
@@ -577,31 +577,44 @@
                                                         <constraint firstAttribute="width" secondItem="J4R-PT-WMb" secondAttribute="height" multiplier="1:1" id="hDt-Ai-w01"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAA-xh-KQ4">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAA-xh-KQ4">
                                                     <rect key="frame" x="65" y="10" width="339" height="121"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <mutableString key="text">LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel</mutableString>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="01.18 15:32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehc-ZK-RLZ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01.18 15:32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehc-ZK-RLZ">
                                                     <rect key="frame" x="65" y="139" width="86" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="밀어서 삭제하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aj3-qD-e2p">
+                                                    <rect key="frame" x="296" y="139" width="108" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="ehc-ZK-RLZ" secondAttribute="bottom" constant="8" id="41R-Pp-YkL"/>
+                                                <constraint firstItem="ehc-ZK-RLZ" firstAttribute="top" secondItem="eAA-xh-KQ4" secondAttribute="bottom" constant="8" symbolic="YES" id="JR0-L0-WTx"/>
                                                 <constraint firstItem="J4R-PT-WMb" firstAttribute="top" secondItem="lIf-K5-rtc" secondAttribute="top" constant="10" id="OA1-Ll-wZd"/>
+                                                <constraint firstItem="eAA-xh-KQ4" firstAttribute="leading" secondItem="J4R-PT-WMb" secondAttribute="trailing" constant="10" id="Pku-2V-OQt"/>
+                                                <constraint firstItem="Aj3-qD-e2p" firstAttribute="trailing" secondItem="eAA-xh-KQ4" secondAttribute="trailing" id="RUL-yb-zc2"/>
+                                                <constraint firstItem="eAA-xh-KQ4" firstAttribute="top" secondItem="J4R-PT-WMb" secondAttribute="top" id="duk-Kh-qZk"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="J4R-PT-WMb" secondAttribute="bottom" constant="10" id="fy3-KF-oB6"/>
+                                                <constraint firstAttribute="trailing" secondItem="eAA-xh-KQ4" secondAttribute="trailing" constant="10" id="gBu-BB-dOZ"/>
+                                                <constraint firstItem="ehc-ZK-RLZ" firstAttribute="leading" secondItem="eAA-xh-KQ4" secondAttribute="leading" id="rbC-Mp-v3L"/>
                                                 <constraint firstItem="J4R-PT-WMb" firstAttribute="leading" secondItem="lIf-K5-rtc" secondAttribute="leading" constant="10" id="rpO-QJ-bzR"/>
+                                                <constraint firstItem="Aj3-qD-e2p" firstAttribute="top" secondItem="ehc-ZK-RLZ" secondAttribute="top" id="zrD-vV-zhP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="commentContentLabel" destination="eAA-xh-KQ4" id="CrT-01-dk8"/>
                                             <outlet property="commentUserProfileImgView" destination="J4R-PT-WMb" id="tKL-ow-Yqi"/>
+                                            <outlet property="swipeDeleteLabel" destination="Aj3-qD-e2p" id="wvx-s5-Kdp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
