@@ -64,8 +64,7 @@ class ContentDetailViewController: BaseViewController {
     }
     func goToCommentVC(isWrite: Bool) {
         let commentVC = storyboard?.instantiateViewController(withIdentifier: "CommentVC") as! CommentViewController
-        commentVC.isWrite = isWrite
-        commentVC.presenter.setContentId(contentId: presenter.idx)
+        commentVC.presenter.setContentConfig(contentId: presenter.idx, isWrite: isWrite)
         self.navigationController?.pushViewController(commentVC, animated: true)
     }
 }

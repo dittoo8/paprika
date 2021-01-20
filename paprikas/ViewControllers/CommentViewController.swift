@@ -21,7 +21,7 @@ class CommentViewController: BaseViewController {
     @IBOutlet weak var commentTableView: UITableView!
 
     let presenter = CommentPresenter(CommentService: CommentService())
-    var isWrite: Bool?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(view: self)
@@ -39,12 +39,7 @@ class CommentViewController: BaseViewController {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
-        if isWrite ?? false {
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                print("get keyboard")
-                self.newCommentTextField.becomeFirstResponder()
-            }
-        }
+        getKeyboard()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -55,6 +50,11 @@ class CommentViewController: BaseViewController {
     @objc fileprivate func handleRefresh() {
         presenter.loadCommentData()
         stopNetworking()
+    }
+    @objc func goToProfileVC(param: goToProfileTap) {
+        print("go to profile vc idx : \(param.userId)")
+        let profileVC = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
@@ -70,17 +70,28 @@ class CommentViewController: BaseViewController {
     }
 }
 extension CommentViewController: CommentView {
+    func getKeyboard() {
+        if presenter.getIsWrite() {
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.newCommentTextField.becomeFirstResponder()
+            }
+        }
+    }
     func stopNetworking() {
         print("stop networking")
         self.commentTableView.reloadData()
         self.commentTableView?.refreshControl?.endRefreshing()
     }
-
 }
 extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
         presenter.configureCell(cell, forRowAt: indexPath)
+
+        let userProfileTap = goToProfileTap(target: self, action: #selector(self.goToProfileVC(param:)))
+        userProfileTap.userId = cell.commentUserProfileImgView.tag
+        cell.commentUserProfileImgView.isUserInteractionEnabled = true
+        cell.commentUserProfileImgView.addGestureRecognizer(userProfileTap)
         return cell
     }
 
@@ -96,3 +107,6 @@ extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
  }
+class goToProfileTap: UITapGestureRecognizer {
+    var userId: Int?
+}

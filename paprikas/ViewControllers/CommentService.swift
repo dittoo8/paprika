@@ -24,10 +24,12 @@ class CommentService {
     }
 }
 protocol CommentView: class {
+    func getKeyboard()
     func stopNetworking()
 }
 class CommentPresenter {
     var contentId: Int?
+    var isWrite = false
     var comments: CommentList?
     private let CommentService: CommentService
     private weak var CommentView: CommentView?
@@ -37,9 +39,12 @@ class CommentPresenter {
     func attachView(view: CommentView) {
         CommentView = view
     }
-    func setContentId(contentId: Int) {
-        print("set content idx : \(contentId)")
+    func setContentConfig(contentId: Int, isWrite: Bool) {
         self.contentId = contentId
+        self.isWrite = isWrite
+    }
+    func getIsWrite() -> Bool {
+        return isWrite
     }
     func loadCommentData() {
         if let contentId = contentId {
@@ -58,7 +63,6 @@ class CommentPresenter {
             // 통신 성공
                 self.loadCommentData()
             })
-
         }
     }
 

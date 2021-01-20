@@ -48,11 +48,10 @@ class FeedViewController: BaseViewController {
         sender.isSelected.toggle()
         presenter.sendLikeAction(method: sender.isSelected, idx: sender.tag)
     }
-    @objc func goToCommentVC(param: CustomTapGesture) {
+    @objc func goToCommentVC(param: goToCommentTap) {
         print("go to comment vc")
         let commentVC = storyboard?.instantiateViewController(withIdentifier: "CommentVC") as! CommentViewController
-        commentVC.isWrite = param.isWrite
-        commentVC.presenter.setContentId(contentId: param.idx!)
+        commentVC.presenter.setContentConfig(contentId: param.contentId!, isWrite: param.isWrite!)
         self.navigationController?.pushViewController(commentVC, animated: true)
     }
 }
@@ -90,13 +89,13 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         cell.likeBtn.addTarget(self, action: #selector(likeBtnClicked(sender: )), for: .touchUpInside)
 
-        let newCommentTap = CustomTapGesture(target: self, action: #selector(self.goToCommentVC(param:)))
-        newCommentTap.idx = cell.tag
+        let newCommentTap = goToCommentTap(target: self, action: #selector(self.goToCommentVC(param:)))
+        newCommentTap.contentId = cell.tag
         newCommentTap.isWrite = true
         cell.commentBtn.addGestureRecognizer(newCommentTap)
 
-        let showCommentTap = CustomTapGesture(target: self, action: #selector(self.goToCommentVC(param:)))
-        showCommentTap.idx = cell.tag
+        let showCommentTap = goToCommentTap(target: self, action: #selector(self.goToCommentVC(param:)))
+        showCommentTap.contentId = cell.tag
         showCommentTap.isWrite = false
         cell.commentCountLabel.isUserInteractionEnabled = true
         cell.commentCountLabel.addGestureRecognizer(showCommentTap)
@@ -104,7 +103,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
 }
-class CustomTapGesture: UITapGestureRecognizer {
-    var idx: Int?
+class goToCommentTap: UITapGestureRecognizer {
+    var contentId: Int?
     var isWrite: Bool?
 }
