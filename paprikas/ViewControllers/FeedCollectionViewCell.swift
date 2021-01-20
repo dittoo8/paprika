@@ -8,7 +8,7 @@ import Foundation
 import UIKit
 import ImageSlideshow
 protocol FeedCellType {
-    func configureWith(contentID: Int, contentText: String)
+    func configureWith(contentId: Int, userId: Int, contentText: String)
 }
 class FeedCollectionViewCell: UICollectionViewCell, FeedCellType {
 
@@ -31,7 +31,7 @@ class FeedCollectionViewCell: UICollectionViewCell, FeedCellType {
     @IBOutlet weak var contentDetailContainView: UIView!
 
     // parameter 더 추가될 예정
-    func configureWith(contentID: Int, contentText: String) {
+    func configureWith(contentId: Int, userId: Int, contentText: String) {
         contentImgSlideView.contentScaleMode = .scaleAspectFill
         contentImgSlideView.setImageInputs([ImageSource(image: UIImage(named: "meta1.jpg")!), ImageSource(image: UIImage(named: "meta2.jpg")!)])
         let attributedString = NSMutableAttributedString()
@@ -39,7 +39,8 @@ class FeedCollectionViewCell: UICollectionViewCell, FeedCellType {
             .normal(" \(contentText)", fontSize: 17)
         contentTextLabel.attributedText = attributedString
         // tag 는 게시물 id 로 수정해야함
-        tag = contentID
-        likeBtn.tag = contentID
+        tag = contentId
+        likeBtn.tag = contentId
+        userDetailView.tag = userId
     }
 }

@@ -8,11 +8,7 @@
 import Foundation
 
 struct Post: Codable {
-    let contentID: Int
-    let contentText: String
-
-    init(contentID: Int, contentText: String) {
-        self.contentID = contentID
-        self.contentText = contentText
-    }
+    let contentId: Int?
+    let userId: Int?
+    let contentText: String?
 }

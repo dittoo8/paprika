@@ -9,9 +9,13 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    let presenter = ProfilePresenter(profileService: ProfileService())
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        presenter.attachView(view: self)
     }
+
+}
+extension ProfileViewController: ProfileView {
 
 }

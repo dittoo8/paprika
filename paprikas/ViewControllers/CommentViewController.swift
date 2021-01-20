@@ -51,11 +51,12 @@ class CommentViewController: BaseViewController {
         presenter.loadCommentData()
         stopNetworking()
     }
-    @objc func goToProfileVC(param: goToProfileTap) {
-        print("go to profile vc idx : \(param.userId)")
-        let profileVC = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
-        self.navigationController?.pushViewController(profileVC, animated: true)
-    }
+//    @objc func goToProfileVC(param: goToProfileTap) {
+//        print("go to profile vc idx : \(param.userId)")
+//        let profileVC = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
+//        profileVC.presenter.setProfileConfig(userId: param.userId!)
+//        self.navigationController?.pushViewController(profileVC, animated: true)
+//    }
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         view.endEditing(true)
@@ -88,7 +89,7 @@ extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
         presenter.configureCell(cell, forRowAt: indexPath)
 
-        let userProfileTap = goToProfileTap(target: self, action: #selector(self.goToProfileVC(param:)))
+        let userProfileTap = goToProfileTap(target: self, action: #selector(goToProfileVC(param:)))
         userProfileTap.userId = cell.commentUserProfileImgView.tag
         cell.commentUserProfileImgView.isUserInteractionEnabled = true
         cell.commentUserProfileImgView.addGestureRecognizer(userProfileTap)
@@ -107,6 +108,3 @@ extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
  }
-class goToProfileTap: UITapGestureRecognizer {
-    var userId: Int?
-}

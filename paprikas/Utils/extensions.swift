@@ -61,4 +61,16 @@ extension UIViewController {
         print("keyboardWillHide")
         self.view.frame.origin.y = 0
     }
+    @objc func goToCommentVC(param: goToCommentTap) {
+        print("go to comment vc content id : \(param.contentId)")
+        let commentVC = storyboard?.instantiateViewController(withIdentifier: "CommentVC") as! CommentViewController
+        commentVC.presenter.setContentConfig(contentId: param.contentId!, isWrite: param.isWrite!)
+        self.navigationController?.pushViewController(commentVC, animated: true)
+    }
+    @objc func goToProfileVC(param: goToProfileTap) {
+        print("go to profile vc userid : \(param.userId)")
+        let profileVC = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
+        profileVC.presenter.setProfileConfig(userId: param.userId!)
+        self.navigationController?.pushViewController(profileVC, animated: true)
+    }
 }

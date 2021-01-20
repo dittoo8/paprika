@@ -13,9 +13,9 @@ class FeedService {
     func requestPosts(page: Int, completionHandler: @escaping ([Post]) -> Void) {
         // feed 로 수정해야함
         var posts = [Post]()
-        posts.append(Post(contentID: 1, contentText: "gggggg"))
-        posts.append(Post(contentID: 2, contentText: "gg333333gggg"))
-        posts.append(Post(contentID: 3, contentText: "gg3333wetwetwetwetwet33gggg"))
+        posts.append(Post(contentId: 1, userId: 1, contentText: "gggggg"))
+        posts.append(Post(contentId: 2, userId: 2, contentText: "gdgadsgadsgasd"))
+        posts.append(Post(contentId: 3, userId: 3, contentText: "gggsdaagsdgdsaagsdadgsadsgasgggg"))
         completionHandler(posts)
 //        self.page = page + 1
         //        let parameters = ["page": String(page)]
@@ -48,7 +48,7 @@ class FeedService {
 
 }
 protocol FeedView: class {
-    func goToContentDetailVC(idx: Int)
+    func goToContentDetailVC(contentId: Int)
     func stopNetworking()
 }
 class FeedPresenter {
@@ -70,11 +70,8 @@ class FeedPresenter {
     func loadMoreData(page: Int) {
         self.page = page + 1
         print("append page : \(page)")
-        self.posts.append(Post(contentID: page, contentText: "pppp"))
-        self.posts.append(Post(contentID: page, contentText: "23423etgewtg"))
-        self.posts.append(Post(contentID: page, contentText: "ppeqreyqr4yqerpp"))
-        FeedService.requestPosts(page: page) { [weak self] _ in
-//            self?.posts = posts
+        FeedService.requestPosts(page: page) { [weak self] posts in
+            self?.posts = posts
 
         }
         self.FeedView?.stopNetworking()
@@ -92,7 +89,7 @@ class FeedPresenter {
 
     func configureCell(_ cell: FeedCollectionViewCell, forRowAt indexPath: IndexPath) {
         let post = posts[indexPath.row]
-        cell.configureWith(contentID: post.contentID, contentText: post.contentText)
+        cell.configureWith(contentId: post.contentId!, userId: post.userId!, contentText: post.contentText!)
         print("index path : \(indexPath.row) , posts.count : \(self.posts.count-1)")
         if indexPath.row >= self.posts.count - 1 {
             loadMoreData(page: self.page)
@@ -100,6 +97,6 @@ class FeedPresenter {
     }
     func didSelectCollectionViewRowAt(indexPath: IndexPath) {
         let selectedPost = posts[indexPath.row]
-        self.FeedView?.goToContentDetailVC(idx: selectedPost.contentID)
+        self.FeedView?.goToContentDetailVC(contentId: selectedPost.contentId!)
     }
 }

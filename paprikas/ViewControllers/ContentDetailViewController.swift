@@ -7,7 +7,6 @@
 
 import UIKit
 import ImageSlideshow
-import Alamofire
 
 class ContentDetailViewController: BaseViewController {
     @IBOutlet weak var userProfileView: UIView!
@@ -64,12 +63,12 @@ class ContentDetailViewController: BaseViewController {
     }
     func goToCommentVC(isWrite: Bool) {
         let commentVC = storyboard?.instantiateViewController(withIdentifier: "CommentVC") as! CommentViewController
-        commentVC.presenter.setContentConfig(contentId: presenter.idx, isWrite: isWrite)
+        commentVC.presenter.setContentConfig(contentId: presenter.contentId!, isWrite: isWrite)
         self.navigationController?.pushViewController(commentVC, animated: true)
     }
 }
 extension ContentDetailViewController: ContentDetailView {
-    func setViewData(content: Content) {
+    func setContentViewData(content: Content) {
         print("contentDetail - setViewData idx : \(content.content?.contentid)")
         self.navigationItem.title = "userName 님의 게시물"
         self.userNameLabel.text = content.user?.nickname

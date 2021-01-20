@@ -28,18 +28,18 @@ class ContentDetailService {
 
 }
 protocol ContentDetailView: class {
-    func setViewData(content: Content)
+    func setContentViewData(content: Content)
 }
 class ContentDetailPresenter {
-    var idx: Int = 0
+    var contentId: Int?
     var content: Content?
     private let contentDetailService: ContentDetailService
-    private weak var contentDetailview: ContentDetailView?
+    private weak var contentDetailView: ContentDetailView?
     init(contentDetailService: ContentDetailService) {
         self.contentDetailService = contentDetailService
     }
-    func setIdx(idx: Int) {
-        self.idx = idx
+    func setContentConfig(contentId: Int) {
+        self.contentId = contentId
     }
     func sendLikeAction(method: Bool) {
         if let idx = content?.content?.contentid {
@@ -48,17 +48,18 @@ class ContentDetailPresenter {
         }
     }
     func attachView(view: ContentDetailView) {
-        contentDetailview = view
+        contentDetailView = view
     }
     func getContentData() {
-        print("contentDetail - getContentData idx : \(self.idx)")
-        contentDetailService.requestContentData(idx: self.idx, whenIfFailed: {_ in
-            // errer
-        }, completionHandler: { content in
-            self.content = content
-            self.contentDetailview?.setViewData(content: content)
-        })
-
+        print("contentDetail - getContentData idx : \(self.contentId)")
+        if let contentId = self.contentId {
+            contentDetailService.requestContentData(idx: contentId, whenIfFailed: {_ in
+                // errer
+            }, completionHandler: { content in
+                self.content = content
+                self.contentDetailView?.setContentViewData(content: content)
+            })
+        }
     }
 }
 

@@ -48,12 +48,7 @@ class FeedViewController: BaseViewController {
         sender.isSelected.toggle()
         presenter.sendLikeAction(method: sender.isSelected, idx: sender.tag)
     }
-    @objc func goToCommentVC(param: goToCommentTap) {
-        print("go to comment vc")
-        let commentVC = storyboard?.instantiateViewController(withIdentifier: "CommentVC") as! CommentViewController
-        commentVC.presenter.setContentConfig(contentId: param.contentId!, isWrite: param.isWrite!)
-        self.navigationController?.pushViewController(commentVC, animated: true)
-    }
+
 }
 extension FeedViewController: FeedView {
     func stopNetworking() {
@@ -62,9 +57,9 @@ extension FeedViewController: FeedView {
         self.feedCollectionView?.refreshControl?.endRefreshing()
     }
 
-    func goToContentDetailVC(idx: Int) {
+    func goToContentDetailVC(contentId: Int) {
         let contentDetailVC = storyboard?.instantiateViewController(withIdentifier: "ContentDetailVC") as! ContentDetailViewController
-        contentDetailVC.presenter.setIdx(idx: idx)
+        contentDetailVC.presenter.setContentConfig(contentId: contentId)
         self.navigationController?.pushViewController(contentDetailVC, animated: true)
 
     }
@@ -89,21 +84,22 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         cell.likeBtn.addTarget(self, action: #selector(likeBtnClicked(sender: )), for: .touchUpInside)
 
-        let newCommentTap = goToCommentTap(target: self, action: #selector(self.goToCommentVC(param:)))
+        let newCommentTap = goToCommentTap(target: self, action: #selector(goToCommentVC(param:)))
         newCommentTap.contentId = cell.tag
         newCommentTap.isWrite = true
         cell.commentBtn.addGestureRecognizer(newCommentTap)
 
-        let showCommentTap = goToCommentTap(target: self, action: #selector(self.goToCommentVC(param:)))
+        let showCommentTap = goToCommentTap(target: self, action: #selector(goToCommentVC(param:)))
         showCommentTap.contentId = cell.tag
         showCommentTap.isWrite = false
         cell.commentCountLabel.isUserInteractionEnabled = true
         cell.commentCountLabel.addGestureRecognizer(showCommentTap)
 
+        let userProfileTap = goToProfileTap(target: self, action: #selector(goToProfileVC(param:)))
+        userProfileTap.userId = cell.userDetailView.tag
+        cell.userDetailView.isUserInteractionEnabled = true
+        cell.userDetailView.addGestureRecognizer(userProfileTap)
+
         return cell
     }
-}
-class goToCommentTap: UITapGestureRecognizer {
-    var contentId: Int?
-    var isWrite: Bool?
 }

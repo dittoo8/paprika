@@ -10,6 +10,8 @@
 		15EC1E59E7B5B04DDA72D740 /* Pods_paprikasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6BD6DE52B8E68D864A1D7C /* Pods_paprikasTests.framework */; };
 		72A7CE476117DC6D8CDC9930 /* Pods_paprikas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9B4DF09CEE725966D77C60 /* Pods_paprikas.framework */; };
 		A40B5BB3AF8641472B4B1163 /* Pods_paprikas_paprikasUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B309A691355FA376E2B0C74 /* Pods_paprikas_paprikasUITests.framework */; };
+		CE90CBA425B808FF001B22E4 /* Customs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90CBA325B808FF001B22E4 /* Customs.swift */; };
+		CE90CBA925B80A4D001B22E4 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90CBA825B80A4D001B22E4 /* ProfileService.swift */; };
 		DC433C6C259C18BF00B0B083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6B259C18BF00B0B083 /* AppDelegate.swift */; };
 		DC433C6E259C18BF00B0B083 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6D259C18BF00B0B083 /* SceneDelegate.swift */; };
 		DC433C70259C18BF00B0B083 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6F259C18BF00B0B083 /* LoginViewController.swift */; };
@@ -80,6 +82,8 @@
 		8A6BD6DE52B8E68D864A1D7C /* Pods_paprikasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_paprikasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B309A691355FA376E2B0C74 /* Pods_paprikas_paprikasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_paprikas_paprikasUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB320A541DE31C72B9C4522 /* Pods-paprikas-paprikasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paprikas-paprikasUITests.debug.xcconfig"; path = "Target Support Files/Pods-paprikas-paprikasUITests/Pods-paprikas-paprikasUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CE90CBA325B808FF001B22E4 /* Customs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customs.swift; sourceTree = "<group>"; };
+		CE90CBA825B80A4D001B22E4 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		DC433C68259C18BF00B0B083 /* paprikas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = paprikas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC433C6B259C18BF00B0B083 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC433C6D259C18BF00B0B083 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -275,6 +279,7 @@
 			children = (
 				DC74DE0E25A2D903002353D7 /* Constants.swift */,
 				DC6A760525AF4D35001740D0 /* extensions.swift */,
+				CE90CBA325B808FF001B22E4 /* Customs.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				DCD65F1925B0359800E1EFF6 /* BaseViewController.swift */,
 				DCE0DF0725B51B5D0038E718 /* FeedService.swift */,
 				DCE0DF0C25B5B4850038E718 /* CommentService.swift */,
+				CE90CBA825B80A4D001B22E4 /* ProfileService.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -581,6 +587,7 @@
 				DC6A760B25B02A3E001740D0 /* CommentTableViewCell.swift in Sources */,
 				DCF1BC9525B736C800465348 /* APIRouter.swift in Sources */,
 				DC6A760625AF4D35001740D0 /* extensions.swift in Sources */,
+				CE90CBA425B808FF001B22E4 /* Customs.swift in Sources */,
 				DC74DE1925A2DB64002353D7 /* AuthRouter.swift in Sources */,
 				DCC82DC625AEB0AB006C5F4C /* CommentViewController.swift in Sources */,
 				DCC82D9925AB8737006C5F4C /* ContentDetailService.swift in Sources */,
@@ -597,6 +604,7 @@
 				DC433C6C259C18BF00B0B083 /* AppDelegate.swift in Sources */,
 				DC74DE3825A2E00F002353D7 /* FeedViewController.swift in Sources */,
 				DC5230AE25A354360075FE48 /* FeedCollectionViewCell.swift in Sources */,
+				CE90CBA925B80A4D001B22E4 /* ProfileService.swift in Sources */,
 				DC74DE4C25A2E0B8002353D7 /* ProfileViewController.swift in Sources */,
 				DCAB277925A56ABF0028F248 /* NewContentDetailViewController.swift in Sources */,
 				DC5230B325A3582F0075FE48 /* Post.swift in Sources */,
