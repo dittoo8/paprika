@@ -79,11 +79,7 @@ class CommentPresenter {
     }
     func checkEditRow(_ cell: CommentTableViewCell, forRowAt indexPath: IndexPath) -> Bool {
         let comment = comments?.comment?[indexPath.row]
-        if (comment?.isWriter)! {
-            return true
-        } else {
-            return false
-        }
+        return (comment?.isWriter)!
     }
 
     func removeCommentCell(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

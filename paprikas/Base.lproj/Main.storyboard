@@ -601,7 +601,7 @@
                                 <rect key="frame" x="0.0" y="811" width="414" height="85"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Uo-Z5-UiV">
-                                        <rect key="frame" x="10" y="10" width="55" height="55"/>
+                                        <rect key="frame" x="10" y="15" width="55" height="55"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="6Uo-Z5-UiV" secondAttribute="height" multiplier="1:1" id="DXA-xc-aMI"/>
@@ -609,7 +609,7 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="userName으로 댓글달기" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aSe-Wr-SRW">
-                                        <rect key="frame" x="75" y="20.5" width="289" height="34"/>
+                                        <rect key="frame" x="75" y="25.5" width="289" height="34"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -618,7 +618,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4AQ-1j-6VT">
-                                        <rect key="frame" x="364" y="5" width="50" height="65"/>
+                                        <rect key="frame" x="364" y="10" width="50" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="TMc-hA-I8o"/>
                                             <constraint firstAttribute="height" constant="65" id="tTw-uz-kf3"/>
@@ -634,8 +634,8 @@
                                     <constraint firstItem="aSe-Wr-SRW" firstAttribute="centerY" secondItem="6Uo-Z5-UiV" secondAttribute="centerY" id="UbT-J9-Uf9"/>
                                     <constraint firstItem="4AQ-1j-6VT" firstAttribute="leading" secondItem="aSe-Wr-SRW" secondAttribute="trailing" id="X6Y-Tx-3bs"/>
                                     <constraint firstItem="aSe-Wr-SRW" firstAttribute="centerY" secondItem="4AQ-1j-6VT" secondAttribute="centerY" id="Zhm-Me-SjB"/>
-                                    <constraint firstItem="6Uo-Z5-UiV" firstAttribute="top" secondItem="5dx-kr-QVx" secondAttribute="top" constant="10" id="goZ-oA-7hN"/>
                                     <constraint firstItem="aSe-Wr-SRW" firstAttribute="leading" secondItem="6Uo-Z5-UiV" secondAttribute="trailing" constant="10" id="r7b-Fe-zAk"/>
+                                    <constraint firstItem="6Uo-Z5-UiV" firstAttribute="centerY" secondItem="5dx-kr-QVx" secondAttribute="centerY" id="tra-1i-0dt"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -643,18 +643,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="UNy-4V-875" firstAttribute="top" secondItem="oAN-ye-1zB" secondAttribute="top" id="7YZ-iD-nnU"/>
-                            <constraint firstItem="oAN-ye-1zB" firstAttribute="bottom" secondItem="5dx-kr-QVx" secondAttribute="bottom" constant="-34" id="DYX-lc-ftB"/>
                             <constraint firstItem="5dx-kr-QVx" firstAttribute="top" secondItem="UNy-4V-875" secondAttribute="bottom" id="Uen-7y-mMX"/>
                             <constraint firstItem="oAN-ye-1zB" firstAttribute="trailing" secondItem="UNy-4V-875" secondAttribute="trailing" id="XB7-9M-Ca7"/>
                             <constraint firstItem="5dx-kr-QVx" firstAttribute="leading" secondItem="oAN-ye-1zB" secondAttribute="leading" id="ecq-ms-JFY"/>
                             <constraint firstItem="UNy-4V-875" firstAttribute="leading" secondItem="oAN-ye-1zB" secondAttribute="leading" id="hwM-Fv-I5e"/>
                             <constraint firstItem="5dx-kr-QVx" firstAttribute="trailing" secondItem="oAN-ye-1zB" secondAttribute="trailing" id="itt-Uo-ERE"/>
+                            <constraint firstItem="5dx-kr-QVx" firstAttribute="bottom" secondItem="hHT-Qh-QyG" secondAttribute="bottom" id="rZv-P4-cwv"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="commentTableView" destination="UNy-4V-875" id="ANX-lw-3rR"/>
                         <outlet property="myProfileImgView" destination="6Uo-Z5-UiV" id="vTX-Y5-Wk3"/>
                         <outlet property="newCommentTextField" destination="aSe-Wr-SRW" id="c4N-DH-C07"/>
+                        <outlet property="newCommentView" destination="5dx-kr-QVx" id="lmT-48-tVn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b6h-Ay-4tI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

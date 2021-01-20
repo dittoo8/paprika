@@ -17,6 +17,7 @@ class CommentViewController: BaseViewController {
             self.myProfileImgView.clipsToBounds = true
         }
     }
+    @IBOutlet weak var newCommentView: UIView!
     @IBOutlet weak var newCommentTextField: UITextField!
     @IBOutlet weak var commentTableView: UITableView!
 
@@ -40,6 +41,7 @@ class CommentViewController: BaseViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
         getKeyboard()
+        self.navigationItem.title = "댓글"
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)

@@ -46,14 +46,11 @@ extension UIViewController {
     @objc func keyboardWillShowHandle(notification: NSNotification) {
         print("baseVC - keyboardWillShowHandle() called")
         // 키보드 사이즈 가져오기
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y = self.view.frame.origin.y - keyboardSize.height
-            }
-            if self.view.safeAreaInsets.bottom > 0 {
-                print("safe AreaInsets : \(self.view.safeAreaInsets.bottom)")
-                self.view.frame.origin.y = self.view.frame.origin.y + 34
-            }
+        print("keyboard?????")
+        let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+
+        if self.view.frame.origin.y == 0 {
+            self.view.frame.origin.y = self.view.frame.origin.y - keyboardSize!.height
         }
     }
 
@@ -61,6 +58,10 @@ extension UIViewController {
         print("keyboardWillHide")
         self.view.frame.origin.y = 0
     }
+//    func getKeyboardSize() -> NSValue {
+//        let keyboardHeight = KeyboardService.keyboardHeight()
+//        return keyboardSize
+//    }
     @objc func goToCommentVC(param: goToCommentTap) {
         print("go to comment vc content id : \(param.contentId)")
         let commentVC = storyboard?.instantiateViewController(withIdentifier: "CommentVC") as! CommentViewController

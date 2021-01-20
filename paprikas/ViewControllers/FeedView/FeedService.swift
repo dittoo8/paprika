@@ -50,6 +50,7 @@ class FeedService {
 protocol FeedView: class {
     func goToContentDetailVC(contentId: Int)
     func stopNetworking()
+    func finUploadContent()
 }
 class FeedPresenter {
     var page = 1

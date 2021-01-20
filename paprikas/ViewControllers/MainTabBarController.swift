@@ -44,6 +44,13 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    func testTab() {
+        let feedNC = self.tabBarController?.viewControllers![0] as! UINavigationController
+        let feedVC = feedNC.viewControllers.first as! FeedViewController
+        feedVC.handleRefresh()
+        print("main tab test")
+//        self.tabBarController?.selectedIndex = 0
+    }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         print("selected index : \(selectedIndex)")
     }

@@ -12,6 +12,7 @@
 		A40B5BB3AF8641472B4B1163 /* Pods_paprikas_paprikasUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B309A691355FA376E2B0C74 /* Pods_paprikas_paprikasUITests.framework */; };
 		CE90CBA425B808FF001B22E4 /* Customs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90CBA325B808FF001B22E4 /* Customs.swift */; };
 		CE90CBA925B80A4D001B22E4 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90CBA825B80A4D001B22E4 /* ProfileService.swift */; };
+		CE90CBDB25B857EB001B22E4 /* NewContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90CBDA25B857EB001B22E4 /* NewContentService.swift */; };
 		DC433C6C259C18BF00B0B083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6B259C18BF00B0B083 /* AppDelegate.swift */; };
 		DC433C6E259C18BF00B0B083 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6D259C18BF00B0B083 /* SceneDelegate.swift */; };
 		DC433C70259C18BF00B0B083 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6F259C18BF00B0B083 /* LoginViewController.swift */; };
@@ -80,6 +81,7 @@
 		BBB320A541DE31C72B9C4522 /* Pods-paprikas-paprikasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paprikas-paprikasUITests.debug.xcconfig"; path = "Target Support Files/Pods-paprikas-paprikasUITests/Pods-paprikas-paprikasUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE90CBA325B808FF001B22E4 /* Customs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customs.swift; sourceTree = "<group>"; };
 		CE90CBA825B80A4D001B22E4 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		CE90CBDA25B857EB001B22E4 /* NewContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContentService.swift; sourceTree = "<group>"; };
 		DC433C68259C18BF00B0B083 /* paprikas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = paprikas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC433C6B259C18BF00B0B083 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC433C6D259C18BF00B0B083 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				DC74DE4125A2E07D002353D7 /* NewContentViewController.swift */,
+				CE90CBDA25B857EB001B22E4 /* NewContentService.swift */,
 			);
 			path = NewContentView;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				DC74DDF825A2D788002353D7 /* AlamofireManager.swift in Sources */,
 				DC5230B825A364950075FE48 /* ContentDetailViewController.swift in Sources */,
 				DCE0DF0825B51B5D0038E718 /* FeedService.swift in Sources */,
+				CE90CBDB25B857EB001B22E4 /* NewContentService.swift in Sources */,
 				DC74DE5825A2E83D002353D7 /* Auth.swift in Sources */,
 				DCE0DF0D25B5B4850038E718 /* CommentService.swift in Sources */,
 				DCC82D8425A971A4006C5F4C /* Content.swift in Sources */,

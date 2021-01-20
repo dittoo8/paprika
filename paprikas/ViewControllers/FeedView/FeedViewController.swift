@@ -32,14 +32,14 @@ class FeedViewController: BaseViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         print("FeedVC - viewWillAppear")
-
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         print("FeedVC - viewWillDisappear")
     }
     // MARK: - selector Methods
-    @objc fileprivate func handleRefresh() {
+    @objc func handleRefresh() {
+        print("handleRefresh")
         presenter.refreshData()
         stopNetworking()
     }
@@ -48,7 +48,6 @@ class FeedViewController: BaseViewController {
         sender.isSelected.toggle()
         presenter.sendLikeAction(method: sender.isSelected, idx: sender.tag)
     }
-
 }
 extension FeedViewController: FeedView {
     func stopNetworking() {
@@ -61,7 +60,11 @@ extension FeedViewController: FeedView {
         let contentDetailVC = storyboard?.instantiateViewController(withIdentifier: "ContentDetailVC") as! ContentDetailViewController
         contentDetailVC.presenter.setContentConfig(contentId: contentId)
         self.navigationController?.pushViewController(contentDetailVC, animated: true)
-
+    }
+    func finUploadContent() {
+        self.view.makeToast(NOTIFICATION.TOAST.UPLOAD_SUCCESS, duration: 1.0, position: .center)
+        handleRefresh()
+        self.feedCollectionView.contentOffset.y = 0
     }
 }
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
