@@ -13,9 +13,17 @@ class ContentDetailService {
         print("request post like")
     }
 
-    func setData(idx: Int, completionHandler: @escaping (Content) -> Void) {
-        let content = try! JSONDecoder().decode(Content.self, from: jsonContent)
-        completionHandler(content)
+    func requestContentData(idx: Int, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (Content) -> Void) {
+        APIClient.getContentDetail(contentId: 2) { result in
+            switch result {
+            case .success(let contentResult):
+                print("networking data : \(contentResult.data)")
+                completionHandler(contentResult.data!)
+            case .failure(let error):
+                print("error : \(error.localizedDescription)")
+                whenIfFailed(error)
+            }
+        }
     }
 
 }
@@ -44,10 +52,12 @@ class ContentDetailPresenter {
     }
     func getContentData() {
         print("contentDetail - getContentData idx : \(self.idx)")
-        contentDetailService.setData(idx: self.idx) { [weak self] content in
-            self?.content = content
-            self?.contentDetailview?.setViewData(content: content)
-        }
+        contentDetailService.requestContentData(idx: self.idx, whenIfFailed: {_ in
+            // errer
+        }, completionHandler: { content in
+            self.content = content
+            self.contentDetailview?.setViewData(content: content)
+        })
 
     }
 }
@@ -82,7 +92,7 @@ let jsonContent = """
             "userid": 1
         },
         "date": "2021-01-07"
-    },
+    }
 ]
 }
 

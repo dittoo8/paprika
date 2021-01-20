@@ -6,12 +6,13 @@ target 'paprikas' do
   use_frameworks!
 
   # Pods for paprikas
-	pod 'Alamofire', '~> 5.2'
+	pod 'Alamofire', '~> 5.0'
 	pod 'Kingfisher'
 	pod 'Toast-Swift', '~> 5.0.1'
 	pod 'ImageSlideshow', '~> 1.9.0'
   pod 'SwiftLint'
 	pod 'YPImagePicker'
+  pod 'PromisedFuture'
 
   target 'paprikasTests' do
     inherit! :search_paths

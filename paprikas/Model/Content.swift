@@ -6,7 +6,12 @@
 //
 
 import Foundation
-
+struct ContentResult: Codable {
+    let status: Int?
+    let success: Bool?
+    let message: String?
+    let data: Content?
+}
 struct Content: Codable {
     let user: User?
     let content: ContentDetail?
@@ -14,7 +19,7 @@ struct Content: Codable {
     let likeCount: Int?
     let commentCount: Int?
     let photo: [String]?
-    let comment: CommentList?
+    let comment: [Comment]?
 }
 struct User: Codable {
     let userphoto: String?

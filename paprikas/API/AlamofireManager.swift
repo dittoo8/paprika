@@ -20,16 +20,16 @@ final class AlamofireManager {
     private init() {
         session = Session(interceptor: interceptors, eventMonitors: moniters)
     }
-    func login(nickname: String, pwd: String, completion: @escaping (Result<[Auth], MyError>) -> Void) {
-        print("AlamofireManager - login() called")
-        self.session
-            .request(AuthRouter.login(nickname: nickname, password: pwd))
-            .validate(statusCode: 200..<401)
-            .responseJSON(completionHandler: { response in
-                guard let responseValue = response.value else { return }
-                print("responseValue : \(responseValue)")
-            })
-    }
+//    func login(nickname: String, pwd: String, completion: @escaping (Result<[Auth], MyError>) -> Void) {
+//        print("AlamofireManager - login() called")
+//        self.session
+//            .request(AuthRouter.login(nickname: nickname, password: pwd))
+//            .validate(statusCode: 200..<401)
+//            .responseJSON(completionHandler: { response in
+//                guard let responseValue = response.value else { return }
+//                print("responseValue : \(responseValue)")
+//            })
+//    }
     // 새 게시물 작성
     // 안돌아갈 것 같음
     func uploadContent(text: String, url: [UIImage]) {
