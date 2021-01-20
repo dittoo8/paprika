@@ -38,16 +38,12 @@
 		DC74DE4725A2E088002353D7 /* FarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE4625A2E088002353D7 /* FarmViewController.swift */; };
 		DC74DE4C25A2E0B8002353D7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE4B25A2E0B8002353D7 /* ProfileViewController.swift */; };
 		DC74DE5825A2E83D002353D7 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE5725A2E83D002353D7 /* Auth.swift */; };
-		DCAB277925A56ABF0028F248 /* NewContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAB277825A56ABF0028F248 /* NewContentDetailViewController.swift */; };
 		DCAB277E25A58DF60028F248 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAB277D25A58DF60028F248 /* MainTabBarController.swift */; };
 		DCC82D7F25A8C32D006C5F4C /* ContentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82D7E25A8C32D006C5F4C /* ContentRouter.swift */; };
 		DCC82D8425A971A4006C5F4C /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82D8325A971A4006C5F4C /* Content.swift */; };
 		DCC82D8925A972E8006C5F4C /* Content_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = DCC82D8825A972E8006C5F4C /* Content_mock.json */; };
 		DCC82D9925AB8737006C5F4C /* ContentDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82D9825AB8737006C5F4C /* ContentDetailService.swift */; };
-		DCC82DC125ADF3E6006C5F4C /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82DC025ADF3E6006C5F4C /* SwiftUIView.swift */; };
 		DCC82DC625AEB0AB006C5F4C /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82DC525AEB0AB006C5F4C /* CommentViewController.swift */; };
-		DCC82DCB25AEB322006C5F4C /* ContentCommonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCC82DCA25AEB322006C5F4C /* ContentCommonView.xib */; };
-		DCC82DD025AEB466006C5F4C /* ContentCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82DCF25AEB466006C5F4C /* ContentCommonView.swift */; };
 		DCD65F1A25B0359800E1EFF6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD65F1925B0359800E1EFF6 /* BaseViewController.swift */; };
 		DCE0DF0825B51B5D0038E718 /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DF0725B51B5D0038E718 /* FeedService.swift */; };
 		DCE0DF0D25B5B4850038E718 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DF0C25B5B4850038E718 /* CommentService.swift */; };
@@ -103,7 +99,7 @@
 		DC5230B225A3582F0075FE48 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		DC5230B725A364950075FE48 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
 		DC6A760525AF4D35001740D0 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
-		DC6A760A25B02A3D001740D0 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommentTableViewCell.swift; path = ViewControllers/CommentTableViewCell.swift; sourceTree = "<group>"; };
+		DC6A760A25B02A3D001740D0 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		DC74DDF725A2D788002353D7 /* AlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
 		DC74DDFF25A2D86C002353D7 /* BseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BseInterceptor.swift; sourceTree = "<group>"; };
 		DC74DE0425A2D874002353D7 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -116,16 +112,12 @@
 		DC74DE4625A2E088002353D7 /* FarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmViewController.swift; sourceTree = "<group>"; };
 		DC74DE4B25A2E0B8002353D7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DC74DE5725A2E83D002353D7 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
-		DCAB277825A56ABF0028F248 /* NewContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContentDetailViewController.swift; sourceTree = "<group>"; };
-		DCAB277D25A58DF60028F248 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = ViewControllers/MainTabBarController.swift; sourceTree = "<group>"; };
+		DCAB277D25A58DF60028F248 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DCC82D7E25A8C32D006C5F4C /* ContentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouter.swift; sourceTree = "<group>"; };
 		DCC82D8325A971A4006C5F4C /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		DCC82D8825A972E8006C5F4C /* Content_mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Content_mock.json; sourceTree = "<group>"; };
 		DCC82D9825AB8737006C5F4C /* ContentDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailService.swift; sourceTree = "<group>"; };
-		DCC82DC025ADF3E6006C5F4C /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		DCC82DC525AEB0AB006C5F4C /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
-		DCC82DCA25AEB322006C5F4C /* ContentCommonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentCommonView.xib; sourceTree = "<group>"; };
-		DCC82DCF25AEB466006C5F4C /* ContentCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCommonView.swift; sourceTree = "<group>"; };
 		DCD65F1925B0359800E1EFF6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DCE0DF0725B51B5D0038E718 /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
 		DCE0DF0C25B5B4850038E718 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
@@ -186,6 +178,76 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE90CBB925B811F3001B22E4 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				DC433C6F259C18BF00B0B083 /* LoginViewController.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		CE90CBBA25B811FC001B22E4 /* FeedView */ = {
+			isa = PBXGroup;
+			children = (
+				DC74DE3725A2E00F002353D7 /* FeedViewController.swift */,
+				DC5230AD25A354360075FE48 /* FeedCollectionViewCell.swift */,
+				DCE0DF0725B51B5D0038E718 /* FeedService.swift */,
+			);
+			path = FeedView;
+			sourceTree = "<group>";
+		};
+		CE90CBBB25B81213001B22E4 /* NewContentView */ = {
+			isa = PBXGroup;
+			children = (
+				DC74DE4125A2E07D002353D7 /* NewContentViewController.swift */,
+			);
+			path = NewContentView;
+			sourceTree = "<group>";
+		};
+		CE90CBBC25B813CE001B22E4 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				DC74DE3C25A2E050002353D7 /* SearchViewController.swift */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
+		CE90CBBD25B813DD001B22E4 /* FarmView */ = {
+			isa = PBXGroup;
+			children = (
+				DC74DE4625A2E088002353D7 /* FarmViewController.swift */,
+			);
+			path = FarmView;
+			sourceTree = "<group>";
+		};
+		CE90CBBE25B813E7001B22E4 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				DC74DE4B25A2E0B8002353D7 /* ProfileViewController.swift */,
+				CE90CBA825B80A4D001B22E4 /* ProfileService.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
+		CE90CBCB25B814A4001B22E4 /* ContentView */ = {
+			isa = PBXGroup;
+			children = (
+				DC5230B725A364950075FE48 /* ContentDetailViewController.swift */,
+				DCC82D9825AB8737006C5F4C /* ContentDetailService.swift */,
+			);
+			path = ContentView;
+			sourceTree = "<group>";
+		};
+		CE90CBD225B814FE001B22E4 /* CommentView */ = {
+			isa = PBXGroup;
+			children = (
+				DC6A760A25B02A3D001740D0 /* CommentTableViewCell.swift */,
+				DCC82DC525AEB0AB006C5F4C /* CommentViewController.swift */,
+				DCE0DF0C25B5B4850038E718 /* CommentService.swift */,
+			);
+			path = CommentView;
+			sourceTree = "<group>";
+		};
 		DC433C5F259C18BF00B0B083 = {
 			isa = PBXGroup;
 			children = (
@@ -220,14 +282,10 @@
 				DC433C6B259C18BF00B0B083 /* AppDelegate.swift */,
 				DC433C6D259C18BF00B0B083 /* SceneDelegate.swift */,
 				DC433C71259C18BF00B0B083 /* Main.storyboard */,
-				DC6A760A25B02A3D001740D0 /* CommentTableViewCell.swift */,
-				DCC82DCA25AEB322006C5F4C /* ContentCommonView.xib */,
 				DC433C74259C18C100B0B083 /* Assets.xcassets */,
 				DCC82D8825A972E8006C5F4C /* Content_mock.json */,
 				DC433C76259C18C100B0B083 /* LaunchScreen.storyboard */,
 				DC433C79259C18C100B0B083 /* Info.plist */,
-				DCAB277D25A58DF60028F248 /* MainTabBarController.swift */,
-				DCC82DC025ADF3E6006C5F4C /* SwiftUIView.swift */,
 			);
 			path = paprikas;
 			sourceTree = "<group>";
@@ -287,22 +345,16 @@
 		DC74DE3325A2DF9E002353D7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DC433C6F259C18BF00B0B083 /* LoginViewController.swift */,
-				DC74DE3725A2E00F002353D7 /* FeedViewController.swift */,
-				DC74DE3C25A2E050002353D7 /* SearchViewController.swift */,
-				DC74DE4125A2E07D002353D7 /* NewContentViewController.swift */,
-				DC74DE4625A2E088002353D7 /* FarmViewController.swift */,
-				DC74DE4B25A2E0B8002353D7 /* ProfileViewController.swift */,
-				DC5230AD25A354360075FE48 /* FeedCollectionViewCell.swift */,
-				DC5230B725A364950075FE48 /* ContentDetailViewController.swift */,
-				DCC82DCF25AEB466006C5F4C /* ContentCommonView.swift */,
-				DCAB277825A56ABF0028F248 /* NewContentDetailViewController.swift */,
-				DCC82D9825AB8737006C5F4C /* ContentDetailService.swift */,
-				DCC82DC525AEB0AB006C5F4C /* CommentViewController.swift */,
+				DCAB277D25A58DF60028F248 /* MainTabBarController.swift */,
 				DCD65F1925B0359800E1EFF6 /* BaseViewController.swift */,
-				DCE0DF0725B51B5D0038E718 /* FeedService.swift */,
-				DCE0DF0C25B5B4850038E718 /* CommentService.swift */,
-				CE90CBA825B80A4D001B22E4 /* ProfileService.swift */,
+				CE90CBB925B811F3001B22E4 /* LoginView */,
+				CE90CBBA25B811FC001B22E4 /* FeedView */,
+				CE90CBBC25B813CE001B22E4 /* SearchView */,
+				CE90CBBB25B81213001B22E4 /* NewContentView */,
+				CE90CBBD25B813DD001B22E4 /* FarmView */,
+				CE90CBCB25B814A4001B22E4 /* ContentView */,
+				CE90CBD225B814FE001B22E4 /* CommentView */,
+				CE90CBBE25B813E7001B22E4 /* ProfileView */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -429,7 +481,6 @@
 				DC433C78259C18C100B0B083 /* LaunchScreen.storyboard in Resources */,
 				DC433C75259C18C100B0B083 /* Assets.xcassets in Resources */,
 				DCC82D8925A972E8006C5F4C /* Content_mock.json in Resources */,
-				DCC82DCB25AEB322006C5F4C /* ContentCommonView.xib in Resources */,
 				DC433C73259C18BF00B0B083 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,9 +626,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCC82DC125ADF3E6006C5F4C /* SwiftUIView.swift in Sources */,
 				DC74DE0A25A2D881002353D7 /* APIStatusLogger.swift in Sources */,
-				DCC82DD025AEB466006C5F4C /* ContentCommonView.swift in Sources */,
 				DC74DE0025A2D86C002353D7 /* BseInterceptor.swift in Sources */,
 				DCD65F1A25B0359800E1EFF6 /* BaseViewController.swift in Sources */,
 				DCAB277E25A58DF60028F248 /* MainTabBarController.swift in Sources */,
@@ -606,7 +655,6 @@
 				DC5230AE25A354360075FE48 /* FeedCollectionViewCell.swift in Sources */,
 				CE90CBA925B80A4D001B22E4 /* ProfileService.swift in Sources */,
 				DC74DE4C25A2E0B8002353D7 /* ProfileViewController.swift in Sources */,
-				DCAB277925A56ABF0028F248 /* NewContentDetailViewController.swift in Sources */,
 				DC5230B325A3582F0075FE48 /* Post.swift in Sources */,
 				DC433C6E259C18BF00B0B083 /* SceneDelegate.swift in Sources */,
 				DCE0DF1525B5CF640038E718 /* Comment.swift in Sources */,

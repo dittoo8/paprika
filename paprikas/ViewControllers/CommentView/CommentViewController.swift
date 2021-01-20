@@ -51,12 +51,6 @@ class CommentViewController: BaseViewController {
         presenter.loadCommentData()
         stopNetworking()
     }
-//    @objc func goToProfileVC(param: goToProfileTap) {
-//        print("go to profile vc idx : \(param.userId)")
-//        let profileVC = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
-//        profileVC.presenter.setProfileConfig(userId: param.userId!)
-//        self.navigationController?.pushViewController(profileVC, animated: true)
-//    }
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         view.endEditing(true)
