@@ -52,7 +52,7 @@ class FeedViewController: BaseViewController {
         print("go to comment vc")
         let commentVC = storyboard?.instantiateViewController(withIdentifier: "CommentVC") as! CommentViewController
         commentVC.isWrite = param.isWrite
-        commentVC.presenter.setIdx(idx: param.idx!)
+        commentVC.presenter.setContentId(contentId: param.idx!)
         self.navigationController?.pushViewController(commentVC, animated: true)
     }
 }

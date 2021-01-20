@@ -21,6 +21,7 @@ enum NOTIFICATION {
     enum TOAST {
         static let NO_SELECT_IMG: String = "📣 공유할 사진을 선택해주세요!"
         static let UPLOAD_SUCCESS: String = "😚 새 게시물을 공유했습니다."
+        static let NO_CONTENT: String = "📣 내용을 입력해주세요!"
     }
 }
 enum HTTPHeaderField: String {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Toast_Swift
 import UIKit
 
 class CommentViewController: BaseViewController {
@@ -61,6 +62,11 @@ class CommentViewController: BaseViewController {
         return true
     }
     @IBAction func newCommentBtnAction(_ sender: UIButton) {
+        if newCommentTextField.text!.isEmpty {
+            self.view.makeToast(NOTIFICATION.TOAST.NO_CONTENT, duration: 1.0, position: .center)
+        } else {
+            presenter.addNewComment()
+        }
     }
 }
 extension CommentViewController: CommentView {

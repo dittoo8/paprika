@@ -26,6 +26,12 @@ struct User: Codable {
     let nickname: String?
     let userid: Double?
 }
+struct CommentResult: Codable {
+    let status: Int?
+    let success: Bool?
+    let message: String?
+    let data: CommentList?
+}
 struct CommentList: Codable {
     let commentCount: Int?
     var comment: [Comment]?

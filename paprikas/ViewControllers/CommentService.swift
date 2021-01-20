@@ -10,19 +10,24 @@ import Alamofire
 class CommentService {
 
     func requestCommentList(idx: Int, completionHandler: @escaping (CommentList) -> Void) {
-        // 통신 추가해야함
+        // 댓글리스트 api
         let commentList = try! JSONDecoder().decode(CommentList.self, from: jsonComment)
         completionHandler(commentList)
     }
-    func requestRemoveComment(idx: Int) {
+
+    func requestRemoveComment(commentId: Int, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (CommentResult) -> Void) {
         // 댓글 삭제 api
+    }
+
+    func requestNewComment(contentId: Int, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (CommentResult) -> Void) {
+        // 댓글 추가 api
     }
 }
 protocol CommentView: class {
     func stopNetworking()
 }
 class CommentPresenter {
-    var idx: Int?
+    var contentId: Int?
     var comments: CommentList?
     private let CommentService: CommentService
     private weak var CommentView: CommentView?
@@ -32,15 +37,28 @@ class CommentPresenter {
     func attachView(view: CommentView) {
         CommentView = view
     }
-    func setIdx(idx: Int) {
-        print("set comment idx : \(idx)")
-        self.idx = idx
+    func setContentId(contentId: Int) {
+        print("set content idx : \(contentId)")
+        self.contentId = contentId
     }
     func loadCommentData() {
-        if let idx = idx {
-            CommentService.requestCommentList(idx: idx) { [weak self] commentList in
+        if let contentId = contentId {
+            CommentService.requestCommentList(idx: contentId) { [weak self] commentList in
                 self?.comments = commentList
             }
+        }
+    }
+    func addNewComment() {
+        if let contentId = contentId {
+            // 통신 추가
+            CommentService.requestNewComment(contentId: contentId, whenIfFailed: {
+                _ in
+                // 통신 실패
+            }, completionHandler: { _ in
+            // 통신 성공
+                self.loadCommentData()
+            })
+
         }
     }
 
@@ -67,7 +85,12 @@ class CommentPresenter {
     func removeCommentCell(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         tableView.beginUpdates()
         if let commentId = comments?.comment?[indexPath.row].com?.commentid {
-            CommentService.requestRemoveComment(idx: commentId)
+            CommentService.requestRemoveComment(commentId: commentId, whenIfFailed: { _ in
+                // 통신 실패
+            }, completionHandler: { _ in
+                // 통신 성공
+
+            })
             comments?.comment?.remove(at: commentId)
         }
         tableView.deleteRows(at: [indexPath], with: .left)
