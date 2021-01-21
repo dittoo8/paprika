@@ -53,7 +53,7 @@ class ContentDetailViewController: BaseViewController {
     }
     @IBAction func likeBtnClicked(_ sender: UIButton) {
         sender.isSelected.toggle()
-        presenter.sendLikeAction(method: sender.isSelected)
+        presenter.sendLikeAction(isLike: sender.isSelected)
     }
     @IBAction func commentBtnClicked(_ sender: Any) {
         goToCommentVC(isWrite: true)
@@ -73,6 +73,10 @@ class ContentDetailViewController: BaseViewController {
     }
 }
 extension ContentDetailViewController: ContentDetailView {
+    func popContentDetailView() {
+        popViewController()
+    }
+
     func setContentViewData(content: Content) {
         self.navigationItem.title = "\(content.user?.nickname! ?? "")님의 게시물"
         self.userNameLabel.text = content.user?.nickname

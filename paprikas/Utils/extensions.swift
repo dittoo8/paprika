@@ -46,7 +46,6 @@ extension UIViewController {
     @objc func keyboardWillShowHandle(notification: NSNotification) {
         print("baseVC - keyboardWillShowHandle() called")
         // 키보드 사이즈 가져오기
-        print("keyboard?????")
         let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
 
         if self.view.frame.origin.y == 0 {
@@ -58,10 +57,6 @@ extension UIViewController {
         print("keyboardWillHide")
         self.view.frame.origin.y = 0
     }
-//    func getKeyboardSize() -> NSValue {
-//        let keyboardHeight = KeyboardService.keyboardHeight()
-//        return keyboardSize
-//    }
     @objc func goToCommentVC(param: goToCommentTap) {
         print("go to comment vc content id : \(param.contentId)")
         let commentVC = storyboard?.instantiateViewController(withIdentifier: "CommentVC") as! CommentViewController
@@ -73,5 +68,8 @@ extension UIViewController {
         let profileVC = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
         profileVC.presenter.setProfileConfig(userId: param.userId!)
         self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    func popViewController() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

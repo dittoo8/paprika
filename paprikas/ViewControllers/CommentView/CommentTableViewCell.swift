@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 class CommentTableViewCell: UITableViewCell {
 
     @IBOutlet weak var commentUserProfileImgView: UIImageView! {
@@ -17,17 +17,13 @@ class CommentTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var commentContentLabel: UILabel!
     @IBOutlet weak var swipeDeleteLabel: UILabel!
-    var isWriter = false
-    func configureWith(commentID: Int, text: String, userID: Int, userNickname: String, userPhoto: String, date: String, isWriter: Bool) {
-        commentUserProfileImgView.image = UIImage(named: userPhoto)
+    func configureWith(commentID: Int, text: String, userID: Int, userNickname: String, userPhoto: URL, date: String, isWriter: Bool) {
+        commentUserProfileImgView.kf.setImage(with: userPhoto)
         let attributedString = NSMutableAttributedString()
             .bold("\(userNickname)", fontSize: 17)
             .normal(" \(text)", fontSize: 17)
         commentContentLabel.attributedText = attributedString
-        if isWriter {
-            self.isWriter = true
-            swipeDeleteLabel.isHidden = false
-        }
+        swipeDeleteLabel.isHidden = !isWriter
         commentUserProfileImgView.tag = userID
         tag = commentID
     }

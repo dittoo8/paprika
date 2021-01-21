@@ -11,6 +11,7 @@ enum APIRouter: URLRequestConvertible {
     case login(nickname: String, pwd: String)
     case content(contentId: Int, method: HTTPMethod)
     case comment(contentId: Int? = nil, method: HTTPMethod, commentId: Int? = nil, text: String? = nil)
+    case like(contentId: Int, isLike: Bool)
 
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -21,6 +22,8 @@ enum APIRouter: URLRequestConvertible {
             return method
         case .comment(let contentId, let method, let commentId, let text):
             return method
+        case .like(let contentId, let isLike):
+            return .post
         }
     }
 
@@ -42,6 +45,13 @@ enum APIRouter: URLRequestConvertible {
             default:
                 return ""
             }
+        case .like(let contentId, let isLike):
+            switch isLike {
+            case true:
+                return "/like/\(contentId)"
+            case false:
+                return "/like/cancle/\(contentId)"
+            }
         }
     }
 
@@ -50,14 +60,13 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .login(let nickname, let pwd):
             return ["nickname": nickname, "pwd": pwd]
-        case .content:
+        case .content, .like:
             return nil
         case .comment(let contentId, let method, let commentId, let text):
             switch method {
             case .get, .delete:
                 return nil
             case .post:
-                print("text 333 : \(text)")
                 return ["text": text!]
             default:
                 return nil

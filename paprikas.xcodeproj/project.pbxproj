@@ -40,6 +40,7 @@
 		DCC82D8925A972E8006C5F4C /* Content_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = DCC82D8825A972E8006C5F4C /* Content_mock.json */; };
 		DCC82D9925AB8737006C5F4C /* ContentDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82D9825AB8737006C5F4C /* ContentDetailService.swift */; };
 		DCC82DC625AEB0AB006C5F4C /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82DC525AEB0AB006C5F4C /* CommentViewController.swift */; };
+		DCD19D6625B9CDAB00673DD6 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD19D6525B9CDAB00673DD6 /* ResponseModel.swift */; };
 		DCD65F1A25B0359800E1EFF6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD65F1925B0359800E1EFF6 /* BaseViewController.swift */; };
 		DCE0DF0825B51B5D0038E718 /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DF0725B51B5D0038E718 /* FeedService.swift */; };
 		DCE0DF0D25B5B4850038E718 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DF0C25B5B4850038E718 /* CommentService.swift */; };
@@ -110,6 +111,7 @@
 		DCC82D8825A972E8006C5F4C /* Content_mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Content_mock.json; sourceTree = "<group>"; };
 		DCC82D9825AB8737006C5F4C /* ContentDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailService.swift; sourceTree = "<group>"; };
 		DCC82DC525AEB0AB006C5F4C /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		DCD19D6525B9CDAB00673DD6 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		DCD65F1925B0359800E1EFF6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DCE0DF0725B51B5D0038E718 /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
 		DCE0DF0C25B5B4850038E718 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				DC5230B225A3582F0075FE48 /* Post.swift */,
 				DCC82D8325A971A4006C5F4C /* Content.swift */,
 				DCE0DF1425B5CF630038E718 /* Comment.swift */,
+				DCD19D6525B9CDAB00673DD6 /* ResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 			files = (
 				DCD65F1A25B0359800E1EFF6 /* BaseViewController.swift in Sources */,
 				DCAB277E25A58DF60028F248 /* MainTabBarController.swift in Sources */,
+				DCD19D6625B9CDAB00673DD6 /* ResponseModel.swift in Sources */,
 				DC74DE4725A2E088002353D7 /* FarmViewController.swift in Sources */,
 				DCF1BC9D25B7374300465348 /* APIClient.swift in Sources */,
 				DC6A760B25B02A3E001740D0 /* CommentTableViewCell.swift in Sources */,

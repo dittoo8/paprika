@@ -34,4 +34,12 @@ class APIClient {
                 completion(response.result)
             }
     }
+    static func requestLike(contentId: Int, isLike: Bool, completion: @escaping (Result<ResponseModel, AFError>) -> Void) {
+            let jsonDecoder = JSONDecoder()
+        AF.request(APIRouter.like(contentId: contentId, isLike: isLike))
+            .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<ResponseModel, AFError>) in
+                print("requestLike - response : \(response)")
+                completion(response.result)
+            }
+    }
 }

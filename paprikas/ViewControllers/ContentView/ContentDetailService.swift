@@ -9,8 +9,21 @@ import Foundation
 
 class ContentDetailService {
 
-    func requestPostLike(method: Bool, idx: Int) {
-        print("request post like")
+    func requestPostLike(contentId: Int, isLike: Bool, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping () -> Void) {
+        APIClient.requestLike(contentId: contentId, isLike: isLike) { result in
+            switch result {
+            case .success(let likeResult):
+                if likeResult.status == 200 {
+                    completionHandler()
+                } else {
+                    print("requestPostLike error message : \(likeResult.message)")
+                }
+
+            case .failure(let error):
+                print("error : \(error.localizedDescription)")
+                whenIfFailed(error)
+            }}
+
     }
     func requestContentData(contentId: Int, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (Content) -> Void) {
         APIClient.requestContent(contentId: contentId, method: .get) { result in
@@ -32,8 +45,11 @@ class ContentDetailService {
         APIClient.requestContent(contentId: contentId, method: .delete) { result in
             switch result {
             case .success(let result):
-                print("remove content result : \(result)")
-                completionHandler()
+                if result.status == 200 {
+                    completionHandler()
+                } else {
+                    print("error message : \(result.message)")
+                }
             case .failure(let error):
                 print("error : \(error.localizedDescription)")
                 whenIfFailed(error)
@@ -44,6 +60,7 @@ class ContentDetailService {
 }
 protocol ContentDetailView: class {
     func setContentViewData(content: Content)
+    func popContentDetailView()
 }
 class ContentDetailPresenter {
     var contentId: Int?
@@ -56,10 +73,15 @@ class ContentDetailPresenter {
     func setContentConfig(contentId: Int) {
         self.contentId = contentId
     }
-    func sendLikeAction(method: Bool) {
-        if let idx = content?.content?.contentid {
-            print("like method : \(method) , idx : \(idx)")
-            contentDetailService.requestPostLike(method: method, idx: idx)
+    func sendLikeAction(isLike: Bool) {
+        if let contentId = content?.content?.contentid {
+            print("like method : \(isLike) , idx : \(contentId)")
+            contentDetailService.requestPostLike(contentId: contentId, isLike: isLike, whenIfFailed: {_ in
+                // 에러발생
+            }, completionHandler: {
+                // 통신성공
+                self.getContentData()
+            })
         }
     }
     func attachView(view: ContentDetailView) {
@@ -82,6 +104,7 @@ class ContentDetailPresenter {
                 print("error : \(error)")
             }, completionHandler: {
                 print("remove ok")
+                self.contentDetailView?.popContentDetailView()
             })
         }
     }
