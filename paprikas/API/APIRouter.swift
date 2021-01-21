@@ -10,6 +10,7 @@ import Alamofire
 enum APIRouter: URLRequestConvertible {
     case login(nickname: String, pwd: String)
     case content(contentId: Int, method: HTTPMethod)
+//    case newContent(text: String, photos: Data)
     case comment(contentId: Int? = nil, method: HTTPMethod, commentId: Int? = nil, text: String? = nil)
     case like(contentId: Int, isLike: Bool)
 

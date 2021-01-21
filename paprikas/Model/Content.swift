@@ -14,6 +14,7 @@ struct ContentResult: Codable {
     let data: Content?
 }
 struct Content: Codable {
+    let contentid: Int?
     let user: User?
     let content: ContentDetail?
     let date: String?

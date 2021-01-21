@@ -42,4 +42,18 @@ class APIClient {
                 completion(response.result)
             }
     }
+    static func requestNewContetn(text: String, photos: [UIImage], completion: @escaping (Result<ContentResult, AFError>) -> Void) {
+        let jsonDecoder = JSONDecoder()
+//        AF.request(APIRouter.newContent(text: text, photos: photos))
+//            .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<ContentResult, AFError>) in
+//                print("requestNewContetn - response : \(response)")
+//                completion(response.result)
+//            }
+//        AF.upload(
+//            multipartFormData: { multipartFormData in
+//                multipartFormData.append(photos, withName: "Data")
+//        },
+//            to: "https://yourserverurl", method: .post , headers: nil)
+
+    }
 }

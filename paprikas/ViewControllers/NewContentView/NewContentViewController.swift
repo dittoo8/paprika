@@ -22,6 +22,9 @@ class NewContentViewController: BaseViewController {
         presenter.attachView(view: self)
         configImgSlide()
         self.view.addGestureRecognizer(keyboardDismissTapGesture)
+        contentTextView.delegate = self
+        contentTextView.text = "이곳에 내용을 입력해주세요."
+        contentTextView.textColor = UIColor.lightGray
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -38,6 +41,7 @@ class NewContentViewController: BaseViewController {
             self.view.makeToast(NOTIFICATION.TOAST.NO_SELECT_IMG, duration: 1.0, position: .center)
         } else {
             // 게시물 작성 api 통신, completion으로 feed 불러오기
+            presenter.newContentAction(text: contentTextView.text ?? "")
             let navVC = tabBarController?.viewControllers![0] as! UINavigationController
             let feedVC = navVC.topViewController as! FeedViewController
             feedVC.finUploadContent()
@@ -104,3 +108,20 @@ extension NewContentViewController: NewContentView {
         self.present(newContentActionSheetController, animated: true, completion: nil)
     }
 }
+ extension NewContentViewController: UITextViewDelegate {
+    // TextView Place Holder
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+
+    }
+    // TextView Place Holder
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "이곳에 내용을 입력해주세요."
+            textView.textColor = UIColor.lightGray
+        }
+    }
+ }
