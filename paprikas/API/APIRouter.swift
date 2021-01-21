@@ -10,7 +10,7 @@ import Alamofire
 enum APIRouter: URLRequestConvertible {
     case login(nickname: String, pwd: String)
     case content(contentId: Int, method: HTTPMethod)
-    case commentList(contentId: Int)
+    case comment(contentId: Int? = nil, method: HTTPMethod, commentId: Int? = nil, text: String? = nil)
 
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -19,8 +19,8 @@ enum APIRouter: URLRequestConvertible {
             return .post
         case .content(let contentId, let method):
             return method
-        case .commentList:
-            return .get
+        case .comment(let contentId, let method, let commentId, let text):
+            return method
         }
     }
 
@@ -31,8 +31,17 @@ enum APIRouter: URLRequestConvertible {
             return "/login"
         case .content(let contentId, let method):
             return "/content/\(contentId)"
-        case .commentList(let contentId):
-            return "/comment/\(contentId)"
+        case .comment(let contentId, let method, let commentId, let text):
+            switch method {
+            case .get:
+                return "/comment/\(contentId!)"
+            case .post:
+                return "/comment/\(contentId!)"
+            case .delete:
+                return "/comment/\(commentId!)"
+            default:
+                return ""
+            }
         }
     }
 
@@ -43,8 +52,16 @@ enum APIRouter: URLRequestConvertible {
             return ["nickname": nickname, "pwd": pwd]
         case .content:
             return nil
-        case .commentList:
-            return nil
+        case .comment(let contentId, let method, let commentId, let text):
+            switch method {
+            case .get, .delete:
+                return nil
+            case .post:
+                print("text 333 : \(text)")
+                return ["text": text!]
+            default:
+                return nil
+            }
         }
     }
 

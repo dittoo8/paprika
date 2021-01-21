@@ -61,7 +61,8 @@ class CommentViewController: BaseViewController {
         if newCommentTextField.text!.isEmpty {
             self.view.makeToast(NOTIFICATION.TOAST.NO_CONTENT, duration: 1.0, position: .center)
         } else {
-            presenter.addNewComment()
+            presenter.addNewComment(text: newCommentTextField.text!)
+            newCommentTextField.text = ""
         }
     }
 }
