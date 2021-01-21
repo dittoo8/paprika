@@ -9,10 +9,16 @@ import Foundation
 import Alamofire
 class CommentService {
 
-    func requestCommentList(idx: Int, completionHandler: @escaping (CommentList) -> Void) {
-        // 댓글리스트 api
-        let commentList = try! JSONDecoder().decode(CommentList.self, from: jsonComment)
-        completionHandler(commentList)
+    func requestCommentList(contentId: Int, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (CommentList) -> Void) {
+        APIClient.getCommentList(contentId: contentId) { result in
+            switch result {
+            case .success(let commentResult):
+                completionHandler(commentResult.data!)
+            case .failure(let error):
+                print("error : \(error.localizedDescription)")
+                whenIfFailed(error)
+            }
+        }
     }
 
     func requestRemoveComment(commentId: Int, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (CommentResult) -> Void) {
@@ -48,9 +54,12 @@ class CommentPresenter {
     }
     func loadCommentData() {
         if let contentId = contentId {
-            CommentService.requestCommentList(idx: contentId) { [weak self] commentList in
-                self?.comments = commentList
-            }
+            CommentService.requestCommentList(contentId: contentId, whenIfFailed: { error in
+                print("error : \(error)")
+            }, completionHandler: { commentList in
+                self.comments = commentList
+                self.CommentView?.stopNetworking()
+            })
         }
     }
     func addNewComment() {
@@ -97,39 +106,3 @@ class CommentPresenter {
         tableView.endUpdates()
     }
 }
-
-let jsonComment = """
-{
-"commentCount": 2,
-"comment": [
-    {
-    "com": {
-        "text": "It is  comment 1",
-        "commentid": 0
-    },
-    "user": {
-        "nickname": "user2",
-        "userphoto": "user2.jpg",
-        "userid": 2
-
-    },
-    "date": "2021-01-07",
-    "isWriter": true
-    },
-    {
-    "com": {
-        "text": "It is  comment 2",
-        "commentid": 1
-    },
-    "user": {
-        "nickname": "user3",
-        "userphoto": "user3.jpg",
-        "userid": 3
-    },
-    "date": "2021-01-08",
-    "isWriter": false
-    }
-]
-
-}
-""".data(using: .utf8)!

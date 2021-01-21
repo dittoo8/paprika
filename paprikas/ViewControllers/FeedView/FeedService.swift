@@ -72,7 +72,7 @@ class FeedPresenter {
         self.page = page + 1
         print("append page : \(page)")
         FeedService.requestPosts(page: page) { [weak self] posts in
-            self?.posts = posts
+            self?.posts.append(contentsOf: posts)
 
         }
         self.FeedView?.stopNetworking()

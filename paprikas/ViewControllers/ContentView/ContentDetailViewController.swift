@@ -70,7 +70,7 @@ class ContentDetailViewController: BaseViewController {
 extension ContentDetailViewController: ContentDetailView {
     func setContentViewData(content: Content) {
         print("contentDetail - setViewData idx : \(content.content?.contentid)")
-        self.navigationItem.title = "userName 님의 게시물"
+        self.navigationItem.title = "\(content.user?.nickname! ?? "")님의 게시물"
         self.userNameLabel.text = content.user?.nickname
         self.userProfileImgView.image = UIImage(named: (content.user?.userphoto!)!)
         self.ContentImgSlide.contentScaleMode = .scaleAspectFill

@@ -13,6 +13,7 @@
 		CE90CBA425B808FF001B22E4 /* Customs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90CBA325B808FF001B22E4 /* Customs.swift */; };
 		CE90CBA925B80A4D001B22E4 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90CBA825B80A4D001B22E4 /* ProfileService.swift */; };
 		CE90CBDB25B857EB001B22E4 /* NewContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90CBDA25B857EB001B22E4 /* NewContentService.swift */; };
+		DC3DDC7D25B952CE00DE6745 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3DDC7C25B952CE00DE6745 /* LoginService.swift */; };
 		DC433C6C259C18BF00B0B083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6B259C18BF00B0B083 /* AppDelegate.swift */; };
 		DC433C6E259C18BF00B0B083 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6D259C18BF00B0B083 /* SceneDelegate.swift */; };
 		DC433C70259C18BF00B0B083 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6F259C18BF00B0B083 /* LoginViewController.swift */; };
@@ -82,6 +83,7 @@
 		CE90CBA325B808FF001B22E4 /* Customs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customs.swift; sourceTree = "<group>"; };
 		CE90CBA825B80A4D001B22E4 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		CE90CBDA25B857EB001B22E4 /* NewContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContentService.swift; sourceTree = "<group>"; };
+		DC3DDC7C25B952CE00DE6745 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		DC433C68259C18BF00B0B083 /* paprikas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = paprikas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC433C6B259C18BF00B0B083 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC433C6D259C18BF00B0B083 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				DC433C6F259C18BF00B0B083 /* LoginViewController.swift */,
+				DC3DDC7C25B952CE00DE6745 /* LoginService.swift */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				DC74DE4225A2E07D002353D7 /* NewContentViewController.swift in Sources */,
 				DC433C6C259C18BF00B0B083 /* AppDelegate.swift in Sources */,
 				DC74DE3825A2E00F002353D7 /* FeedViewController.swift in Sources */,
+				DC3DDC7D25B952CE00DE6745 /* LoginService.swift in Sources */,
 				DC5230AE25A354360075FE48 /* FeedCollectionViewCell.swift in Sources */,
 				CE90CBA925B80A4D001B22E4 /* ProfileService.swift in Sources */,
 				DC74DE4C25A2E0B8002353D7 /* ProfileViewController.swift in Sources */,

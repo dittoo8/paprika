@@ -6,6 +6,15 @@
 //
 
 import Foundation
+struct AuthResult: Codable {
+    let status: Int?
+    let success: Bool?
+    let message: String?
+    let data: UserToken?
+}
+struct UserToken: Codable {
+    let token: String?
+}
 struct ContentResult: Codable {
     let status: Int?
     let success: Bool?

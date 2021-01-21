@@ -8,28 +8,42 @@
 import Alamofire
 
 enum APIRouter: URLRequestConvertible {
+    case login(nickname: String, pwd: String)
     case content(id: Int)
+    case commentList(contentId: Int)
 
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
+        case .login:
+            return .post
         case .content:
-        return .get
+            return .get
+        case .commentList:
+            return .get
         }
     }
 
     // MARK: - Path
     private var path: String {
         switch self {
+        case .login:
+            return "/login"
         case .content(let id):
             return "/content/\(id)"
+        case .commentList(let contentId):
+            return "/comment/\(contentId)"
         }
     }
 
     // MARK: - Parameters
     private var parameters: Parameters? {
         switch self {
+        case .login(let nickname, let pwd):
+            return ["nickname": nickname, "pwd": pwd]
         case .content:
+            return nil
+        case .commentList:
             return nil
         }
     }
