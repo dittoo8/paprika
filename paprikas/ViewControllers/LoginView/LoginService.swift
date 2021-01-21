@@ -8,13 +8,10 @@
 import Foundation
 import Alamofire
 class LoginService {
-
     func requestLogin(nickname: String, pwd: String, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (UserToken) -> Void) {
         APIClient.login(nickname: nickname, pwd: pwd) { result in
-            print("result : \(result)")
             switch result {
             case .success(let authResult):
-                print("auth result data : \(authResult.data)")
                 completionHandler(authResult.data!)
             case .failure(let error):
                 print("error : \(error.localizedDescription)")
@@ -37,15 +34,14 @@ class LoginPresenter {
         LoginView = view
     }
     func userLoginAction(nickname: String, pwd: String) {
-        print("present \(nickname), \(pwd)")
         if nickname == "" || pwd == "" {
             LoginView?.makeUserInfoEmptyToast()
         } else {
-            LoginView?.goToMainTab()
-            LoginService.requestLogin(nickname: nickname, pwd: pwd, whenIfFailed: { _ in
-                print("error ")
-            }, completionHandler: { token in
-                print("token : \(token)")
+            LoginService.requestLogin(nickname: nickname, pwd: pwd, whenIfFailed: { error in
+                print("error :\(error)")
+            }, completionHandler: { result in
+                UserDefaults.standard.set(result.token, forKey: "userToken")
+                self.LoginView?.goToMainTab()
             })
         }
     }

@@ -9,7 +9,7 @@ import Alamofire
 
 enum APIRouter: URLRequestConvertible {
     case login(nickname: String, pwd: String)
-    case content(id: Int)
+    case content(contentId: Int)
     case commentList(contentId: Int)
 
     // MARK: - HTTPMethod
@@ -50,16 +50,22 @@ enum APIRouter: URLRequestConvertible {
 
     // MARK: - URLRequestConvertible
     func asURLRequest() throws -> URLRequest {
-        let url = try API.BASE_URL.asURL()
-
-        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+//        let url = try API.API_BASE.asURL()
+        var url: URL?
+        if path == "/login" {
+            url = try API.AUTH_BASE.asURL()
+        } else {
+            url = try API.API_BASE.asURL()
+        }
+        var urlRequest = URLRequest(url: url!.appendingPathComponent(path))
 
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
-
         // Common Headers
-        urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        if path != "/login" {
+            urlRequest.setValue(UserDefaults.standard.string(forKey: "userToken"), forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
+        }
 
         // Parameters
         if let parameters = parameters {
@@ -69,7 +75,7 @@ enum APIRouter: URLRequestConvertible {
                 throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
             }
         }
-
+        print("request url : \(urlRequest)")
         return urlRequest
     }
 }

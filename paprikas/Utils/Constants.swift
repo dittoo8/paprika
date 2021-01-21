@@ -11,7 +11,15 @@ enum SEGUE_ID {
 }
 
 enum API {
-    static let BASE_URL: String = "https://00fcb098-a0d7-4420-ad47-d0b48c9fc87b.mock.pstmn.io/api"
+    // mock url
+//    static let BASE_URL: String = "https://00fcb098-a0d7-4420-ad47-d0b48c9fc87b.mock.pstmn.io/api"
+    // gateway url
+//    static let AUTH_BASE: String = "http://paprika.onstove.com:8282/auth"
+//    static let API_BASE: String = "http://paprika.onstove.com:8282/api"
+
+    // direct url
+    static let AUTH_BASE: String = "http://paprika-auth.onstove.com:8000/auth"
+    static let API_BASE: String = "http://paprika-api.onstove.com:8000/api"
 }
 
 enum NOTIFICATION {
@@ -29,6 +37,7 @@ enum HTTPHeaderField: String {
     case contentType = "Content-Type"
     case acceptType = "Accept"
     case acceptEncoding = "Accept-Encoding"
+
 }
 
 enum ContentType: String {

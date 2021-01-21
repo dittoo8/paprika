@@ -12,7 +12,7 @@ enum AuthRouter: URLRequestConvertible {
     case login(nickname: String, password: String)
     case logout
     var baseURL: URL {
-        return URL(string: API.BASE_URL + "/auth")!
+        return URL(string: API.API_BASE + "/auth")!
     }
     var method: HTTPMethod {
         switch self {
