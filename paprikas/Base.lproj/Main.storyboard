@@ -416,6 +416,17 @@
                                                     <action selector="commentBtnClicked:" destination="lQ3-Jq-VSJ" eventType="touchUpInside" id="b8L-2j-Iav"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFs-kZ-hQb">
+                                                <rect key="frame" x="324" y="0.0" width="90" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="JFs-kZ-hQb" secondAttribute="height" multiplier="1.5:1" id="fVF-5V-bBk"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                                <state key="normal" title="🚮"/>
+                                                <connections>
+                                                    <action selector="removeBtnClicked:" destination="lQ3-Jq-VSJ" eventType="touchUpInside" id="dKQ-4q-2Dd"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -423,6 +434,9 @@
                                             <constraint firstItem="Jeo-0H-mbt" firstAttribute="centerY" secondItem="2iC-ze-fhY" secondAttribute="centerY" id="5BA-yx-J8t"/>
                                             <constraint firstItem="2iC-ze-fhY" firstAttribute="centerY" secondItem="7cO-bG-VUD" secondAttribute="centerY" id="Ddn-Ka-qk2"/>
                                             <constraint firstItem="Jeo-0H-mbt" firstAttribute="leading" secondItem="2iC-ze-fhY" secondAttribute="trailing" constant="20" id="MJc-GO-8TC"/>
+                                            <constraint firstItem="JFs-kZ-hQb" firstAttribute="top" secondItem="7cO-bG-VUD" secondAttribute="top" id="O8k-gJ-dNl"/>
+                                            <constraint firstAttribute="bottom" secondItem="JFs-kZ-hQb" secondAttribute="bottom" id="bt9-ME-vdF"/>
+                                            <constraint firstAttribute="trailing" secondItem="JFs-kZ-hQb" secondAttribute="trailing" id="lWd-4Z-liY"/>
                                             <constraint firstAttribute="height" constant="60" id="xbb-EV-Agp"/>
                                         </constraints>
                                     </view>
@@ -519,6 +533,7 @@
                         <outlet property="contentTextLabel" destination="FUu-gz-g40" id="ITY-lu-7WQ"/>
                         <outlet property="likeBtn" destination="2iC-ze-fhY" id="Og7-Lm-1rY"/>
                         <outlet property="likeCountLabel" destination="NSh-8G-UDP" id="amM-iJ-mEt"/>
+                        <outlet property="removeBtn" destination="JFs-kZ-hQb" id="MG9-mX-CXS"/>
                         <outlet property="userNameLabel" destination="FGx-jO-r9e" id="3Q5-UV-S5Q"/>
                         <outlet property="userProfileImgView" destination="XTm-rv-fBC" id="LwS-rB-mTK"/>
                         <outlet property="userProfileView" destination="kjQ-KV-kmw" id="Pez-Yh-S4u"/>

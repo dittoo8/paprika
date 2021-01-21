@@ -7,13 +7,12 @@
 
 import Foundation
 
-struct Auth: Codable {
-    let nickname: String
-    let pwd: String
-    let token: String
-    init(nickname: String, pwd: String, token: String) {
-        self.nickname = nickname
-        self.pwd = pwd
-        self.token = token
-    }
+struct AuthResult: Codable {
+    let status: Int?
+    let success: Bool?
+    let message: String?
+    let data: UserToken?
+}
+struct UserToken: Codable {
+    let token: String?
 }

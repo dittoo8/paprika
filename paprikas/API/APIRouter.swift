@@ -9,7 +9,7 @@ import Alamofire
 
 enum APIRouter: URLRequestConvertible {
     case login(nickname: String, pwd: String)
-    case content(contentId: Int)
+    case content(contentId: Int, method: HTTPMethod)
     case commentList(contentId: Int)
 
     // MARK: - HTTPMethod
@@ -17,8 +17,8 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .login:
             return .post
-        case .content:
-            return .get
+        case .content(let contentId, let method):
+            return method
         case .commentList:
             return .get
         }
@@ -29,8 +29,8 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .login:
             return "/login"
-        case .content(let id):
-            return "/content/\(id)"
+        case .content(let contentId, let method):
+            return "/content/\(contentId)"
         case .commentList(let contentId):
             return "/comment/\(contentId)"
         }
@@ -75,7 +75,7 @@ enum APIRouter: URLRequestConvertible {
                 throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
             }
         }
-        print("request url : \(urlRequest)")
+        print("request url : \(urlRequest) , method : \(method.rawValue)")
         return urlRequest
     }
 }

@@ -13,9 +13,9 @@ class FeedService {
     func requestPosts(page: Int, completionHandler: @escaping ([Post]) -> Void) {
         // feed 로 수정해야함
         var posts = [Post]()
-        posts.append(Post(contentId: 22, userId: 1, contentText: "gggggg"))
-        posts.append(Post(contentId: 22, userId: 2, contentText: "gdgadsgadsgasd"))
-        posts.append(Post(contentId: 22, userId: 3, contentText: "gggsdaagsdgdsaagsdadgsadsgasgggg"))
+        posts.append(Post(contentId: 36, userId: 1, contentText: "gggggg"))
+        posts.append(Post(contentId: 36, userId: 2, contentText: "gdgadsgadsgasd"))
+        posts.append(Post(contentId: 36, userId: 3, contentText: "gggsdaagsdgdsaagsdadgsadsgasgggg"))
         completionHandler(posts)
 //        self.page = page + 1
         //        let parameters = ["page": String(page)]

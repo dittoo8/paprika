@@ -3,6 +3,9 @@ PODS:
   - ImageSlideshow (1.9.2):
     - ImageSlideshow/Core (= 1.9.2)
   - ImageSlideshow/Core (1.9.2)
+  - ImageSlideshow/Kingfisher (1.9.2):
+    - ImageSlideshow/Core
+    - Kingfisher (> 3.0)
   - Kingfisher (6.0.1)
   - PromisedFuture (1.0.2)
   - PryntTrimmerView (4.0.2)
@@ -16,6 +19,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.0)
   - ImageSlideshow (~> 1.9.0)
+  - ImageSlideshow/Kingfisher
   - Kingfisher
   - PromisedFuture
   - SwiftLint
@@ -45,6 +49,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: ffe19814c2c09c3f7c459b5eba31506ba8171b88
+PODFILE CHECKSUM: a23159ae78d38d3ab29739b7615ffc55f8e21508
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.0

@@ -10,6 +10,7 @@ target 'paprikas' do
 	pod 'Kingfisher'
 	pod 'Toast-Swift', '~> 5.0.1'
 	pod 'ImageSlideshow', '~> 1.9.0'
+  pod 'ImageSlideshow/Kingfisher'
   pod 'SwiftLint'
 	pod 'YPImagePicker'
   pod 'PromisedFuture'

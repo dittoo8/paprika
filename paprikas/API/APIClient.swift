@@ -18,18 +18,26 @@ class APIClient {
         }
     }
 
-    static func getContentDetail(contentId: Int, completion: @escaping (Result<ContentResult, AFError>) -> Void) {
-            let jsonDecoder = JSONDecoder()
-            AF.request(APIRouter.content(contentId: contentId))
-                .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<ContentResult, AFError>) in
-                    completion(response.result)
-        }
-    }
+//    static func getContentDetail(contentId: Int, completion: @escaping (Result<ContentResult, AFError>) -> Void) {
+//            let jsonDecoder = JSONDecoder()
+//        AF.request(APIRouter.content(contentId: contentId, method: .get))
+//                .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<ContentResult, AFError>) in
+//                    completion(response.result)
+//        }
+//    }
     static func getCommentList(contentId: Int, completion: @escaping (Result<CommentResult, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()
             AF.request(APIRouter.commentList(contentId: contentId))
                 .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<CommentResult, AFError>) in
                     completion(response.result)
         }
+    }
+    static func requestContent(contentId: Int, method: HTTPMethod, completion: @escaping (Result<ContentResult, AFError>) -> Void) {
+            let jsonDecoder = JSONDecoder()
+        AF.request(APIRouter.content(contentId: contentId, method: method))
+            .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<ContentResult, AFError>) in
+                print("response : \(response)")
+                completion(response.result)
+            }
     }
 }

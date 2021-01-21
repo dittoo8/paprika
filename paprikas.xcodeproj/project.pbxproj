@@ -28,12 +28,7 @@
 		DC5230B825A364950075FE48 /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5230B725A364950075FE48 /* ContentDetailViewController.swift */; };
 		DC6A760625AF4D35001740D0 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A760525AF4D35001740D0 /* extensions.swift */; };
 		DC6A760B25B02A3E001740D0 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A760A25B02A3D001740D0 /* CommentTableViewCell.swift */; };
-		DC74DDF825A2D788002353D7 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DDF725A2D788002353D7 /* AlamofireManager.swift */; };
-		DC74DE0025A2D86C002353D7 /* BseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DDFF25A2D86C002353D7 /* BseInterceptor.swift */; };
-		DC74DE0525A2D874002353D7 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE0425A2D874002353D7 /* Logger.swift */; };
-		DC74DE0A25A2D881002353D7 /* APIStatusLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE0925A2D881002353D7 /* APIStatusLogger.swift */; };
 		DC74DE0F25A2D903002353D7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE0E25A2D903002353D7 /* Constants.swift */; };
-		DC74DE1925A2DB64002353D7 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE1825A2DB64002353D7 /* AuthRouter.swift */; };
 		DC74DE3825A2E00F002353D7 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE3725A2E00F002353D7 /* FeedViewController.swift */; };
 		DC74DE3D25A2E050002353D7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE3C25A2E050002353D7 /* SearchViewController.swift */; };
 		DC74DE4225A2E07D002353D7 /* NewContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE4125A2E07D002353D7 /* NewContentViewController.swift */; };
@@ -41,7 +36,6 @@
 		DC74DE4C25A2E0B8002353D7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE4B25A2E0B8002353D7 /* ProfileViewController.swift */; };
 		DC74DE5825A2E83D002353D7 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE5725A2E83D002353D7 /* Auth.swift */; };
 		DCAB277E25A58DF60028F248 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAB277D25A58DF60028F248 /* MainTabBarController.swift */; };
-		DCC82D7F25A8C32D006C5F4C /* ContentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82D7E25A8C32D006C5F4C /* ContentRouter.swift */; };
 		DCC82D8425A971A4006C5F4C /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82D8325A971A4006C5F4C /* Content.swift */; };
 		DCC82D8925A972E8006C5F4C /* Content_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = DCC82D8825A972E8006C5F4C /* Content_mock.json */; };
 		DCC82D9925AB8737006C5F4C /* ContentDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82D9825AB8737006C5F4C /* ContentDetailService.swift */; };
@@ -104,12 +98,7 @@
 		DC5230B725A364950075FE48 /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
 		DC6A760525AF4D35001740D0 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		DC6A760A25B02A3D001740D0 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
-		DC74DDF725A2D788002353D7 /* AlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
-		DC74DDFF25A2D86C002353D7 /* BseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BseInterceptor.swift; sourceTree = "<group>"; };
-		DC74DE0425A2D874002353D7 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		DC74DE0925A2D881002353D7 /* APIStatusLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStatusLogger.swift; sourceTree = "<group>"; };
 		DC74DE0E25A2D903002353D7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		DC74DE1825A2DB64002353D7 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		DC74DE3725A2E00F002353D7 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		DC74DE3C25A2E050002353D7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		DC74DE4125A2E07D002353D7 /* NewContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContentViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +106,6 @@
 		DC74DE4B25A2E0B8002353D7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DC74DE5725A2E83D002353D7 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		DCAB277D25A58DF60028F248 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		DCC82D7E25A8C32D006C5F4C /* ContentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouter.swift; sourceTree = "<group>"; };
 		DCC82D8325A971A4006C5F4C /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		DCC82D8825A972E8006C5F4C /* Content_mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Content_mock.json; sourceTree = "<group>"; };
 		DCC82D9825AB8737006C5F4C /* ContentDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailService.swift; sourceTree = "<group>"; };
@@ -280,10 +268,9 @@
 		DC433C6A259C18BF00B0B083 /* paprikas */ = {
 			isa = PBXGroup;
 			children = (
-				DCF1BC9325B736A300465348 /* NewAPI */,
+				DCF1BC9325B736A300465348 /* API */,
 				DC74DE3325A2DF9E002353D7 /* ViewControllers */,
 				DC74DDF625A2D76E002353D7 /* Utils */,
-				DC74DDF525A2D764002353D7 /* API */,
 				DC74DDF425A2D576002353D7 /* Model */,
 				DC433C6B259C18BF00B0B083 /* AppDelegate.swift */,
 				DC433C6D259C18BF00B0B083 /* SceneDelegate.swift */,
@@ -325,19 +312,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		DC74DDF525A2D764002353D7 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				DC74DDF725A2D788002353D7 /* AlamofireManager.swift */,
-				DC74DDFF25A2D86C002353D7 /* BseInterceptor.swift */,
-				DC74DE0425A2D874002353D7 /* Logger.swift */,
-				DC74DE0925A2D881002353D7 /* APIStatusLogger.swift */,
-				DC74DE1825A2DB64002353D7 /* AuthRouter.swift */,
-				DCC82D7E25A8C32D006C5F4C /* ContentRouter.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
 		DC74DDF625A2D76E002353D7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,13 +339,13 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		DCF1BC9325B736A300465348 /* NewAPI */ = {
+		DCF1BC9325B736A300465348 /* API */ = {
 			isa = PBXGroup;
 			children = (
 				DCF1BC9425B736C800465348 /* APIRouter.swift */,
 				DCF1BC9C25B7374300465348 /* APIClient.swift */,
 			);
-			path = NewAPI;
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -632,22 +606,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC74DE0A25A2D881002353D7 /* APIStatusLogger.swift in Sources */,
-				DC74DE0025A2D86C002353D7 /* BseInterceptor.swift in Sources */,
 				DCD65F1A25B0359800E1EFF6 /* BaseViewController.swift in Sources */,
 				DCAB277E25A58DF60028F248 /* MainTabBarController.swift in Sources */,
 				DC74DE4725A2E088002353D7 /* FarmViewController.swift in Sources */,
-				DCC82D7F25A8C32D006C5F4C /* ContentRouter.swift in Sources */,
 				DCF1BC9D25B7374300465348 /* APIClient.swift in Sources */,
 				DC6A760B25B02A3E001740D0 /* CommentTableViewCell.swift in Sources */,
 				DCF1BC9525B736C800465348 /* APIRouter.swift in Sources */,
 				DC6A760625AF4D35001740D0 /* extensions.swift in Sources */,
 				CE90CBA425B808FF001B22E4 /* Customs.swift in Sources */,
-				DC74DE1925A2DB64002353D7 /* AuthRouter.swift in Sources */,
 				DCC82DC625AEB0AB006C5F4C /* CommentViewController.swift in Sources */,
 				DCC82D9925AB8737006C5F4C /* ContentDetailService.swift in Sources */,
-				DC74DE0525A2D874002353D7 /* Logger.swift in Sources */,
-				DC74DDF825A2D788002353D7 /* AlamofireManager.swift in Sources */,
 				DC5230B825A364950075FE48 /* ContentDetailViewController.swift in Sources */,
 				DCE0DF0825B51B5D0038E718 /* FeedService.swift in Sources */,
 				CE90CBDB25B857EB001B22E4 /* NewContentService.swift in Sources */,

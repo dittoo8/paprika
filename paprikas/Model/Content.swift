@@ -6,15 +6,7 @@
 //
 
 import Foundation
-struct AuthResult: Codable {
-    let status: Int?
-    let success: Bool?
-    let message: String?
-    let data: UserToken?
-}
-struct UserToken: Codable {
-    let token: String?
-}
+
 struct ContentResult: Codable {
     let status: Int?
     let success: Bool?
@@ -26,7 +18,9 @@ struct Content: Codable {
     let content: ContentDetail?
     let date: String?
     let likeCount: Int?
+    let isLike: Bool?
     let commentCount: Int?
+    let isWriter: Bool?
     let photo: [String]?
     let comment: [Comment]?
 }
@@ -35,32 +29,8 @@ struct User: Codable {
     let nickname: String?
     let userid: Double?
 }
-struct CommentResult: Codable {
-    let status: Int?
-    let success: Bool?
-    let message: String?
-    let data: CommentList?
-}
-struct CommentList: Codable {
-    let commentCount: Int?
-    var comment: [Comment]?
-}
-struct Comment: Codable {
-    let com: commentDetail?
-    let user: commentUserDetail?
-    let date: String?
-    let isWriter: Bool?
-}
+
 struct ContentDetail: Codable {
     let text: String?
     let contentid: Int?
-}
-struct commentDetail: Codable {
-    let text: String?
-    let commentid: Int?
-}
-struct commentUserDetail: Codable {
-    let nickname: String?
-    let userphoto: String?
-    let userid: Int?
 }

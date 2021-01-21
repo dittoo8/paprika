@@ -7,6 +7,7 @@
 
 import UIKit
 import ImageSlideshow
+import Kingfisher
 
 class ContentDetailViewController: BaseViewController {
     @IBOutlet weak var userProfileView: UIView!
@@ -25,6 +26,7 @@ class ContentDetailViewController: BaseViewController {
     @IBOutlet weak var likeBtn: UIButton!
     @IBOutlet weak var commentBtn: UIButton!
     @IBOutlet weak var contentScrollView: UIScrollView!
+    @IBOutlet weak var removeBtn: UIButton!
 
     let presenter = ContentDetailPresenter(contentDetailService: ContentDetailService())
     override func viewDidLoad() {
@@ -46,6 +48,9 @@ class ContentDetailViewController: BaseViewController {
         super.viewWillAppear(true)
     }
 
+    @IBAction func removeBtnClicked(_ sender: Any) {
+        presenter.removeContentAction()
+    }
     @IBAction func likeBtnClicked(_ sender: UIButton) {
         sender.isSelected.toggle()
         presenter.sendLikeAction(method: sender.isSelected)
@@ -69,20 +74,31 @@ class ContentDetailViewController: BaseViewController {
 }
 extension ContentDetailViewController: ContentDetailView {
     func setContentViewData(content: Content) {
-        print("contentDetail - setViewData idx : \(content.content?.contentid)")
         self.navigationItem.title = "\(content.user?.nickname! ?? "")님의 게시물"
         self.userNameLabel.text = content.user?.nickname
-        self.userProfileImgView.image = UIImage(named: (content.user?.userphoto!)!)
+        guard let profileImgUrl = URL(string: (content.user?.userphoto)!) else { return }
+        self.userProfileImgView.kf.setImage(with: profileImgUrl)
         self.ContentImgSlide.contentScaleMode = .scaleAspectFill
-        self.ContentImgSlide.setImageInputs([ImageSource(image: UIImage(named: "meta1.jpg")!), ImageSource(image: UIImage(named: "meta2.jpg")!)])
-        self.likeCountLabel.text = "\(content.likeCount ?? 0)명이 좋아합니다."
 
+        var contentImgs = [KingfisherSource]()
+        guard let imgList = content.photo else { return }
+        for img in imgList {
+            let imgurl = URL(string: img)
+            contentImgs.append(KingfisherSource(url: imgurl!))
+        }
+        self.ContentImgSlide.setImageInputs(contentImgs)
+        self.likeCountLabel.text = "\(content.likeCount ?? 0)명이 좋아합니다."
+        self.likeBtn.isSelected = content.isLike!
         let attributedcontentText = NSMutableAttributedString()
             .bold("\(content.user?.nickname! ?? "") ", fontSize: 17)
             .normal((content.content?.text)!, fontSize: 17)
-
         self.contentTextLabel.attributedText = attributedcontentText
-        self.commentCountLabel.text = "\(content.commentCount ?? 0)개의 댓글 모두보기"
+        if content.commentCount != 0 {
+            self.commentCountLabel.text = "\(content.commentCount ?? 0)개의 댓글 모두보기"
+        } else {
+            self.commentCountLabel.text = "아직 댓글이 없습니다."
+        }
         self.contentDateLabel.text = content.date
+        self.removeBtn.isHidden = content.isWriter ?? false
     }
 }
