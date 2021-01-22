@@ -13,12 +13,9 @@ class ContentDetailService {
         APIClient.requestLike(contentId: contentId, isLike: isLike) { result in
             switch result {
             case .success(let likeResult):
-                if likeResult.status == 200 {
+                if  APIClient.networkingResult(statusCode: likeResult.status!, msg: likeResult.message!) {
                     completionHandler()
-                } else {
-                    print("requestPostLike error message : \(likeResult.message)")
                 }
-
             case .failure(let error):
                 print("error : \(error.localizedDescription)")
                 whenIfFailed(error)
@@ -29,12 +26,9 @@ class ContentDetailService {
         APIClient.requestContent(contentId: contentId, method: .get) { result in
             switch result {
             case .success(let contentResult):
-                if contentResult.status == 200 {
+                if  APIClient.networkingResult(statusCode: contentResult.status!, msg: contentResult.message!) {
                     completionHandler(contentResult.data!)
-                } else {
-                    print("error message : \(contentResult.message)")
                 }
-
             case .failure(let error):
                 print("error : \(error.localizedDescription)")
                 whenIfFailed(error)
@@ -45,10 +39,8 @@ class ContentDetailService {
         APIClient.requestContent(contentId: contentId, method: .delete) { result in
             switch result {
             case .success(let result):
-                if result.status == 200 {
+                if  APIClient.networkingResult(statusCode: result.status!, msg: result.message!) {
                     completionHandler()
-                } else {
-                    print("error message : \(result.message)")
                 }
             case .failure(let error):
                 print("error : \(error.localizedDescription)")
@@ -59,6 +51,7 @@ class ContentDetailService {
 
 }
 protocol ContentDetailView: class {
+    func setTapGesture()
     func setContentViewData(content: Content)
     func popContentDetailView()
 }

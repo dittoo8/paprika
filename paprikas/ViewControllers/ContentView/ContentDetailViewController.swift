@@ -36,13 +36,7 @@ class ContentDetailViewController: BaseViewController {
         presenter.getContentData()
         likeBtn.setImage(UIImage(named: "HeartButton.png"), for: .normal)
         likeBtn.setImage(UIImage(named: "FullHeartButton.png"), for: .selected)
-
-        let userProfileViewTap = UITapGestureRecognizer(target: self, action: #selector(goToProfile(sender:)))
-        userProfileView.addGestureRecognizer(userProfileViewTap)
-
-        let commentDetailTap = UITapGestureRecognizer(target: self, action: #selector(commentViewAction(sender:)))
-        commentCountLabel.isUserInteractionEnabled = true
-        commentCountLabel.addGestureRecognizer(commentDetailTap)
+        setTapGesture()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -56,25 +50,33 @@ class ContentDetailViewController: BaseViewController {
         presenter.sendLikeAction(isLike: sender.isSelected)
     }
     @IBAction func commentBtnClicked(_ sender: Any) {
-        goToCommentVC(isWrite: true)
+//        goToCommentVC(isWrite: true)
+
     }
     // MARK: - UIGestureRecognizerDelegate
     @objc func goToProfile(sender: UITapGestureRecognizer) {
         let profileVC = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
-    @objc func commentViewAction(sender: UITapGestureRecognizer) {
-        goToCommentVC(isWrite: false)
-    }
-    func goToCommentVC(isWrite: Bool) {
-        let commentVC = storyboard?.instantiateViewController(withIdentifier: "CommentVC") as! CommentViewController
-        commentVC.presenter.setContentConfig(contentId: presenter.contentId!, isWrite: isWrite)
-        self.navigationController?.pushViewController(commentVC, animated: true)
-    }
 }
 extension ContentDetailViewController: ContentDetailView {
     func popContentDetailView() {
         popViewController()
+    }
+    func setTapGesture() {
+        let userProfileViewTap = UITapGestureRecognizer(target: self, action: #selector(goToProfile(sender:)))
+        userProfileView.addGestureRecognizer(userProfileViewTap)
+
+        let newCommentTap = goToCommentTap(target: self, action: #selector(goToCommentVC(param:)))
+        newCommentTap.contentId = presenter.contentId
+        newCommentTap.isWrite = true
+        self.commentBtn.addGestureRecognizer(newCommentTap)
+
+        let showCommentTap = goToCommentTap(target: self, action: #selector(goToCommentVC(param:)))
+        showCommentTap.contentId = presenter.contentId
+        showCommentTap.isWrite = false
+        self.commentCountLabel.isUserInteractionEnabled = true
+        self.commentCountLabel.addGestureRecognizer(showCommentTap)
     }
 
     func setContentViewData(content: Content) {

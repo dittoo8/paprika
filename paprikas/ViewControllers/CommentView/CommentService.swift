@@ -13,12 +13,9 @@ class CommentService {
         APIClient.requestComment(contentId: contentId, method: .get) { result in
             switch result {
             case .success(let commentResult):
-                if commentResult.status == 200 {
+                if  APIClient.networkingResult(statusCode: commentResult.status!, msg: commentResult.message!) {
                     completionHandler(commentResult.data!)
-                } else {
-                    print("requestCommentList - \(commentResult.message)")
                 }
-
             case .failure(let error):
                 print("error : \(error.localizedDescription)")
                 whenIfFailed(error)
@@ -27,16 +24,12 @@ class CommentService {
     }
 
     func requestRemoveComment(commentId: Int, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping () -> Void) {
-        // 댓글 삭제 api
         APIClient.requestComment(commentId: commentId, method: .delete) { result in
             switch result {
             case .success(let commentResult):
-                if commentResult.status == 200 {
+                if  APIClient.networkingResult(statusCode: commentResult.status!, msg: commentResult.message!) {
                     completionHandler()
-                } else {
-                    print("requestRemoveComment - \(commentResult.message)")
                 }
-                completionHandler()
             case .failure(let error):
                 print("error : \(error.localizedDescription)")
                 whenIfFailed(error)
@@ -44,18 +37,13 @@ class CommentService {
         }
 
     }
-
     func requestNewComment(contentId: Int, text: String, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping () -> Void) {
-        // 댓글 추가 api
         APIClient.requestComment(contentId: contentId, text: text, method: .post) { result in
             switch result {
             case .success(let commentResult):
-                if commentResult.status == 200 {
+                if  APIClient.networkingResult(statusCode: commentResult.status!, msg: commentResult.message!) {
                     completionHandler()
-                } else {
-                    print("requestRemoveComment - \(commentResult.message)")
                 }
-                completionHandler()
             case .failure(let error):
                 print("error : \(error.localizedDescription)")
                 whenIfFailed(error)
@@ -86,26 +74,24 @@ class CommentPresenter {
     func getIsWrite() -> Bool {
         return isWrite
     }
-    func loadCommentData() {
+    func loadCommentData(closure: @escaping () -> Void) {
         if let contentId = contentId {
             CommentService.requestCommentList(contentId: contentId, whenIfFailed: { error in
                 print("error : \(error)")
             }, completionHandler: { commentList in
                 self.comments = commentList
                 self.CommentView?.stopNetworking()
+                closure()
             })
         }
     }
     func addNewComment(text: String) {
         if let contentId = contentId {
-            // 통신 추가
             CommentService.requestNewComment(contentId: contentId, text: text, whenIfFailed: {
                 _ in
                 // 통신 실패
             }, completionHandler: {
-            // 통신 성공
-//                self.CommentView?.stopNetworking()
-                self.loadCommentData()
+                self.loadCommentData {}
             })
         }
     }
@@ -128,17 +114,16 @@ class CommentPresenter {
     }
 
     func removeCommentCell(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        tableView.beginUpdates()
         if let commentId = comments?.comment?[indexPath.row].com?.commentid {
             CommentService.requestRemoveComment(commentId: commentId, whenIfFailed: { _ in
                 // 통신 실패
             }, completionHandler: {
-                // 통신 성공
-
+                tableView.beginUpdates()
+                self.comments?.comment?.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .left)
+                tableView.endUpdates()
             })
-            comments?.comment?.remove(at: indexPath.row)
+
         }
-        tableView.deleteRows(at: [indexPath], with: .left)
-        tableView.endUpdates()
     }
 }

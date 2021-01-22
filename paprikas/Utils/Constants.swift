@@ -24,7 +24,8 @@ enum API {
 
 enum NOTIFICATION {
     enum API {
-        static let AUTH_FAIL = "authentication_fail"
+        static let NETWORK_ERROR = "network error"
+        static let AUTH_FAIL = "Authorization fail"
     }
     enum TOAST {
         static let NO_SELECT_IMG: String = "📣 공유할 사진을 선택해주세요!"

@@ -12,7 +12,9 @@ class LoginService {
         APIClient.login(nickname: nickname, pwd: pwd) { result in
             switch result {
             case .success(let authResult):
-                completionHandler(authResult.data!)
+                if  APIClient.networkingResult(statusCode: authResult.status!, msg: authResult.message!) {
+                    completionHandler(authResult.data!)
+                }
             case .failure(let error):
                 print("error : \(error.localizedDescription)")
                 whenIfFailed(error)

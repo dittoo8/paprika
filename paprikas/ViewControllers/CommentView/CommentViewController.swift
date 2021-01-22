@@ -34,14 +34,16 @@ class CommentViewController: BaseViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         commentTableView.refreshControl = refreshControl
-        handleRefresh()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
-        getKeyboard()
         self.navigationItem.title = "댓글"
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        getKeyboard()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -50,7 +52,7 @@ class CommentViewController: BaseViewController {
     }
     // MARK: - selector Methods
     @objc fileprivate func handleRefresh() {
-        presenter.loadCommentData()
+        presenter.loadCommentData {}
     }
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
@@ -69,9 +71,9 @@ class CommentViewController: BaseViewController {
 extension CommentViewController: CommentView {
     func getKeyboard() {
         if presenter.getIsWrite() {
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+//            DispatchQueue.main.asyncAfter() {
                 self.newCommentTextField.becomeFirstResponder()
-            }
+//            }
         }
     }
     func stopNetworking() {

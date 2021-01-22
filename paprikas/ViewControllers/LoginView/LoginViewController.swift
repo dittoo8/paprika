@@ -19,7 +19,9 @@ class LoginViewController: BaseViewController {
         super.viewDidLoad()
         print("LoginViewController - viewDidLoad")
         presenter.attachView(view: self)
-        goToMainTab()
+        if UserDefaults.standard.string(forKey: "userToken") != nil {
+            goToMainTab()
+        }
     }
 
     @IBAction func loginBtnClicked(_ sender: Any) {
@@ -35,6 +37,9 @@ extension LoginViewController: LoginView {
     }
     func makeUserInfoEmptyToast() {
         self.view.makeToast("📣 아이디 또는 패스워드를 정확히 입력해주세요.", duration: 1.0, position: .center)
+    }
+    func tokenExpiredToast() {
+        self.view.makeToast("📣 세션이 만료되었습니다. 다시 로그인해주세요.", duration: 1.5, position: .center)
     }
 
 }

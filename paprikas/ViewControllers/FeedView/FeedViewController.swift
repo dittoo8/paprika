@@ -39,7 +39,7 @@ class FeedViewController: BaseViewController {
     }
     // MARK: - selector Methods
     @objc func handleRefresh() {
-        print("handleRefresh")
+        print("FeedVC - handleRefresh")
         presenter.refreshData()
         stopNetworking()
     }

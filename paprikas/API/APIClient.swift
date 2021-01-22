@@ -10,6 +10,24 @@ import Alamofire
 import PromisedFuture
 
 class APIClient {
+    static func makeErrorToast(error: String) {
+        let data = ["message": error] as [AnyHashable: String]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION.API.NETWORK_ERROR), object: nil, userInfo: data)
+    }
+
+    static func networkingResult(statusCode: Int, msg: String) -> Bool {
+        switch statusCode {
+        case 200:
+            return true
+        case 401..<420:
+            UserDefaults.standard.removeObject(forKey: "userToken")
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION.API.AUTH_FAIL), object: nil, userInfo: nil)
+        default:
+            makeErrorToast(error: msg)
+        }
+        return false
+    }
+
     static func login(nickname: String, pwd: String, completion:@escaping (Result<AuthResult, AFError>) -> Void) {
         let jsonDecoder = JSONDecoder()
         AF.request(APIRouter.login(nickname: nickname, pwd: pwd))
@@ -22,8 +40,12 @@ class APIClient {
             let jsonDecoder = JSONDecoder()
         AF.request(APIRouter.comment(contentId: contentId, method: method, commentId: commentId, text: text))
                 .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<CommentResult, AFError>) in
-                    print("requestComment - response : \(response)")
-                    completion(response.result)
+                    if response.response?.statusCode != nil {
+                        print("requestComment - response : \(response.result)")
+                        completion(response.result)
+                    } else {
+                        makeErrorToast(error: response.error?.errorDescription! ?? "")
+                    }
         }
     }
     static func requestContent(contentId: Int, method: HTTPMethod, completion: @escaping (Result<ContentResult, AFError>) -> Void) {
