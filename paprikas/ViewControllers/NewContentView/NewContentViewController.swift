@@ -38,7 +38,7 @@ class NewContentViewController: BaseViewController {
 
     @IBAction func sendContentClicked(_ sender: Any) {
         if presenter.getPhotosIsEmpty() {
-            self.view.makeToast(NOTIFICATION.TOAST.NO_SELECT_IMG, duration: 1.0, position: .center)
+            self.makeToast(message: NOTIFICATION.TOAST.NO_SELECT_IMG)
         } else {
             // 게시물 작성 api 통신, completion으로 feed 불러오기
             presenter.newContentAction(text: contentTextView.text ?? "")

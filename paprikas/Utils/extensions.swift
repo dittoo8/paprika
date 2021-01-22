@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import Toast_Swift
 extension NSMutableAttributedString {
 
     func bold(_ text: String, fontSize: CGFloat) -> NSMutableAttributedString {
@@ -70,6 +70,9 @@ extension UIViewController {
         let profileVC = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
         profileVC.presenter.setProfileConfig(userId: param.userId!)
         self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    func makeToast(message: String) {
+        self.view.makeToast(message, duration: 1.5, position: .center)
     }
     func popViewController() {
         self.navigationController?.popViewController(animated: true)

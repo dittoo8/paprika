@@ -64,7 +64,7 @@ class CommentViewController: BaseViewController {
 
     @IBAction func newCommentBtnAction(_ sender: UIButton) {
         if newCommentTextField.text!.isEmpty {
-            self.view.makeToast(NOTIFICATION.TOAST.NO_CONTENT, duration: 1.0, position: .center)
+            self.makeToast(message: NOTIFICATION.TOAST.NO_CONTENT)
         } else {
             presenter.addNewComment(text: newCommentTextField.text!) {
                 self.newCommentTextField.text = ""

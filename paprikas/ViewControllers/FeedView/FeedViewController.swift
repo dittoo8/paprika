@@ -62,7 +62,7 @@ extension FeedViewController: FeedView {
         self.navigationController?.pushViewController(contentDetailVC, animated: true)
     }
     func finUploadContent() {
-        self.view.makeToast(NOTIFICATION.TOAST.UPLOAD_SUCCESS, duration: 1.0, position: .center)
+        self.makeToast(message: NOTIFICATION.TOAST.UPLOAD_SUCCESS)
         handleRefresh()
         self.feedCollectionView.contentOffset.y = 0
     }

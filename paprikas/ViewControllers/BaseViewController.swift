@@ -9,17 +9,10 @@ import UIKit
 import Toast_Swift
 
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
-    var vcTitle: String = "" {
-        didSet {
-            print("userListVC - vcTitle didSet cslled : vcTitle : \(vcTitle)")
-            self.title = vcTitle + "👩🏻‍💻"
-        }
-    }
     var keyboardDismissTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: nil)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.keyboardDismissTapGesture.delegate = self
-//        self.view.addGestureRecognizer(keyboardDismissTapGesture)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,7 +45,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         if let data = notification.userInfo?["message"] {
             // 메인스레드에서 실행
             DispatchQueue.main.async {
-                self.view.makeToast("☠️ \(data) 에러입니다.", duration: 1.5, position: .center)
+                self.makeToast(message: NOTIFICATION.TOAST.IS_ERROR(error: data as! String))
             }
         }
     }
