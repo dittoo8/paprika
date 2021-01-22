@@ -17,6 +17,7 @@ class CommentTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var commentContentLabel: UILabel!
     @IBOutlet weak var swipeDeleteLabel: UILabel!
+    @IBOutlet weak var commentDateLabel: UILabel!
     func configureWith(commentID: Int, text: String, userID: Int, userNickname: String, userPhoto: URL, date: String, isWriter: Bool) {
         commentUserProfileImgView.kf.setImage(with: userPhoto)
         let attributedString = NSMutableAttributedString()
@@ -25,6 +26,7 @@ class CommentTableViewCell: UITableViewCell {
         commentContentLabel.attributedText = attributedString
         swipeDeleteLabel.isHidden = !isWriter
         commentUserProfileImgView.tag = userID
+        commentDateLabel.text = date
         tag = commentID
     }
 }

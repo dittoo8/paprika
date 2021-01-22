@@ -554,11 +554,11 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="767"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CommentTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentTableViewCell" rowHeight="168" id="bgd-Gx-e3H" customClass="CommentTableViewCell" customModule="paprikas" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="168"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CommentTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentTableViewCell" rowHeight="88" id="bgd-Gx-e3H" customClass="CommentTableViewCell" customModule="paprikas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bgd-Gx-e3H" id="lIf-K5-rtc">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="168"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J4R-PT-WMb">
@@ -569,30 +569,30 @@
                                                         <constraint firstAttribute="width" secondItem="J4R-PT-WMb" secondAttribute="height" multiplier="1:1" id="hDt-Ai-w01"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAA-xh-KQ4">
-                                                    <rect key="frame" x="65" y="10" width="339" height="121"/>
-                                                    <string key="text">LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel</string>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="ㅎㅎ" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAA-xh-KQ4">
+                                                    <rect key="frame" x="65" y="10" width="339" height="45.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01.18 15:32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehc-ZK-RLZ">
-                                                    <rect key="frame" x="65" y="139" width="86" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="65" y="65.5" width="64" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="밀어서 삭제하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aj3-qD-e2p">
-                                                    <rect key="frame" x="296" y="139" width="108" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="327.5" y="65.5" width="76.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="ehc-ZK-RLZ" secondAttribute="bottom" constant="8" id="41R-Pp-YkL"/>
-                                                <constraint firstItem="ehc-ZK-RLZ" firstAttribute="top" secondItem="eAA-xh-KQ4" secondAttribute="bottom" constant="8" symbolic="YES" id="JR0-L0-WTx"/>
+                                                <constraint firstItem="ehc-ZK-RLZ" firstAttribute="top" secondItem="eAA-xh-KQ4" secondAttribute="bottom" constant="10" id="JR0-L0-WTx"/>
                                                 <constraint firstItem="J4R-PT-WMb" firstAttribute="top" secondItem="lIf-K5-rtc" secondAttribute="top" constant="10" id="OA1-Ll-wZd"/>
+                                                <constraint firstItem="Aj3-qD-e2p" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ehc-ZK-RLZ" secondAttribute="trailing" constant="8" symbolic="YES" id="PUq-nf-I89"/>
                                                 <constraint firstItem="eAA-xh-KQ4" firstAttribute="leading" secondItem="J4R-PT-WMb" secondAttribute="trailing" constant="10" id="Pku-2V-OQt"/>
                                                 <constraint firstItem="Aj3-qD-e2p" firstAttribute="trailing" secondItem="eAA-xh-KQ4" secondAttribute="trailing" id="RUL-yb-zc2"/>
                                                 <constraint firstItem="eAA-xh-KQ4" firstAttribute="top" secondItem="J4R-PT-WMb" secondAttribute="top" id="duk-Kh-qZk"/>
@@ -601,10 +601,12 @@
                                                 <constraint firstItem="ehc-ZK-RLZ" firstAttribute="leading" secondItem="eAA-xh-KQ4" secondAttribute="leading" id="rbC-Mp-v3L"/>
                                                 <constraint firstItem="J4R-PT-WMb" firstAttribute="leading" secondItem="lIf-K5-rtc" secondAttribute="leading" constant="10" id="rpO-QJ-bzR"/>
                                                 <constraint firstItem="Aj3-qD-e2p" firstAttribute="top" secondItem="ehc-ZK-RLZ" secondAttribute="top" id="zrD-vV-zhP"/>
+                                                <constraint firstItem="ehc-ZK-RLZ" firstAttribute="baseline" secondItem="Aj3-qD-e2p" secondAttribute="baseline" id="zrj-GX-Vhf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="commentContentLabel" destination="eAA-xh-KQ4" id="CrT-01-dk8"/>
+                                            <outlet property="commentDateLabel" destination="ehc-ZK-RLZ" id="4Q7-f6-PZG"/>
                                             <outlet property="commentUserProfileImgView" destination="J4R-PT-WMb" id="tKL-ow-Yqi"/>
                                             <outlet property="swipeDeleteLabel" destination="Aj3-qD-e2p" id="wvx-s5-Kdp"/>
                                         </connections>
@@ -622,14 +624,11 @@
                                             <constraint firstAttribute="width" constant="55" id="ySF-XB-JQb"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="userName으로 댓글달기" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aSe-Wr-SRW">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="댓글을 입력하세요." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aSe-Wr-SRW">
                                         <rect key="frame" x="75" y="25.5" width="289" height="34"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="newCommentBtnAction:" destination="gkG-ZB-fYJ" eventType="editingDidEnd" id="m9D-P1-sFU"/>
-                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4AQ-1j-6VT">
                                         <rect key="frame" x="364" y="10" width="50" height="65"/>
@@ -638,6 +637,9 @@
                                             <constraint firstAttribute="height" constant="65" id="tTw-uz-kf3"/>
                                         </constraints>
                                         <state key="normal" title="📩"/>
+                                        <connections>
+                                            <action selector="newCommentBtnAction:" destination="gkG-ZB-fYJ" eventType="touchUpInside" id="suU-iZ-Mvn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>

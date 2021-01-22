@@ -56,24 +56,28 @@ class CommentViewController: BaseViewController {
     }
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        view.endEditing(true)
+        if touch.view?.isDescendant(of: commentTableView) == true {
+            view.endEditing(true)
+        }
         return true
     }
+
     @IBAction func newCommentBtnAction(_ sender: UIButton) {
         if newCommentTextField.text!.isEmpty {
             self.view.makeToast(NOTIFICATION.TOAST.NO_CONTENT, duration: 1.0, position: .center)
         } else {
-            presenter.addNewComment(text: newCommentTextField.text!)
-            newCommentTextField.text = ""
+            presenter.addNewComment(text: newCommentTextField.text!) {
+                self.newCommentTextField.text = ""
+                self.view.endEditing(true)
+            }
         }
     }
 }
 extension CommentViewController: CommentView {
     func getKeyboard() {
         if presenter.getIsWrite() {
-//            DispatchQueue.main.asyncAfter() {
-                self.newCommentTextField.becomeFirstResponder()
-//            }
+            self.newCommentTextField.becomeFirstResponder()
+            presenter.toggleIsWrite()
         }
     }
     func stopNetworking() {
@@ -86,7 +90,7 @@ extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
         presenter.configureCell(cell, forRowAt: indexPath)
-
+//
         let userProfileTap = goToProfileTap(target: self, action: #selector(goToProfileVC(param:)))
         userProfileTap.userId = cell.commentUserProfileImgView.tag
         cell.commentUserProfileImgView.isUserInteractionEnabled = true

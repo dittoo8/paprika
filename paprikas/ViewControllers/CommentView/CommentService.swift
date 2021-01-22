@@ -74,6 +74,9 @@ class CommentPresenter {
     func getIsWrite() -> Bool {
         return isWrite
     }
+    func toggleIsWrite() {
+        isWrite = !isWrite
+    }
     func loadCommentData(closure: @escaping () -> Void) {
         if let contentId = contentId {
             CommentService.requestCommentList(contentId: contentId, whenIfFailed: { error in
@@ -85,13 +88,14 @@ class CommentPresenter {
             })
         }
     }
-    func addNewComment(text: String) {
+    func addNewComment(text: String, closure: @escaping() -> Void) {
         if let contentId = contentId {
             CommentService.requestNewComment(contentId: contentId, text: text, whenIfFailed: {
                 _ in
                 // 통신 실패
             }, completionHandler: {
                 self.loadCommentData {}
+                closure()
             })
         }
     }
