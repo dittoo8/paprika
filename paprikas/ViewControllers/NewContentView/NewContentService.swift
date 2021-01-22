@@ -9,27 +9,14 @@ import Foundation
 import UIKit
 import Alamofire
 class NewContentService {
-//    func requestNewContent(text: String, photos: [UIImage], whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (ContentResult) -> Void) {
-    func requestNewContent(text: String, photos: [UIImage]) {
-        print("request New Content")
-        let headers: HTTPHeaders = [
-            "Content-type": "multipart/form-data",
-            "Authorization": UserDefaults.standard.string(forKey: "userToken") as! String
-        ]
-
-        AF.upload(
-            multipartFormData: { multipartFormData in
-                multipartFormData.append("안녕~?".data(using: .utf8)!, withName: "text")
-                for (idx, img) in photos.enumerated() {
-                    multipartFormData.append(img.jpegData(compressionQuality: 0.5)!, withName: "photos", fileName: "file[\(idx)].jpeg", mimeType: "image/jpeg")
-                }
-        },
-            to: "http://paprika-api.onstove.com:8000/api/content", method: .post, headers: headers)
-            .response { resp in
-                print(resp.description)
-                print(resp.debugDescription)
-
+    func requestNewContent(text: String, photos: [UIImage], completionHandler: @escaping () -> Void) {
+        var imgs = [Data]()
+        for uiimage in photos {
+            imgs.append(uiimage.jpegData(compressionQuality: 0.5)!)
         }
+        APIClient.requestNewContetn(text: text, photos: imgs, completion: { _ in
+            completionHandler()
+        })
     }
 
 }
@@ -68,7 +55,9 @@ class NewContentPresenter {
             NewContentView!.presentNewContentActionSheet()
         }
     }
-    func newContentAction(text: String) {
-        NewContentService.requestNewContent(text: text, photos: postPhotos)
+    func newContentAction(text: String, closure: @escaping () -> Void) {
+        NewContentService.requestNewContent(text: text, photos: postPhotos, completionHandler: {
+            closure()
+        })
     }
 }

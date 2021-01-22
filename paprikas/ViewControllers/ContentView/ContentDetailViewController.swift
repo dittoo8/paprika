@@ -49,13 +49,9 @@ class ContentDetailViewController: BaseViewController {
         sender.isSelected.toggle()
         presenter.sendLikeAction(isLike: sender.isSelected)
     }
-    @IBAction func commentBtnClicked(_ sender: Any) {
-//        goToCommentVC(isWrite: true)
-
-    }
     // MARK: - UIGestureRecognizerDelegate
     @objc func goToProfile(sender: UITapGestureRecognizer) {
-        let profileVC = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
+        let profileVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.PROFILE) as! ProfileViewController
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
 }
@@ -80,7 +76,7 @@ extension ContentDetailViewController: ContentDetailView {
     }
 
     func setContentViewData(content: Content) {
-        self.navigationItem.title = "\(content.user?.nickname! ?? "")님의 게시물"
+        self.navigationItem.title = CONSTANT_KO.USERS_CONTENT(user: (content.user?.nickname)!)
         self.userNameLabel.text = content.user?.nickname
         guard let profileImgUrl = URL(string: (content.user?.userphoto)!) else { return }
         self.userProfileImgView.kf.setImage(with: profileImgUrl)
@@ -93,16 +89,16 @@ extension ContentDetailViewController: ContentDetailView {
             contentImgs.append(KingfisherSource(url: imgurl!))
         }
         self.ContentImgSlide.setImageInputs(contentImgs)
-        self.likeCountLabel.text = "\(content.likeCount ?? 0)명이 좋아합니다."
+        self.likeCountLabel.text = CONSTANT_KO.PEOPLE_LIKE_COUNT(count: content.likeCount ?? 0)
         self.likeBtn.isSelected = content.isLike!
         let attributedcontentText = NSMutableAttributedString()
             .bold("\(content.user?.nickname! ?? "") ", fontSize: 17)
             .normal((content.content?.text)!, fontSize: 17)
         self.contentTextLabel.attributedText = attributedcontentText
         if content.commentCount != 0 {
-            self.commentCountLabel.text = "\(content.commentCount ?? 0)개의 댓글 모두보기"
+            self.commentCountLabel.text = CONSTANT_KO.SHOW_ALL_COMMENT(count: content.commentCount ?? 0)
         } else {
-            self.commentCountLabel.text = "아직 댓글이 없습니다."
+            self.commentCountLabel.text = CONSTANT_KO.NO_COMMENT
         }
         self.contentDateLabel.text = content.date
         self.removeBtn.isHidden = content.isWriter ?? false

@@ -19,7 +19,7 @@ class LoginViewController: BaseViewController {
         super.viewDidLoad()
         print("LoginViewController - viewDidLoad")
         presenter.attachView(view: self)
-        if UserDefaults.standard.string(forKey: "userToken") != nil {
+        if UserDefaults.standard.string(forKey: CONSTANT_EN.USER_TOKEN) != nil {
             goToMainTab()
         }
     }
@@ -31,7 +31,7 @@ class LoginViewController: BaseViewController {
 }
 extension LoginViewController: LoginView {
     func goToMainTab() {
-        let viewController = storyboard?.instantiateViewController(withIdentifier: "MainTabBar") as? UITabBarController
+        let viewController = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.MAIN_TAB_BAR) as? UITabBarController
         UIApplication.shared.windows.first?.rootViewController = viewController
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }

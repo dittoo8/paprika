@@ -39,7 +39,7 @@ class CommentViewController: BaseViewController {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
-        self.navigationItem.title = "댓글"
+        self.navigationItem.title = CONSTANT_KO.COMMENT
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -88,9 +88,9 @@ extension CommentViewController: CommentView {
 }
 extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CONSTANT_VC.COMMENT_TALBE_CELL, for: indexPath) as! CommentTableViewCell
         presenter.configureCell(cell, forRowAt: indexPath)
-//
+
         let userProfileTap = goToProfileTap(target: self, action: #selector(goToProfileVC(param:)))
         userProfileTap.userId = cell.commentUserProfileImgView.tag
         cell.commentUserProfileImgView.isUserInteractionEnabled = true
@@ -105,7 +105,7 @@ extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
         presenter.removeCommentCell(tableView, commit: .delete, forRowAt: indexPath)
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CONSTANT_VC.COMMENT_TALBE_CELL, for: indexPath) as! CommentTableViewCell
         return presenter.checkEditRow(cell, forRowAt: indexPath)
     }
 

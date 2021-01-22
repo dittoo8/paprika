@@ -11,7 +11,7 @@ import PromisedFuture
 
 class APIClient {
     static func makeErrorToast(error: String) {
-        let data = ["message": error] as [AnyHashable: String]
+        let data = [CONSTANT_EN.MESSAGE: error] as [AnyHashable: String]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION.API.NETWORK_ERROR), object: nil, userInfo: data)
     }
 
@@ -20,7 +20,7 @@ class APIClient {
         case 200:
             return true
         case 401..<420:
-            UserDefaults.standard.removeObject(forKey: "userToken")
+            UserDefaults.standard.removeObject(forKey: CONSTANT_EN.USER_TOKEN)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION.API.AUTH_FAIL), object: nil, userInfo: nil)
         default:
             makeErrorToast(error: msg)
@@ -64,18 +64,32 @@ class APIClient {
                 completion(response.result)
             }
     }
-    static func requestNewContetn(text: String, photos: [UIImage], completion: @escaping (Result<ContentResult, AFError>) -> Void) {
-        let jsonDecoder = JSONDecoder()
-//        AF.request(APIRouter.newContent(text: text, photos: photos))
-//            .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<ContentResult, AFError>) in
-//                print("requestNewContetn - response : \(response)")
-//                completion(response.result)
-//            }
-//        AF.upload(
-//            multipartFormData: { multipartFormData in
-//                multipartFormData.append(photos, withName: "Data")
-//        },
-//            to: "https://yourserverurl", method: .post , headers: nil)
+    static func requestNewContetn(text: String, photos: [Data], completion: @escaping (Result<Data?, AFError>) -> Void) {
+        let headers: HTTPHeaders = [
+            "Content-type": "multipart/form-data",
+            "Authorization": UserDefaults.standard.string(forKey: CONSTANT_EN.USER_TOKEN)!
+        ]
+
+        AF.upload( multipartFormData: { multipartFormData in
+                multipartFormData.append(text.data(using: .utf8)!, withName: "text")
+                for (idx, img) in photos.enumerated() {
+                    multipartFormData.append(img, withName: "photos", fileName: "file[\(idx)].jpeg", mimeType: "image/jpeg")
+                }
+        }, to: API.API_BASE + "/content", method: .post, headers: headers)
+            .response { response in
+                print("newContent result : \(response.debugDescription)")
+                if response.response?.statusCode != nil {
+                    if networkingResult(statusCode: response.response!.statusCode, msg: "\(response.response!.statusCode)") {
+                        print("newContent success")
+                        completion(response.result)
+                    } else {
+                        print("newContent error")
+                    }
+                } else {
+                    makeErrorToast(error: response.error?.errorDescription! ?? "")
+                }
+
+        }
 
     }
 }

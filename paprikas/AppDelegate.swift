@@ -11,20 +11,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-//        // window가 없으니 만들어준다.
-//        self.window = UIWindow(frame: UIScreen.mainScreen.bounds)
-//                
-//          // 스토리보드 인스턴스
-//          let tutorialStoryboard = UIStoryboard(name: "Tutorial", bundle: nil)
-//          // 뷰 컨트롤러 인스턴스
-//          let viewController = tutorialStoryboard.instantiateViewControllerWithIdentifier("StoryboardTutorialID")
-//
-//          // 윈도우의 루트 뷰 컨트롤러 설정
-//          self.window?.rootViewController = viewController
-//
-//          // 이제 화면에 보여주자.
-//          self.window?.makeKeyAndVisible()
         return true
     }
 

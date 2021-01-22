@@ -21,41 +21,21 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
     }
     fileprivate func settingVC() {
-        let feedVC = UINavigationController(rootViewController: storyboard?.instantiateViewController(withIdentifier: "FeedVC") as! FeedViewController)
-        feedVC.tabBarItem.title = "피드"
-        let searchVC = UINavigationController(rootViewController: storyboard?.instantiateViewController(withIdentifier: "SearchVC") as! SearchViewController)
-        searchVC.tabBarItem.title = "검색"
-        let newContentVC = UINavigationController(rootViewController: storyboard?.instantiateViewController(withIdentifier: "NewContentVC") as! NewContentViewController)
-        newContentVC.tabBarItem.title = "새 게시물"
-        let farmVC = UINavigationController(rootViewController: storyboard?.instantiateViewController(identifier: "FarmVC") as! FarmViewController)
-        farmVC.tabBarItem.title = "팜"
-        let profileVC = UINavigationController(rootViewController: storyboard?.instantiateViewController(identifier: "ProfileVC") as! ProfileViewController)
-        profileVC.tabBarItem.title = "내 프로필"
+        let feedVC = UINavigationController(rootViewController: storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.FEED) as! FeedViewController)
+        feedVC.tabBarItem.title = CONSTANT_KO.FEED
+        let searchVC = UINavigationController(rootViewController: storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.SEARCH) as! SearchViewController)
+        searchVC.tabBarItem.title = CONSTANT_KO.SEARCH
+        let newContentVC = UINavigationController(rootViewController: storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.NEW_CONTENT) as! NewContentViewController)
+        newContentVC.tabBarItem.title = CONSTANT_KO.NEW_CONTENT
+        let farmVC = UINavigationController(rootViewController: storyboard?.instantiateViewController(identifier: CONSTANT_VC.FARM) as! FarmViewController)
+        farmVC.tabBarItem.title = CONSTANT_KO.FARM
+        let profileVC = UINavigationController(rootViewController: storyboard?.instantiateViewController(identifier: CONSTANT_VC.PROFILE) as! ProfileViewController)
+        profileVC.tabBarItem.title = CONSTANT_KO.MY_PROFILE
 
         setViewControllers([feedVC, searchVC, newContentVC, farmVC, profileVC], animated: true)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    func testTab() {
-        let feedNC = self.tabBarController?.viewControllers![0] as! UINavigationController
-        let feedVC = feedNC.viewControllers.first as! FeedViewController
-        feedVC.handleRefresh()
-        print("main tab test")
-//        self.tabBarController?.selectedIndex = 0
-    }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         print("selected index : \(selectedIndex)")
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
     }
 }

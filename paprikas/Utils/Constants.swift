@@ -7,9 +7,46 @@
 
 import Foundation
 import UIKit
-enum SEGUE_ID {
-}
 
+enum CONSTANT_VC {
+    static let FEED = "FeedVC"
+    static let SEARCH = "SearchVC"
+    static let NEW_CONTENT = "NewContentVC"
+    static let FARM = "FarmVC"
+    static let PROFILE = "ProfileVC"
+    static let LOGIN = "LoginVC"
+    static let MAIN_TAB_BAR = "MainTabBar"
+    static let CONTENT_DETAIL = "ContentDetailVC"
+    static let FEED_COLLECTION_CELL = "FeedCollectionViewCell"
+    static let COMMENT_TALBE_CELL = "CommentTableViewCell"
+}
+enum CONSTANT_KO {
+    static let NEW_CONTENT_PLACEHOLDER: String = "이곳에 내용을 입력해주세요."
+    static let NEW_CONTENT: String = "새 게시물"
+    static let PHOTO_PREVIEW: String = "사진 미리보기"
+    static let RESELECT_PHOTO: String = "사진 재선택"
+    static let CANCEL: String = "취소"
+    static let FEED = "피드"
+    static let SEARCH = "검색"
+    static let FARM = "팜"
+    static let MY_PROFILE = "내 프로필"
+    static let COMMENT = "댓글"
+    static func USERS_CONTENT(user: String) -> String {
+        return "\(user)님의 게시물"
+    }
+    static func PEOPLE_LIKE_COUNT(count: Int) -> String {
+        return "\(count)명이 좋아합니다."
+    }
+    static func SHOW_ALL_COMMENT(count: Int) -> String {
+        return "\(count)개의 댓글 모두보기"
+    }
+    static let NO_COMMENT = "아직 댓글이 없습니다."
+
+}
+enum CONSTANT_EN {
+    static let USER_TOKEN: String = "userToken"
+    static let MESSAGE: String = "message"
+}
 enum API {
     // mock url
 //    static let API_BASE: String = "https://00fcb098-a0d7-4420-ad47-d0b48c9fc87b.mock.pstmn.io/api"

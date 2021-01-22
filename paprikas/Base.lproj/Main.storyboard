@@ -411,9 +411,6 @@
                                                     <constraint firstAttribute="width" secondItem="Jeo-0H-mbt" secondAttribute="height" multiplier="1:1" id="TfJ-VS-UVx"/>
                                                 </constraints>
                                                 <state key="normal" image="CommentButton"/>
-                                                <connections>
-                                                    <action selector="commentBtnClicked:" destination="lQ3-Jq-VSJ" eventType="touchUpInside" id="b8L-2j-Iav"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFs-kZ-hQb">
                                                 <rect key="frame" x="324" y="0.0" width="90" height="60"/>

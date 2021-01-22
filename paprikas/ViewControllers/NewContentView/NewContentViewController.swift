@@ -16,19 +16,18 @@ class NewContentViewController: BaseViewController {
     @IBOutlet weak var contentTextView: UITextView!
 
     let presenter = NewContentPresenter(NewContentService: NewContentService())
-
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(view: self)
         configImgSlide()
         self.view.addGestureRecognizer(keyboardDismissTapGesture)
         contentTextView.delegate = self
-        contentTextView.text = "이곳에 내용을 입력해주세요."
+        contentTextView.text = CONSTANT_KO.NEW_CONTENT_PLACEHOLDER
         contentTextView.textColor = UIColor.lightGray
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationItem.title = "새 게시물"
+        self.navigationItem.title = CONSTANT_KO.NEW_CONTENT
         setImgSlide(selectedImg: presenter.getPhotos())
     }
     // MARK: - selector Methods
@@ -40,15 +39,19 @@ class NewContentViewController: BaseViewController {
         if presenter.getPhotosIsEmpty() {
             self.makeToast(message: NOTIFICATION.TOAST.NO_SELECT_IMG)
         } else {
-            // 게시물 작성 api 통신, completion으로 feed 불러오기
-            presenter.newContentAction(text: contentTextView.text ?? "")
-            let navVC = tabBarController?.viewControllers![0] as! UINavigationController
-            let feedVC = navVC.topViewController as! FeedViewController
-            feedVC.finUploadContent()
-            tabBarController?.selectedIndex = 0
+            if contentTextView.text == CONSTANT_KO.NEW_CONTENT_PLACEHOLDER {
+                contentTextView.text = ""
+            }
+            presenter.newContentAction(text: contentTextView.text ?? "") {
+                let navVC = self.tabBarController?.viewControllers![0] as! UINavigationController
+                let feedVC = navVC.viewControllers.first as! FeedViewController
+                navVC.popToRootViewController(animated: true)
+                feedVC.finUploadContent()
+                self.tabBarController?.selectedIndex = 0
 
-            presenter.removePhotos()
-            self.contentTextView.text = ""
+                self.presenter.removePhotos()
+                self.contentTextView.text = ""
+            }
         }
     }
     // MARK: - UIGestureRecognizerDelegate
@@ -92,15 +95,15 @@ extension NewContentViewController: NewContentView {
     func presentNewContentActionSheet() {
         let newContentActionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        let previewAction = UIAlertAction(title: "사진 미리보기", style: .default, handler: { _ in
+        let previewAction = UIAlertAction(title: CONSTANT_KO.PHOTO_PREVIEW, style: .default, handler: { _ in
             let fullScreenController = self.firstImgView.presentFullScreenController(from: self)
             fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator(style: .medium, color: nil)
         })
-        let reSelectAction = UIAlertAction(title: "사진 재선택", style: .default, handler: {_ in
+        let reSelectAction = UIAlertAction(title: CONSTANT_KO.RESELECT_PHOTO, style: .default, handler: {_ in
             self.showImagePicker()
         })
 
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: CONSTANT_KO.CANCEL, style: .cancel, handler: nil)
         newContentActionSheetController.addAction(previewAction)
         newContentActionSheetController.addAction(reSelectAction)
         newContentActionSheetController.addAction(cancelAction)
@@ -120,7 +123,7 @@ extension NewContentViewController: NewContentView {
     // TextView Place Holder
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "이곳에 내용을 입력해주세요."
+            textView.text = CONSTANT_KO.NEW_CONTENT_PLACEHOLDER
             textView.textColor = UIColor.lightGray
         }
     }

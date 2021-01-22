@@ -42,7 +42,7 @@ class LoginPresenter {
             LoginService.requestLogin(nickname: nickname, pwd: pwd, whenIfFailed: { error in
                 print("error :\(error)")
             }, completionHandler: { result in
-                UserDefaults.standard.set(result.token, forKey: "userToken")
+                UserDefaults.standard.set(result.token, forKey: CONSTANT_EN.USER_TOKEN)
                 self.LoginView?.goToMainTab()
             })
         }

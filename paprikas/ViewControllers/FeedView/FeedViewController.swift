@@ -41,7 +41,6 @@ class FeedViewController: BaseViewController {
     @objc func handleRefresh() {
         print("FeedVC - handleRefresh")
         presenter.refreshData()
-        stopNetworking()
     }
 
     @objc func likeBtnClicked(sender: UIButton) {
@@ -51,13 +50,13 @@ class FeedViewController: BaseViewController {
 }
 extension FeedViewController: FeedView {
     func stopNetworking() {
-        print("stop networking")
+        print("stop Feed networking")
         self.feedCollectionView.reloadData()
         self.feedCollectionView?.refreshControl?.endRefreshing()
     }
 
     func goToContentDetailVC(contentId: Int) {
-        let contentDetailVC = storyboard?.instantiateViewController(withIdentifier: "ContentDetailVC") as! ContentDetailViewController
+        let contentDetailVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.CONTENT_DETAIL) as! ContentDetailViewController
         contentDetailVC.presenter.setContentConfig(contentId: contentId)
         self.navigationController?.pushViewController(contentDetailVC, animated: true)
     }
@@ -82,7 +81,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cellsize
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = feedCollectionView.dequeueReusableCell(withReuseIdentifier: "FeedCollectionViewCell", for: indexPath) as! FeedCollectionViewCell
+        let cell = feedCollectionView.dequeueReusableCell(withReuseIdentifier: CONSTANT_VC.FEED_COLLECTION_CELL, for: indexPath) as! FeedCollectionViewCell
         presenter.configureCell(cell, forRowAt: indexPath)
 
         cell.likeBtn.addTarget(self, action: #selector(likeBtnClicked(sender: )), for: .touchUpInside)

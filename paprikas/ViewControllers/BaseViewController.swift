@@ -42,7 +42,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - objc methods
     @objc func showErrorPopup(notification: NSNotification) {
         print("BaseVC - showErrorPopup()")
-        if let data = notification.userInfo?["message"] {
+        if let data = notification.userInfo?[CONSTANT_EN.MESSAGE] {
             // 메인스레드에서 실행
             DispatchQueue.main.async {
                 self.makeToast(message: NOTIFICATION.TOAST.IS_ERROR(error: data as! String))
@@ -50,7 +50,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     @objc func goToLoginVC(notification: NSNotification) {
-        let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginViewController
+        let loginVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.LOGIN) as? LoginViewController
         UIApplication.shared.windows.first?.rootViewController = loginVC
         UIApplication.shared.windows.first?.makeKeyAndVisible()
         loginVC?.tokenExpiredToast()
