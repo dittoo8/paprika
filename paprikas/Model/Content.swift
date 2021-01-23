@@ -25,12 +25,6 @@ struct Content: Codable {
     let photo: [String]?
     let comment: [Comment]?
 }
-struct User: Codable {
-    let userphoto: String?
-    let nickname: String?
-    let userid: Double?
-}
-
 struct ContentDetail: Codable {
     let text: String?
     let contentid: Int?

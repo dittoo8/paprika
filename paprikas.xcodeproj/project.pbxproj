@@ -34,7 +34,7 @@
 		DC74DE4225A2E07D002353D7 /* NewContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE4125A2E07D002353D7 /* NewContentViewController.swift */; };
 		DC74DE4725A2E088002353D7 /* FarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE4625A2E088002353D7 /* FarmViewController.swift */; };
 		DC74DE4C25A2E0B8002353D7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE4B25A2E0B8002353D7 /* ProfileViewController.swift */; };
-		DC74DE5825A2E83D002353D7 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE5725A2E83D002353D7 /* Auth.swift */; };
+		DC74DE5825A2E83D002353D7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE5725A2E83D002353D7 /* User.swift */; };
 		DCAB277E25A58DF60028F248 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAB277D25A58DF60028F248 /* MainTabBarController.swift */; };
 		DCC7552825BC18E800E093E9 /* ProfileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC7552725BC18E800E093E9 /* ProfileHeaderCell.swift */; };
 		DCC7552E25BC1E0E00E093E9 /* FollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC7552D25BC1E0E00E093E9 /* FollowViewController.swift */; };
@@ -109,7 +109,7 @@
 		DC74DE4125A2E07D002353D7 /* NewContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContentViewController.swift; sourceTree = "<group>"; };
 		DC74DE4625A2E088002353D7 /* FarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmViewController.swift; sourceTree = "<group>"; };
 		DC74DE4B25A2E0B8002353D7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		DC74DE5725A2E83D002353D7 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		DC74DE5725A2E83D002353D7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DCAB277D25A58DF60028F248 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DCC7552725BC18E800E093E9 /* ProfileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCell.swift; sourceTree = "<group>"; };
 		DCC7552D25BC1E0E00E093E9 /* FollowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewController.swift; sourceTree = "<group>"; };
@@ -315,7 +315,7 @@
 		DC74DDF425A2D576002353D7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DC74DE5725A2E83D002353D7 /* Auth.swift */,
+				DC74DE5725A2E83D002353D7 /* User.swift */,
 				DC5230B225A3582F0075FE48 /* Post.swift */,
 				DCC82D8325A971A4006C5F4C /* Content.swift */,
 				DCE0DF1425B5CF630038E718 /* Comment.swift */,
@@ -337,9 +337,9 @@
 		DC74DE3325A2DF9E002353D7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DCC7552C25BC1DF700E093E9 /* FollowVC */,
 				DCAB277D25A58DF60028F248 /* MainTabBarController.swift */,
 				DCD65F1925B0359800E1EFF6 /* BaseViewController.swift */,
+				DCC7552C25BC1DF700E093E9 /* FollowVC */,
 				CE90CBB925B811F3001B22E4 /* LoginView */,
 				CE90CBBA25B811FC001B22E4 /* FeedView */,
 				CE90CBBC25B813CE001B22E4 /* SearchView */,
@@ -644,7 +644,7 @@
 				DCC7552825BC18E800E093E9 /* ProfileHeaderCell.swift in Sources */,
 				DCE0DF0825B51B5D0038E718 /* FeedService.swift in Sources */,
 				CE90CBDB25B857EB001B22E4 /* NewContentService.swift in Sources */,
-				DC74DE5825A2E83D002353D7 /* Auth.swift in Sources */,
+				DC74DE5825A2E83D002353D7 /* User.swift in Sources */,
 				DCE0DF0D25B5B4850038E718 /* CommentService.swift in Sources */,
 				DCC82D8425A971A4006C5F4C /* Content.swift in Sources */,
 				DC433C70259C18BF00B0B083 /* LoginViewController.swift in Sources */,

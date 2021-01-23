@@ -509,7 +509,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FollowTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="g2l-91-dTj" customClass="FollowTableViewCell" customModule="paprikas" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FollowTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FollowTableViewCell" rowHeight="70" id="g2l-91-dTj" customClass="FollowTableViewCell" customModule="paprikas" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g2l-91-dTj" id="DeK-nJ-EhF">
@@ -537,6 +537,10 @@
                                                 <constraint firstItem="oza-3s-U0J" firstAttribute="centerY" secondItem="V9U-Hb-ped" secondAttribute="centerY" id="vv7-oy-PPO"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="userNicknameLabel" destination="oza-3s-U0J" id="TVn-ah-u7N"/>
+                                            <outlet property="userProfileImgView" destination="V9U-Hb-ped" id="UbC-2o-XJO"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

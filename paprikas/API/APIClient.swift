@@ -48,6 +48,18 @@ class APIClient {
                     }
         }
     }
+    static func requestFollow(userId: Int, isFollowing: Bool, completion: @escaping (Result<FollowResult, AFError>) -> Void) {
+            let jsonDecoder = JSONDecoder()
+        AF.request(APIRouter.followList(userId: userId, isFollowing: isFollowing))
+                .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<FollowResult, AFError>) in
+                    if response.response?.statusCode != nil {
+                        print("requestFollowList - response : \(response.result)")
+                        completion(response.result)
+                    } else {
+                        makeErrorToast(error: response.error?.errorDescription! ?? "")
+                    }
+        }
+    }
     static func requestContent(contentId: Int, method: HTTPMethod, completion: @escaping (Result<ContentResult, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()
         AF.request(APIRouter.content(contentId: contentId, method: method))

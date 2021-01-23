@@ -22,11 +22,6 @@ class ProfileViewController: BaseViewController {
         profileCollectionView.dataSource = self
         self.navigationItem.title = "username"
     }
-
-    @objc func goToFollowVC(param: goToFollowTap) {
-        let FollowVC = storyboard?.instantiateViewController(withIdentifier: "FollowVC") as! FollowViewController
-        self.navigationController?.pushViewController(FollowVC, animated: true)
-    }
 }
 extension ProfileViewController: ProfileView {
 }
