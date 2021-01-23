@@ -101,6 +101,6 @@ extension ContentDetailViewController: ContentDetailView {
             self.commentCountLabel.text = CONSTANT_KO.NO_COMMENT
         }
         self.contentDateLabel.text = content.date
-        self.removeBtn.isHidden = content.isWriter ?? false
+        self.removeBtn.isHidden = !content.isWriter! ?? true
     }
 }
