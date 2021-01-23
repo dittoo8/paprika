@@ -20,6 +20,7 @@ class CommentViewController: BaseViewController {
     @IBOutlet weak var newCommentView: UIView!
     @IBOutlet weak var newCommentTextField: UITextField!
     @IBOutlet weak var commentTableView: UITableView!
+    @IBOutlet weak var noCommentLabel: UILabel!
 
     let presenter = CommentPresenter(CommentService: CommentService())
 
@@ -34,6 +35,7 @@ class CommentViewController: BaseViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         commentTableView.refreshControl = refreshControl
+        self.noCommentLabel.text = CONSTANT_KO.FIRST_COMMENT
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -81,9 +83,13 @@ extension CommentViewController: CommentView {
         }
     }
     func stopNetworking() {
-        print("stop networking")
+        print("commentTable stop networking")
         self.commentTableView.reloadData()
         self.commentTableView?.refreshControl?.endRefreshing()
+    }
+    func toggleTableView(method: Bool) {
+        self.noCommentLabel.isHidden = !method
+        commentTableView.isHidden = method
     }
 }
 extension CommentViewController: UITableViewDelegate, UITableViewDataSource {

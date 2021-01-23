@@ -54,6 +54,7 @@ class CommentService {
 protocol CommentView: class {
     func getKeyboard()
     func stopNetworking()
+    func toggleTableView(method: Bool)
 }
 class CommentPresenter {
     var contentId: Int?
@@ -102,6 +103,12 @@ class CommentPresenter {
 
     // MARK: - TableView Methods
     func numberOfRows(in section: Int) -> Int {
+        let commentCount = comments?.comment?.count ?? 0
+        if commentCount > 0 {
+            CommentView?.toggleTableView(method: false)
+        } else {
+            CommentView?.toggleTableView(method: true)
+        }
         return comments?.comment?.count ?? 0
     }
 
