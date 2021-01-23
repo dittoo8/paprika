@@ -15,3 +15,7 @@ class goToCommentTap: UITapGestureRecognizer {
     var contentId: Int?
     var isWrite: Bool?
 }
+class goToFollowTap: UITapGestureRecognizer {
+    var userId: Int?
+    var isFollowing: Bool?
+}

@@ -37,6 +37,9 @@
 		DC74DE5825A2E83D002353D7 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE5725A2E83D002353D7 /* Auth.swift */; };
 		DCAB277E25A58DF60028F248 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAB277D25A58DF60028F248 /* MainTabBarController.swift */; };
 		DCC7552825BC18E800E093E9 /* ProfileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC7552725BC18E800E093E9 /* ProfileHeaderCell.swift */; };
+		DCC7552E25BC1E0E00E093E9 /* FollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC7552D25BC1E0E00E093E9 /* FollowViewController.swift */; };
+		DCC7553325BC1E4100E093E9 /* FollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC7553225BC1E4100E093E9 /* FollowService.swift */; };
+		DCC7553825BC21FE00E093E9 /* FollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC7553725BC21FE00E093E9 /* FollowTableViewCell.swift */; };
 		DCC82D8425A971A4006C5F4C /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82D8325A971A4006C5F4C /* Content.swift */; };
 		DCC82D9925AB8737006C5F4C /* ContentDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82D9825AB8737006C5F4C /* ContentDetailService.swift */; };
 		DCC82DC625AEB0AB006C5F4C /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC82DC525AEB0AB006C5F4C /* CommentViewController.swift */; };
@@ -109,6 +112,9 @@
 		DC74DE5725A2E83D002353D7 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		DCAB277D25A58DF60028F248 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DCC7552725BC18E800E093E9 /* ProfileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCell.swift; sourceTree = "<group>"; };
+		DCC7552D25BC1E0E00E093E9 /* FollowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewController.swift; sourceTree = "<group>"; };
+		DCC7553225BC1E4100E093E9 /* FollowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowService.swift; sourceTree = "<group>"; };
+		DCC7553725BC21FE00E093E9 /* FollowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowTableViewCell.swift; sourceTree = "<group>"; };
 		DCC82D8325A971A4006C5F4C /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		DCC82D9825AB8737006C5F4C /* ContentDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailService.swift; sourceTree = "<group>"; };
 		DCC82DC525AEB0AB006C5F4C /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
@@ -331,6 +337,7 @@
 		DC74DE3325A2DF9E002353D7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DCC7552C25BC1DF700E093E9 /* FollowVC */,
 				DCAB277D25A58DF60028F248 /* MainTabBarController.swift */,
 				DCD65F1925B0359800E1EFF6 /* BaseViewController.swift */,
 				CE90CBB925B811F3001B22E4 /* LoginView */,
@@ -343,6 +350,16 @@
 				CE90CBBE25B813E7001B22E4 /* ProfileView */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DCC7552C25BC1DF700E093E9 /* FollowVC */ = {
+			isa = PBXGroup;
+			children = (
+				DCC7552D25BC1E0E00E093E9 /* FollowViewController.swift */,
+				DCC7553225BC1E4100E093E9 /* FollowService.swift */,
+				DCC7553725BC21FE00E093E9 /* FollowTableViewCell.swift */,
+			);
+			path = FollowVC;
 			sourceTree = "<group>";
 		};
 		DCF1BC9325B736A300465348 /* API */ = {
@@ -611,6 +628,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCC7552E25BC1E0E00E093E9 /* FollowViewController.swift in Sources */,
 				DCD65F1A25B0359800E1EFF6 /* BaseViewController.swift in Sources */,
 				DCAB277E25A58DF60028F248 /* MainTabBarController.swift in Sources */,
 				DCD19D6625B9CDAB00673DD6 /* ResponseModel.swift in Sources */,
@@ -633,9 +651,11 @@
 				DC74DE3D25A2E050002353D7 /* SearchViewController.swift in Sources */,
 				DC74DE4225A2E07D002353D7 /* NewContentViewController.swift in Sources */,
 				DC433C6C259C18BF00B0B083 /* AppDelegate.swift in Sources */,
+				DCC7553825BC21FE00E093E9 /* FollowTableViewCell.swift in Sources */,
 				DC74DE3825A2E00F002353D7 /* FeedViewController.swift in Sources */,
 				DC3DDC7D25B952CE00DE6745 /* LoginService.swift in Sources */,
 				DC5230AE25A354360075FE48 /* FeedCollectionViewCell.swift in Sources */,
+				DCC7553325BC1E4100E093E9 /* FollowService.swift in Sources */,
 				CE90CBA925B80A4D001B22E4 /* ProfileService.swift in Sources */,
 				DC74DE4C25A2E0B8002353D7 /* ProfileViewController.swift in Sources */,
 				DC5230B325A3582F0075FE48 /* Post.swift in Sources */,

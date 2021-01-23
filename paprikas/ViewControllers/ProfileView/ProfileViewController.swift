@@ -23,22 +23,32 @@ class ProfileViewController: BaseViewController {
         self.navigationItem.title = "username"
     }
 
+    @objc func goToFollowVC(param: goToFollowTap) {
+        let FollowVC = storyboard?.instantiateViewController(withIdentifier: "FollowVC") as! FollowViewController
+        self.navigationController?.pushViewController(FollowVC, animated: true)
+    }
 }
 extension ProfileViewController: ProfileView {
-//    func setProfileViewData(Profile: Profile){
-//
-//    }
 }
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK: - Profile Header Methods
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = profileCollectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCollectionFeedCell", for: indexPath) as! ProfileCollectionFeedCell
-        return cell
-    }
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ProfileHeaderCell", for: indexPath) as! ProfileHeaderCell
+
+            let showFollowerTap = goToFollowTap(target: self, action: #selector(goToFollowVC(param:)))
+            showFollowerTap.userId = 2
+            showFollowerTap.isFollowing = false
+            headerView.followerInfoView.isUserInteractionEnabled = true
+            headerView.followerInfoView.addGestureRecognizer(showFollowerTap)
+
+            let showFollowingTap = goToFollowTap(target: self, action: #selector(goToFollowVC(param:)))
+            showFollowingTap.userId = 2
+            showFollowingTap.isFollowing = true
+            headerView.followingInfoView.isUserInteractionEnabled = true
+            headerView.followingInfoView.addGestureRecognizer(showFollowingTap)
             return headerView
         default:
             assert(false)
@@ -47,12 +57,17 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
 
     // MARK: - Profile Feed Methods
 
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = profileCollectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCollectionFeedCell", for: indexPath) as! ProfileCollectionFeedCell
+        return cell
+    }
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         profileCollectionView.bounces = profileCollectionView.contentOffset.y > 0
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let contentVC = storyboard?.instantiateViewController(withIdentifier: "ContentDetailVC") as! ContentDetailViewController
+        let contentVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.CONTENT_DETAIL) as! ContentDetailViewController
         self.navigationController?.pushViewController(contentVC, animated: true)
     }
 

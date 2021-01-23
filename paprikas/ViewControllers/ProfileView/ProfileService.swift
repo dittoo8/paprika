@@ -8,13 +8,17 @@
 import Foundation
 
 class ProfileService {
+    func requestProfileInfo() {
 
+    }
+    func requestProfileFeed() {
+
+    }
 }
 protocol ProfileView: class {
 }
 class ProfilePresenter {
     var userId: Int?
-//    var Profile:
     private let profileService: ProfileService
     private weak var profileView: ProfileView?
     init(profileService: ProfileService) {
