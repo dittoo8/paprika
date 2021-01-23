@@ -48,7 +48,7 @@ class FeedService {
 
 }
 protocol FeedView: class {
-    func goToContentDetailVC(contentId: Int)
+    func goToContentDetail(contentId: Int)
     func stopNetworking()
     func finUploadContent()
 }
@@ -98,6 +98,6 @@ class FeedPresenter {
     }
     func didSelectCollectionViewRowAt(indexPath: IndexPath) {
         let selectedPost = posts[indexPath.row]
-        self.FeedView?.goToContentDetailVC(contentId: selectedPost.contentId!)
+        self.FeedView?.goToContentDetail(contentId: selectedPost.contentId!)
     }
 }

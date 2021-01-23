@@ -31,7 +31,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ProfileHeaderCell", for: indexPath) as! ProfileHeaderCell
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CONSTANT_VC.PROFILE_HEADER_CELL, for: indexPath) as! ProfileHeaderCell
 
             let showFollowerTap = goToFollowTap(target: self, action: #selector(goToFollowVC(param:)))
             showFollowerTap.userId = 2
@@ -53,7 +53,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     // MARK: - Profile Feed Methods
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = profileCollectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCollectionFeedCell", for: indexPath) as! ProfileCollectionFeedCell
+        let cell = profileCollectionView.dequeueReusableCell(withReuseIdentifier: CONSTANT_VC.PROFILE_COLLECTION_FEED_CELL, for: indexPath) as! ProfileCollectionFeedCell
         return cell
     }
 

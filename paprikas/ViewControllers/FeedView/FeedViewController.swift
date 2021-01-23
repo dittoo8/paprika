@@ -55,10 +55,8 @@ extension FeedViewController: FeedView {
         self.feedCollectionView?.refreshControl?.endRefreshing()
     }
 
-    func goToContentDetailVC(contentId: Int) {
-        let contentDetailVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.CONTENT_DETAIL) as! ContentDetailViewController
-        contentDetailVC.presenter.setContentConfig(contentId: contentId)
-        self.navigationController?.pushViewController(contentDetailVC, animated: true)
+    func goToContentDetail(contentId: Int) {
+        goToContentDetailVC(contentId: contentId)
     }
     func finUploadContent() {
         self.makeToast(message: NOTIFICATION.TOAST.UPLOAD_SUCCESS)

@@ -23,7 +23,7 @@ import Foundation
     }
  }
  protocol FollowView: class {
-    func setFollowViewData()
+    func setFollowViewData(isFollowing: Bool)
  }
  class FollowPresenter {
     var userId: Int?
@@ -50,6 +50,7 @@ import Foundation
                 // 팔로우 0명일때
             } else {
                 self.follows = followData
+                self.followView?.setFollowViewData(isFollowing: self.isFollowing!)
             }
         })
     }

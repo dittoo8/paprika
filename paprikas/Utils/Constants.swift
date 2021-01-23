@@ -19,6 +19,9 @@ enum CONSTANT_VC {
     static let CONTENT_DETAIL = "ContentDetailVC"
     static let FEED_COLLECTION_CELL = "FeedCollectionViewCell"
     static let COMMENT_TALBE_CELL = "CommentTableViewCell"
+    static let FOLLOW_TABLE_CELL = "FollowTableViewCell"
+    static let PROFILE_HEADER_CELL = "ProfileHeaderCell"
+    static let PROFILE_COLLECTION_FEED_CELL = "ProfileCollectionFeedCell"
 }
 enum CONSTANT_KO {
     static let NEW_CONTENT_PLACEHOLDER: String = "이곳에 내용을 입력해주세요."
@@ -39,6 +42,15 @@ enum CONSTANT_KO {
     }
     static func SHOW_ALL_COMMENT(count: Int) -> String {
         return "\(count)개의 댓글 모두보기"
+    }
+    static func USER_FOLLOW(nickname: String, isFollowing: Bool) -> String {
+        switch isFollowing {
+        case true:
+            return "\(nickname)님의 팔로잉"
+        case false:
+            return "\(nickname)님의 팔로워"
+        }
+
     }
     static let NO_COMMENT = "아직 댓글이 없습니다."
     static let FIRST_COMMENT = "첫번째 댓글을 작성해보세요."

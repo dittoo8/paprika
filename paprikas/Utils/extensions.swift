@@ -71,6 +71,11 @@ extension UIViewController {
         profileVC.presenter.setProfileConfig(userId: param.userId!)
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
+    func goToContentDetailVC(contentId: Int) {
+        let contentDetailVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.CONTENT_DETAIL) as! ContentDetailViewController
+        contentDetailVC.presenter.setContentConfig(contentId: contentId)
+        self.navigationController?.pushViewController(contentDetailVC, animated: true)
+    }
     @objc func goToFollowVC(param: goToFollowTap) {
         let FollowVC = storyboard?.instantiateViewController(withIdentifier: "FollowVC") as! FollowViewController
         FollowVC.presenter.setIsFollow(userId: param.userId!, isFollow: param.isFollowing!)

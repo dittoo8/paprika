@@ -19,19 +19,27 @@ class FollowViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationItem.title = "~님의 팔로워"
         presenter.loadFollowAction()
     }
 
+}
+extension FollowViewController: FollowView {
+    func setFollowViewData(isFollowing: Bool) {
+        self.navigationItem.title = CONSTANT_KO.USER_FOLLOW(nickname: "뽀로로", isFollowing: isFollowing)
+    }
 }
 extension FollowViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.numberOfRows(in: section)
     }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FollowTableViewCell", for: indexPath) as! FollowTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CONSTANT_VC.FOLLOW_TABLE_CELL, for: indexPath) as! FollowTableViewCell
         presenter.configureCell(cell, forRowAt: indexPath)
+
+        let userProfileTap = goToProfileTap(target: self, action: #selector(goToProfileVC(param:)))
+        userProfileTap.userId = cell.tag
+        cell.isUserInteractionEnabled = true
+        cell.contentView.addGestureRecognizer(userProfileTap)
         return cell
     }
 }
