@@ -14,6 +14,7 @@ class FollowViewController: BaseViewController {
     let presenter = FollowPresenter(followService: FollowService())
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.attachView(view: self)
         followListTableView.delegate = self
         followListTableView.dataSource = self
     }
@@ -24,8 +25,9 @@ class FollowViewController: BaseViewController {
 
 }
 extension FollowViewController: FollowView {
-    func setFollowViewData(isFollowing: Bool) {
-        self.navigationItem.title = CONSTANT_KO.USER_FOLLOW(nickname: "뽀로로", isFollowing: isFollowing)
+    func setFollowViewData(followData: FollowData, isFollowing: Bool) {
+        self.navigationItem.title = CONSTANT_KO.USER_FOLLOW(nickname: followData.nickname!, isFollowing: isFollowing)
+        self.followListTableView.reloadData()
     }
 }
 extension FollowViewController: UITableViewDelegate, UITableViewDataSource {

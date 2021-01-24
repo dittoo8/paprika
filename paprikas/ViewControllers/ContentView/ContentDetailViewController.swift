@@ -48,11 +48,6 @@ class ContentDetailViewController: BaseViewController {
         sender.isSelected.toggle()
         presenter.sendLikeAction(isLike: sender.isSelected)
     }
-    // MARK: - UIGestureRecognizerDelegate
-//    @objc func goToProfile(sender: UITapGestureRecognizer) {
-//        let profileVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.PROFILE) as! ProfileViewController
-//        self.navigationController?.pushViewController(profileVC, animated: true)
-//    }
 }
 extension ContentDetailViewController: ContentDetailView {
     func popContentDetailView() {

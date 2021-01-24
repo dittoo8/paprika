@@ -23,7 +23,7 @@ import Foundation
     }
  }
  protocol FollowView: class {
-    func setFollowViewData(isFollowing: Bool)
+    func setFollowViewData(followData: FollowData, isFollowing: Bool)
  }
  class FollowPresenter {
     var userId: Int?
@@ -49,14 +49,15 @@ import Foundation
             if followData.followCount == 0 {
                 // 팔로우 0명일때
             } else {
+                print("result~~~~ : \(followData)")
                 self.follows = followData
-                self.followView?.setFollowViewData(isFollowing: self.isFollowing!)
+                self.followView?.setFollowViewData(followData: self.follows!, isFollowing: self.isFollowing!)
             }
         })
     }
     // MARK: - TableView Methods
     func numberOfRows(in section: Int) -> Int {
-        return follows?.followCount ?? 1
+        return follows?.followCount ?? 0
     }
 
     func configureCell(_ cell: FollowTableViewCell, forRowAt indexPath: IndexPath) {

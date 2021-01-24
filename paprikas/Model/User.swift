@@ -23,6 +23,7 @@ struct FollowResult: Codable {
     let data: FollowData?
 }
 struct FollowData: Codable {
+    let nickname: String?
     let followCount: Int?
     let followList: [User]?
 }
@@ -49,9 +50,12 @@ struct ProfileFeedResult: Codable {
     let status: Int?
     let success: Bool?
     let message: String?
-    let data: ProfileFeedData?
+    let data: Photos?
 }
-struct ProfileFeedData: Codable {
+struct Photos: Codable {
+    let photos: [PhotoData]?
+}
+struct PhotoData: Codable {
     let contentId: Int?
     let url: String?
     let photoCount: Int?

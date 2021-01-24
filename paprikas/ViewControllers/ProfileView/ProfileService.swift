@@ -21,17 +21,29 @@ class ProfileService {
             }
         }
     }
-    func requestProfileFeed() {
+    func requestProfileFeed(userId: Int, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (Photos) -> Void) {
+        APIClient.requestProfileFeed(userId: userId) { result in
+            switch result {
+            case .success(let profileFeedResult):
+                if  APIClient.networkingResult(statusCode: profileFeedResult.status!, msg: profileFeedResult.message!) {
+                    completionHandler(profileFeedResult.data!)
+                }
+            case .failure(let error):
+                print("error : \(error.localizedDescription)")
+                whenIfFailed(error)
+            }
+        }
 
     }
 }
 protocol ProfileView: class {
     func setProfileData(profileData: ProfileInfoDate)
+    func setProfileFeed()
 }
 class ProfilePresenter {
     var userId: Int?
     var profileInfoData: ProfileInfoDate?
-    var profileFeedData: ProfileFeedData?
+    var profileFeedData: [PhotoData]?
     private let profileService: ProfileService
     private weak var profileView: ProfileView?
     init(profileService: ProfileService) {
@@ -56,11 +68,30 @@ class ProfilePresenter {
 
         })
     }
+    func loadProfileFeedData() {
+        profileService.requestProfileFeed(userId: self.userId!, whenIfFailed: { error in
+            // 에러
+            print("error : \(error)")
+        }, completionHandler: { feedData in
+            self.profileFeedData = feedData.photos
+            self.profileView?.setProfileFeed()
+
+        })
+    }
+    // MARK: - Collection view Methods
+    func numberOfRows(in section: Int) -> Int {
+        return profileFeedData?.count ?? 0
+    }
     func configureHeader(headerView: ProfileHeaderCell) {
 
-        if let contentCount = profileInfoData?.contentCount, let followerCount = profileInfoData?.followerCount, let followingCount = profileInfoData?.followingCount, let isMe = profileInfoData?.isMe, let isFollowed = profileInfoData?.isFollowed, let userPhoto = profileInfoData?.user?.userphoto {
+        if let userId = profileInfoData?.user?.userid, let contentCount = profileInfoData?.contentCount, let followerCount = profileInfoData?.followerCount, let followingCount = profileInfoData?.followingCount, let isMe = profileInfoData?.isMe, let isFollowed = profileInfoData?.isFollowed, let userPhoto = profileInfoData?.user?.userphoto {
             guard let userPhotourl = URL(string: userPhoto) else { return }
-            headerView.configureView(contentCount: contentCount, followerCount: followerCount, followingCount: followingCount, isMe: isMe, isFollowed: isFollowed, userPhoto: userPhotourl)
+            headerView.configureView(userId: userId, contentCount: contentCount, followerCount: followerCount, followingCount: followingCount, isMe: isMe, isFollowed: isFollowed, userPhoto: userPhotourl)
         }
+    }
+    func configureCell(_ cell: ProfileCollectionFeedCell, forRowAt indexPath: IndexPath) {
+        let photo = profileFeedData?[indexPath.row]
+        guard let photoUrl = URL(string: (photo?.url!)!) else { return }
+        cell.configureWith(contentId: (photo?.contentId!)!, photoUrl: photoUrl)
     }
 }

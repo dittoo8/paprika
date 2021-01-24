@@ -23,7 +23,8 @@ class ProfileHeaderCell: UICollectionReusableView {
     @IBOutlet weak var followingInfoView: UIView!
     @IBOutlet weak var followingInfoLabel: UILabel!
 
-    func configureView(contentCount: Int, followerCount: Int, followingCount: Int, isMe: Bool, isFollowed: Bool, userPhoto: URL) {
+    func configureView(userId: Int, contentCount: Int, followerCount: Int, followingCount: Int, isMe: Bool, isFollowed: Bool, userPhoto: URL) {
+        tag = userId
         userProfileImgView.kf.setImage(with: userPhoto)
         contentInfoLabel.text = "\(contentCount)"
         followerInfoLabel.text = "\(followerCount)\n팔로워"
@@ -36,6 +37,16 @@ class ProfileHeaderCell: UICollectionReusableView {
             } else {
                 followOrSettingBtn.text("팔로우 하기")
             }
+        }
+        if followerCount > 0 {
+            followerInfoView.isUserInteractionEnabled = true
+        } else {
+            followerInfoView.isUserInteractionEnabled = false
+        }
+        if followingCount > 0 {
+            followingInfoView.isUserInteractionEnabled = true
+        } else {
+            followingInfoView.isUserInteractionEnabled = false
         }
     }
 

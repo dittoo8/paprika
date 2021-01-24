@@ -6,7 +6,12 @@
 //
 
 import UIKit
-
+import Kingfisher
 class ProfileCollectionFeedCell: UICollectionViewCell {
 
+    @IBOutlet weak var firstImgView: UIImageView!
+    func configureWith(contentId: Int, photoUrl: URL) {
+        tag = contentId
+        firstImgView.kf.setImage(with: photoUrl)
+    }
 }

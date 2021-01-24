@@ -14,6 +14,7 @@ class ProfileViewController: BaseViewController {
         super.viewDidLoad()
         presenter.attachView(view: self)
         presenter.loadProfileInfoData()
+        presenter.loadProfileFeedData()
     }
     @IBOutlet weak var profileCollectionView: UICollectionView!
     override func viewWillAppear(_ animated: Bool) {
@@ -21,12 +22,14 @@ class ProfileViewController: BaseViewController {
         self.navigationController?.isNavigationBarHidden = false
         profileCollectionView.delegate = self
         profileCollectionView.dataSource = self
-        self.navigationItem.title = "username"
     }
 }
 extension ProfileViewController: ProfileView {
+    func setProfileFeed() {
+        self.profileCollectionView.reloadData()
+    }
+
     func setProfileData(profileData: ProfileInfoDate) {
-        print("profileData : \(profileData)")
         self.navigationItem.title = profileData.user?.nickname
         self.profileCollectionView.reloadData()
     }
@@ -40,15 +43,13 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CONSTANT_VC.PROFILE_HEADER_CELL, for: indexPath) as! ProfileHeaderCell
             presenter.configureHeader(headerView: headerView)
             let showFollowerTap = goToFollowTap(target: self, action: #selector(goToFollowVC(param:)))
-            showFollowerTap.userId = 2
+            showFollowerTap.userId = headerView.tag
             showFollowerTap.isFollowing = false
-            headerView.followerInfoView.isUserInteractionEnabled = true
             headerView.followerInfoView.addGestureRecognizer(showFollowerTap)
 
             let showFollowingTap = goToFollowTap(target: self, action: #selector(goToFollowVC(param:)))
-            showFollowingTap.userId = 2
+            showFollowingTap.userId = headerView.tag
             showFollowingTap.isFollowing = true
-            headerView.followingInfoView.isUserInteractionEnabled = true
             headerView.followingInfoView.addGestureRecognizer(showFollowingTap)
             return headerView
         default:
@@ -60,6 +61,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = profileCollectionView.dequeueReusableCell(withReuseIdentifier: CONSTANT_VC.PROFILE_COLLECTION_FEED_CELL, for: indexPath) as! ProfileCollectionFeedCell
+        presenter.configureCell(cell, forRowAt: indexPath)
         return cell
     }
 
@@ -84,6 +86,6 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cellsize
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return presenter.numberOfRows(in: section)
     }
 }

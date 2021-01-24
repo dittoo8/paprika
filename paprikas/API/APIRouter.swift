@@ -10,11 +10,11 @@ import Alamofire
 enum APIRouter: URLRequestConvertible {
     case login(nickname: String, pwd: String)
     case content(contentId: Int, method: HTTPMethod)
-//    case newContent(text: String, photos: Data)
     case comment(contentId: Int? = nil, method: HTTPMethod, commentId: Int? = nil, text: String? = nil)
     case like(contentId: Int, isLike: Bool)
     case followList(userId: Int, isFollowing: Bool)
     case profileInfo(userId: Int)
+    case profileFeed(userId: Int)
 
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -27,7 +27,7 @@ enum APIRouter: URLRequestConvertible {
             return method
         case .like(let contentId, let isLike):
             return .post
-        case .followList, .profileInfo:
+        case .followList, .profileInfo, .profileFeed:
             return .get
         }
     }
@@ -66,6 +66,8 @@ enum APIRouter: URLRequestConvertible {
             }
         case .profileInfo(let userId):
             return "/profile/\(userId)"
+        case .profileFeed(let userId):
+            return "/profile/feed/\(userId)"
         }
     }
 
@@ -74,7 +76,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .login(let nickname, let pwd):
             return ["nickname": nickname, "pwd": pwd]
-        case .content, .like, .followList, .profileInfo:
+        case .content, .like, .followList, .profileInfo, .profileFeed:
             return nil
         case .comment(let contentId, let method, let commentId, let text):
             switch method {
