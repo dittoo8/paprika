@@ -9,7 +9,7 @@ import Foundation
 
  class FollowService {
     func requestFollowList(userId: Int, isFollowing: Bool, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (FollowData) -> Void) {
-        APIClient.requestFollow(userId: userId, isFollowing: isFollowing) { result in
+        APIClient.requestFollowList(userId: userId, isFollowing: isFollowing) { result in
             switch result {
             case .success(let followResult):
                 if  APIClient.networkingResult(statusCode: followResult.status!, msg: followResult.message!) {

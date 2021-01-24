@@ -35,7 +35,18 @@ class ProfileService {
         }
 
     }
-    func requestFollow(userId: Int, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (Photos) -> Void) {
+    func requestFollow(userId: Int, isUnFollow: Bool, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping () -> Void) {
+        APIClient.requestFollow(userId: userId, isUnFollow: isUnFollow) { result in
+            switch result {
+            case .success(let result):
+                if  APIClient.networkingResult(statusCode: result.status!, msg: result.message!) {
+                    completionHandler()
+                }
+            case .failure(let error):
+                print("error : \(error.localizedDescription)")
+                whenIfFailed(error)
+            }
+        }
     }
 }
 protocol ProfileView: class {
@@ -88,9 +99,21 @@ class ProfilePresenter {
         } else {
             if (profileInfoData?.isFollowed)! {
                 // 팔로우 끊기
-                
+                profileService.requestFollow(userId: self.userId!, isUnFollow: true, whenIfFailed: {_ in
+
+                }, completionHandler: {
+                    print("팔로우 끊음")
+                    self.loadProfileInfoData()
+                })
             } else {
-                // 팔로우하기
+//                 팔로우하기
+                profileService.requestFollow(userId: self.userId!, isUnFollow: false, whenIfFailed: {_ in
+
+                }, completionHandler: {
+                    print("팔로우 함")
+                    self.loadProfileInfoData()
+                })
+
             }
         }
     }

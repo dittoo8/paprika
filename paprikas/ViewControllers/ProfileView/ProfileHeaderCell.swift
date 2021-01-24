@@ -33,16 +33,17 @@ class ProfileHeaderCell: UICollectionReusableView {
     func configureView(userId: Int, contentCount: Int, followerCount: Int, followingCount: Int, isMe: Bool, isFollowed: Bool, userPhoto: URL) {
         tag = userId
         userProfileImgView.kf.setImage(with: userPhoto)
-        contentInfoLabel.text = "\(contentCount)\n게시물"
-        followerInfoLabel.text = "\(followerCount)\n팔로워"
-        followingInfoLabel.text = "\(followingCount)\n팔로잉"
+        contentInfoLabel.text = CONSTANT_KO.CONTENT_COUNT(count: contentCount)
+        followerInfoLabel.text = CONSTANT_KO.FOLLOWER_COUNT(count: followerCount)
+        followingInfoLabel.text = CONSTANT_KO.FOLLOWER_COUNT(count: followingCount)
         if isMe {
-            followOrSettingBtn.text("로그아웃")
+            followOrSettingBtn.text(CONSTANT_KO.LOG_OUT)
         } else {
             if isFollowed {
-                followOrSettingBtn.text("팔로우 끊기")
+                followOrSettingBtn.text(CONSTANT_KO.DO_UN_FOLLOW)
+                followOrSettingBtn.backgroundColor = UIColor.systemBackground
             } else {
-                followOrSettingBtn.text("팔로우 하기")
+                followOrSettingBtn.text(CONSTANT_KO.DO_FOLLOW)
                 followOrSettingBtn.backgroundColor = UIColor.systemTeal
             }
         }

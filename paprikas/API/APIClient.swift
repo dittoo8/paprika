@@ -47,7 +47,7 @@ class APIClient {
                     }
         }
     }
-    static func requestFollow(userId: Int, isFollowing: Bool, completion: @escaping (Result<FollowResult, AFError>) -> Void) {
+    static func requestFollowList(userId: Int, isFollowing: Bool, completion: @escaping (Result<FollowResult, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()
         AF.request(APIRouter.followList(userId: userId, isFollowing: isFollowing))
                 .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<FollowResult, AFError>) in
@@ -88,6 +88,14 @@ class APIClient {
         AF.request(APIRouter.content(contentId: contentId, method: method))
             .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<ContentResult, AFError>) in
                 print("requestContent - response : \(response)")
+                completion(response.result)
+            }
+    }
+    static func requestFollow(userId: Int, isUnFollow: Bool, completion: @escaping (Result<ResponseModel, AFError>) -> Void) {
+            let jsonDecoder = JSONDecoder()
+        AF.request(APIRouter.follow(userId: userId, isUnfollow: isUnFollow))
+            .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<ResponseModel, AFError>) in
+                print("requestFollow - response : \(response)")
                 completion(response.result)
             }
     }

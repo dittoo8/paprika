@@ -34,6 +34,9 @@ enum CONSTANT_KO {
     static let FARM = "팜"
     static let MY_PROFILE = "내 프로필"
     static let COMMENT = "댓글"
+    static let DO_UN_FOLLOW = "팔로우 끊기"
+    static let DO_FOLLOW = "팔로우 하기"
+    static let LOG_OUT = "로그아웃"
     static func USERS_CONTENT(user: String) -> String {
         return "\(user)님의 게시물"
     }
@@ -51,6 +54,15 @@ enum CONSTANT_KO {
             return "\(nickname)님의 팔로워"
         }
 
+    }
+    static func CONTENT_COUNT(count: Int) -> String {
+        return "\(count)\n게시물"
+    }
+    static func FOLLOWER_COUNT(count: Int) -> String {
+        return "\(count)\n팔로워"
+    }
+    static func FOLLOWING_COUNT(count: Int) -> String {
+        return "\(count)\n팔로잉"
     }
     static let NO_COMMENT = "아직 댓글이 없습니다."
     static let FIRST_COMMENT = "첫번째 댓글을 작성해보세요."
