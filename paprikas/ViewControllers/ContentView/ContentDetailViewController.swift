@@ -36,7 +36,6 @@ class ContentDetailViewController: BaseViewController {
         presenter.getContentData()
         likeBtn.setImage(UIImage(named: "HeartButton.png"), for: .normal)
         likeBtn.setImage(UIImage(named: "FullHeartButton.png"), for: .selected)
-        setTapGesture()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -50,17 +49,18 @@ class ContentDetailViewController: BaseViewController {
         presenter.sendLikeAction(isLike: sender.isSelected)
     }
     // MARK: - UIGestureRecognizerDelegate
-    @objc func goToProfile(sender: UITapGestureRecognizer) {
-        let profileVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.PROFILE) as! ProfileViewController
-        self.navigationController?.pushViewController(profileVC, animated: true)
-    }
+//    @objc func goToProfile(sender: UITapGestureRecognizer) {
+//        let profileVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.PROFILE) as! ProfileViewController
+//        self.navigationController?.pushViewController(profileVC, animated: true)
+//    }
 }
 extension ContentDetailViewController: ContentDetailView {
     func popContentDetailView() {
         popViewController()
     }
-    func setTapGesture() {
-        let userProfileViewTap = UITapGestureRecognizer(target: self, action: #selector(goToProfile(sender:)))
+    func setTapGesture(userId: Int) {
+        let userProfileViewTap = goToProfileTap(target: self, action: #selector(goToProfileVC(param:)))
+        userProfileViewTap.userId = userId
         userProfileView.addGestureRecognizer(userProfileViewTap)
 
         let newCommentTap = goToCommentTap(target: self, action: #selector(goToCommentVC(param:)))

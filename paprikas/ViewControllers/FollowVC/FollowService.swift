@@ -60,7 +60,7 @@ import Foundation
     }
 
     func configureCell(_ cell: FollowTableViewCell, forRowAt indexPath: IndexPath) {
-        let follow = follows?.userList?[indexPath.row]
+        let follow = follows?.followList?[indexPath.row]
         if let userid = follow?.userid, let userNickname = follow?.nickname, let userPhoto = follow?.userphoto {
             guard let photoUrl = URL(string: userPhoto) else { return }
             cell.configureWith(userID: userid, userNickname: userNickname, userPhoto: photoUrl)

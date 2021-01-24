@@ -51,7 +51,7 @@ class ContentDetailService {
 
 }
 protocol ContentDetailView: class {
-    func setTapGesture()
+    func setTapGesture(userId: Int)
     func setContentViewData(content: Content)
     func popContentDetailView()
 }
@@ -88,6 +88,7 @@ class ContentDetailPresenter {
                 print("result content : \(content)")
                 self.content = content
                 self.contentDetailView?.setContentViewData(content: content)
+                self.contentDetailView?.setTapGesture(userId: (self.content?.user?.userid)!)
             })
         }
     }

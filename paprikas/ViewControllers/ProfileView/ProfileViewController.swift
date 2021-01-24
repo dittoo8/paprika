@@ -13,6 +13,7 @@ class ProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(view: self)
+        presenter.loadProfileInfoData()
     }
     @IBOutlet weak var profileCollectionView: UICollectionView!
     override func viewWillAppear(_ animated: Bool) {
@@ -24,6 +25,11 @@ class ProfileViewController: BaseViewController {
     }
 }
 extension ProfileViewController: ProfileView {
+    func setProfileData(profileData: ProfileInfoDate) {
+        print("profileData : \(profileData)")
+        self.navigationItem.title = profileData.user?.nickname
+        self.profileCollectionView.reloadData()
+    }
 }
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK: - Profile Header Methods
@@ -32,7 +38,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CONSTANT_VC.PROFILE_HEADER_CELL, for: indexPath) as! ProfileHeaderCell
-
+            presenter.configureHeader(headerView: headerView)
             let showFollowerTap = goToFollowTap(target: self, action: #selector(goToFollowVC(param:)))
             showFollowerTap.userId = 2
             showFollowerTap.isFollowing = false

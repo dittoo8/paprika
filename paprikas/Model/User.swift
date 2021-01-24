@@ -24,10 +24,35 @@ struct FollowResult: Codable {
 }
 struct FollowData: Codable {
     let followCount: Int?
-    let userList: [User]?
+    let followList: [User]?
 }
 struct User: Codable {
     let userphoto: String?
     let nickname: String?
     let userid: Int?
+}
+struct ProfileInfoResult: Codable {
+    let status: Int?
+    let success: Bool?
+    let message: String?
+    let data: ProfileInfoDate?
+}
+struct ProfileInfoDate: Codable {
+    let user: User?
+    let isMe: Bool?
+    let contentCount: Int?
+    let followerCount: Int?
+    let followingCount: Int?
+    let isFollowed: Bool?
+}
+struct ProfileFeedResult: Codable {
+    let status: Int?
+    let success: Bool?
+    let message: String?
+    let data: ProfileFeedData?
+}
+struct ProfileFeedData: Codable {
+    let contentId: Int?
+    let url: String?
+    let photoCount: Int?
 }

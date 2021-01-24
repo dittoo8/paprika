@@ -60,6 +60,18 @@ class APIClient {
                     }
         }
     }
+    static func requestProfileInfo(userId: Int, completion: @escaping (Result<ProfileInfoResult, AFError>) -> Void) {
+            let jsonDecoder = JSONDecoder()
+        AF.request(APIRouter.profileInfo(userId: userId))
+                .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<ProfileInfoResult, AFError>) in
+                    if response.response?.statusCode != nil {
+                        print("requestProfileInfo - response : \(response.result)")
+                        completion(response.result)
+                    } else {
+                        makeErrorToast(error: response.error?.errorDescription! ?? "")
+                    }
+        }
+    }
     static func requestContent(contentId: Int, method: HTTPMethod, completion: @escaping (Result<ContentResult, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()
         AF.request(APIRouter.content(contentId: contentId, method: method))

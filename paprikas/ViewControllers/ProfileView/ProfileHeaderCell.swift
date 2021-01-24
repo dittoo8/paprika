@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 class ProfileHeaderCell: UICollectionReusableView {
 
     @IBOutlet weak var userProfileImgView: UIImageView! {
@@ -22,5 +22,21 @@ class ProfileHeaderCell: UICollectionReusableView {
     @IBOutlet weak var followerInfoLabel: UILabel!
     @IBOutlet weak var followingInfoView: UIView!
     @IBOutlet weak var followingInfoLabel: UILabel!
+
+    func configureView(contentCount: Int, followerCount: Int, followingCount: Int, isMe: Bool, isFollowed: Bool, userPhoto: URL) {
+        userProfileImgView.kf.setImage(with: userPhoto)
+        contentInfoLabel.text = "\(contentCount)"
+        followerInfoLabel.text = "\(followerCount)\n팔로워"
+        followingInfoLabel.text = "\(followingCount)\n팔로잉"
+        if isMe {
+            followOrSettingBtn.text("로그아웃")
+        } else {
+            if isFollowed {
+                followOrSettingBtn.text("팔로우 끊기")
+            } else {
+                followOrSettingBtn.text("팔로우 하기")
+            }
+        }
+    }
 
 }
