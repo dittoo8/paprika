@@ -43,6 +43,7 @@ class LoginPresenter {
                 print("error :\(error)")
             }, completionHandler: { result in
                 UserDefaults.standard.set(result.token, forKey: CONSTANT_EN.USER_TOKEN)
+                UserDefaults.standard.set(result.userphoto, forKey: "userphoto")
                 self.LoginView?.goToMainTab()
             })
         }

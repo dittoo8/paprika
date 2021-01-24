@@ -15,6 +15,7 @@ struct AuthResult: Codable {
 }
 struct UserToken: Codable {
     let token: String?
+    let userphoto: URL?
 }
 struct FollowResult: Codable {
     let status: Int?

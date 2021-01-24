@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import Kingfisher
 class CommentViewController: BaseViewController {
 
     @IBOutlet weak var myProfileImgView: UIImageView! {
@@ -35,6 +35,7 @@ class CommentViewController: BaseViewController {
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         commentTableView.refreshControl = refreshControl
         self.noCommentLabel.text = CONSTANT_KO.FIRST_COMMENT
+        self.myProfileImgView.kf.setImage(with: UserDefaults.standard.url(forKey: "userphoto"))
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
