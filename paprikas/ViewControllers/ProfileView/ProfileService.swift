@@ -39,11 +39,12 @@ class ProfileService {
 protocol ProfileView: class {
     func setProfileData(profileData: ProfileInfoDate)
     func setProfileFeed()
+    func goToContentDetail(contentId: Int)
 }
 class ProfilePresenter {
     var userId: Int?
     var profileInfoData: ProfileInfoDate?
-    var profileFeedData: [PhotoData]?
+    var profileFeedData = [PhotoData]()
     private let profileService: ProfileService
     private weak var profileView: ProfileView?
     init(profileService: ProfileService) {
@@ -73,14 +74,14 @@ class ProfilePresenter {
             // 에러
             print("error : \(error)")
         }, completionHandler: { feedData in
-            self.profileFeedData = feedData.photos
+            self.profileFeedData = feedData.photos!
             self.profileView?.setProfileFeed()
 
         })
     }
     // MARK: - Collection view Methods
     func numberOfRows(in section: Int) -> Int {
-        return profileFeedData?.count ?? 0
+        return profileFeedData.count ?? 0
     }
     func configureHeader(headerView: ProfileHeaderCell) {
 
@@ -90,8 +91,12 @@ class ProfilePresenter {
         }
     }
     func configureCell(_ cell: ProfileCollectionFeedCell, forRowAt indexPath: IndexPath) {
-        let photo = profileFeedData?[indexPath.row]
-        guard let photoUrl = URL(string: (photo?.url!)!) else { return }
-        cell.configureWith(contentId: (photo?.contentId!)!, photoUrl: photoUrl)
+        let photo = profileFeedData[indexPath.row]
+        guard let photoUrl = URL(string: (photo.url!)) else { return }
+        cell.configureWith(contentId: photo.contentId!, photoUrl: photoUrl)
+    }
+    func didSelectCollectionViewRowAt(indexPath: IndexPath) {
+        let selectedPhoto = profileFeedData[indexPath.row]
+        self.profileView?.goToContentDetail(contentId: selectedPhoto.contentId!)
     }
 }

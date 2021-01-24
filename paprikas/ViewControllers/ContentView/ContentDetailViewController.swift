@@ -33,16 +33,21 @@ class ContentDetailViewController: BaseViewController {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
         presenter.attachView(view: self)
-        presenter.getContentData()
         likeBtn.setImage(UIImage(named: "HeartButton.png"), for: .normal)
         likeBtn.setImage(UIImage(named: "FullHeartButton.png"), for: .selected)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        presenter.getContentData()
     }
 
     @IBAction func removeBtnClicked(_ sender: Any) {
-        presenter.removeContentAction()
+        let alert = UIAlertController(title: "게시글을 삭제할까요?", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "네", style: .default, handler: { _ in
+            self.presenter.removeContentAction()
+        }))
+        alert.addAction(UIAlertAction(title: "아니요", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
     @IBAction func likeBtnClicked(_ sender: UIButton) {
         sender.isSelected.toggle()

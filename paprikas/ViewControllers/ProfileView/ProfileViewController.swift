@@ -13,8 +13,8 @@ class ProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(view: self)
-        presenter.loadProfileInfoData()
-        presenter.loadProfileFeedData()
+//        presenter.loadProfileInfoData()
+//        presenter.loadProfileFeedData()
     }
     @IBOutlet weak var profileCollectionView: UICollectionView!
     override func viewWillAppear(_ animated: Bool) {
@@ -22,6 +22,8 @@ class ProfileViewController: BaseViewController {
         self.navigationController?.isNavigationBarHidden = false
         profileCollectionView.delegate = self
         profileCollectionView.dataSource = self
+        presenter.loadProfileInfoData()
+        presenter.loadProfileFeedData()
     }
 }
 extension ProfileViewController: ProfileView {
@@ -32,6 +34,9 @@ extension ProfileViewController: ProfileView {
     func setProfileData(profileData: ProfileInfoDate) {
         self.navigationItem.title = profileData.user?.nickname
         self.profileCollectionView.reloadData()
+    }
+    func goToContentDetail(contentId: Int) {
+        goToContentDetailVC(contentId: contentId)
     }
 }
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -70,8 +75,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let contentVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.CONTENT_DETAIL) as! ContentDetailViewController
-        self.navigationController?.pushViewController(contentVC, animated: true)
+        presenter.didSelectCollectionViewRowAt(indexPath: indexPath)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
