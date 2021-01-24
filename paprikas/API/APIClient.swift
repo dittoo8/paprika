@@ -20,7 +20,6 @@ class APIClient {
         case 200:
             return true
         case 401..<420:
-            UserDefaults.standard.removeObject(forKey: CONSTANT_EN.USER_TOKEN)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION.API.AUTH_FAIL), object: nil, userInfo: nil)
         default:
             makeErrorToast(error: msg)

@@ -82,7 +82,7 @@ enum NOTIFICATION {
         static let UPLOAD_SUCCESS: String = "😚 새 게시물을 공유했습니다."
         static let NO_CONTENT: String = "📣 내용을 입력해주세요!"
         static let USER_INFO_INVALID: String = "📣 아이디 또는 패스워드를 정확히 입력해주세요."
-        static let SESSION_EXPIRED: String = "📣 세션이 만료되었습니다. 다시 로그인해주세요."
+        static let SESSION_EXPIRED: String = "📣 로그아웃되었습니다. 다시 로그인해주세요."
         static func IS_ERROR(error: String) -> String {
             return "☠️ \(error) 에러입니다."
         }

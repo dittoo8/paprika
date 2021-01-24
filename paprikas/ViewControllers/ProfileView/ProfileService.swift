@@ -35,6 +35,8 @@ class ProfileService {
         }
 
     }
+    func requestFollow(userId: Int, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (Photos) -> Void) {
+    }
 }
 protocol ProfileView: class {
     func setProfileData(profileData: ProfileInfoDate)
@@ -79,9 +81,22 @@ class ProfilePresenter {
 
         })
     }
+    func followOrSetBtnAction() {
+        if (profileInfoData?.isMe)! {
+            // 로그아웃
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION.API.AUTH_FAIL), object: nil, userInfo: nil)
+        } else {
+            if (profileInfoData?.isFollowed)! {
+                // 팔로우 끊기
+                
+            } else {
+                // 팔로우하기
+            }
+        }
+    }
     // MARK: - Collection view Methods
     func numberOfRows(in section: Int) -> Int {
-        return profileFeedData.count ?? 0
+        return profileFeedData.count
     }
     func configureHeader(headerView: ProfileHeaderCell) {
 
@@ -93,7 +108,7 @@ class ProfilePresenter {
     func configureCell(_ cell: ProfileCollectionFeedCell, forRowAt indexPath: IndexPath) {
         let photo = profileFeedData[indexPath.row]
         guard let photoUrl = URL(string: (photo.url!)) else { return }
-        cell.configureWith(contentId: photo.contentId!, photoUrl: photoUrl)
+        cell.configureWith(contentId: photo.contentId!, photoUrl: photoUrl, photoCount: photo.photoCount!)
     }
     func didSelectCollectionViewRowAt(indexPath: IndexPath) {
         let selectedPhoto = profileFeedData[indexPath.row]

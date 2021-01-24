@@ -10,8 +10,14 @@ import Kingfisher
 class ProfileCollectionFeedCell: UICollectionViewCell {
 
     @IBOutlet weak var firstImgView: UIImageView!
-    func configureWith(contentId: Int, photoUrl: URL) {
+    @IBOutlet weak var moreImgIcon: UIImageView!
+    func configureWith(contentId: Int, photoUrl: URL, photoCount: Int) {
         tag = contentId
         firstImgView.kf.setImage(with: photoUrl)
+        if photoCount > 1 {
+            moreImgIcon.isHidden = false
+        } else {
+            moreImgIcon.isHidden = true
+        }
     }
 }

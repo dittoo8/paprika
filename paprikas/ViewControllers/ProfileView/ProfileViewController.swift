@@ -25,6 +25,9 @@ class ProfileViewController: BaseViewController {
         presenter.loadProfileInfoData()
         presenter.loadProfileFeedData()
     }
+    @objc func followOrSetBtnClicked(sender: Any) {
+        presenter.followOrSetBtnAction()
+    }
 }
 extension ProfileViewController: ProfileView {
     func setProfileFeed() {
@@ -56,6 +59,8 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
             showFollowingTap.userId = headerView.tag
             showFollowingTap.isFollowing = true
             headerView.followingInfoView.addGestureRecognizer(showFollowingTap)
+
+            headerView.followOrSettingBtn.addTarget(self, action: #selector(followOrSetBtnClicked(sender:)), for: .touchUpInside)
             return headerView
         default:
             assert(false)
