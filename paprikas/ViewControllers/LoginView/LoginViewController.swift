@@ -19,8 +19,8 @@ class LoginViewController: BaseViewController {
         super.viewDidLoad()
         print("LoginViewController - viewDidLoad")
         presenter.attachView(view: self)
-        if UserDefaults.standard.string(forKey: CONSTANT_EN.USER_TOKEN) != nil {
-            print("token : \(UserDefaults.standard.string(forKey: CONSTANT_EN.USER_TOKEN))")
+        if UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN) != nil {
+            print("token : \(UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN))")
             goToMainTab()
         }
     }

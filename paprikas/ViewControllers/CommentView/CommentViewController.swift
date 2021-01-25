@@ -35,7 +35,7 @@ class CommentViewController: BaseViewController {
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         commentTableView.refreshControl = refreshControl
         self.noCommentLabel.text = CONSTANT_KO.FIRST_COMMENT
-        self.myProfileImgView.kf.setImage(with: UserDefaults.standard.url(forKey: "userphoto"))
+        self.myProfileImgView.kf.setImage(with: UserDefaults.standard.url(forKey: CONSTANT_EN.MY_PHOTO))
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

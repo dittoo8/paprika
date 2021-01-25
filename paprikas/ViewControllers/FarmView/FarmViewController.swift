@@ -7,11 +7,29 @@
 
 import UIKit
 
-class FarmViewController: UIViewController {
-
+class FarmViewController: BaseViewController {
+    @IBOutlet weak var farmTableView: UITableView!
+    let presenter = FarmPresenter(farmService: FarmService())
+    private let sections: [String] = ["iOS", "AOS"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        presenter.attachView(view: self)
+//        farmTableView.dataSource = self
+//        farmTableView.delegate = self
     }
 
 }
+extension FarmViewController: FarmView {
+
+}
+// extension FarmViewController: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        <#code#>
+//    }
+//
+//
+// }

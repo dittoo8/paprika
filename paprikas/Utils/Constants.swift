@@ -69,7 +69,9 @@ enum CONSTANT_KO {
 
 }
 enum CONSTANT_EN {
-    static let USER_TOKEN: String = "userToken"
+    static let MY_TOKEN: String = "myToken"
+    static let MY_PHOTO: String = "myPhoto"
+    static let MY_ID: String = "myId"
     static let MESSAGE: String = "message"
 }
 enum API {

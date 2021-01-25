@@ -50,6 +50,8 @@
 		DCE0DF1525B5CF640038E718 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DF1425B5CF630038E718 /* Comment.swift */; };
 		DCF1BC9525B736C800465348 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1BC9425B736C800465348 /* APIRouter.swift */; };
 		DCF1BC9D25B7374300465348 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1BC9C25B7374300465348 /* APIClient.swift */; };
+		DCF4C02025BE5767007A4033 /* FarmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF4C01F25BE5767007A4033 /* FarmService.swift */; };
+		DCF4C02525BE5D11007A4033 /* FarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF4C02425BE5D11007A4033 /* FarmTableViewCell.swift */; };
 		DCFEE21825BC0C48003389BD /* ProfileCollectionFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFEE21725BC0C48003389BD /* ProfileCollectionFeedCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +127,8 @@
 		DCE0DF1425B5CF630038E718 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		DCF1BC9425B736C800465348 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		DCF1BC9C25B7374300465348 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		DCF4C01F25BE5767007A4033 /* FarmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmService.swift; sourceTree = "<group>"; };
+		DCF4C02425BE5D11007A4033 /* FarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmTableViewCell.swift; sourceTree = "<group>"; };
 		DCFEE21725BC0C48003389BD /* ProfileCollectionFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionFeedCell.swift; sourceTree = "<group>"; };
 		FDBEA6EB75A2E2BFC147F693 /* Pods-paprikasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paprikasTests.release.xcconfig"; path = "Target Support Files/Pods-paprikasTests/Pods-paprikasTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,6 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				DC74DE4625A2E088002353D7 /* FarmViewController.swift */,
+				DCF4C01F25BE5767007A4033 /* FarmService.swift */,
+				DCF4C02425BE5D11007A4033 /* FarmTableViewCell.swift */,
 			);
 			path = FarmView;
 			sourceTree = "<group>";
@@ -659,9 +665,11 @@
 				CE90CBA925B80A4D001B22E4 /* ProfileService.swift in Sources */,
 				DC74DE4C25A2E0B8002353D7 /* ProfileViewController.swift in Sources */,
 				DC5230B325A3582F0075FE48 /* Post.swift in Sources */,
+				DCF4C02025BE5767007A4033 /* FarmService.swift in Sources */,
 				DCFEE21825BC0C48003389BD /* ProfileCollectionFeedCell.swift in Sources */,
 				DC433C6E259C18BF00B0B083 /* SceneDelegate.swift in Sources */,
 				DCE0DF1525B5CF640038E718 /* Comment.swift in Sources */,
+				DCF4C02525BE5D11007A4033 /* FarmTableViewCell.swift in Sources */,
 				DC74DE0F25A2D903002353D7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

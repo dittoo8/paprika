@@ -31,7 +31,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         farmVC.tabBarItem.title = CONSTANT_KO.FARM
         let profileVC = UINavigationController(rootViewController: storyboard?.instantiateViewController(identifier: CONSTANT_VC.PROFILE) as! ProfileViewController)
         profileVC.tabBarItem.title = CONSTANT_KO.MY_PROFILE
-
+        let profileView = profileVC.viewControllers.first as! ProfileViewController
+        profileView.presenter.setProfileConfig(userId: UserDefaults.standard.integer(forKey: CONSTANT_EN.MY_ID))
         setViewControllers([feedVC, searchVC, newContentVC, farmVC, profileVC], animated: true)
     }
 

@@ -50,7 +50,9 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     @objc func goToLoginVC(notification: NSNotification) {
-        UserDefaults.standard.removeObject(forKey: CONSTANT_EN.USER_TOKEN)
+        UserDefaults.standard.removeObject(forKey: CONSTANT_EN.MY_TOKEN)
+        UserDefaults.standard.removeObject(forKey: CONSTANT_EN.MY_PHOTO)
+        UserDefaults.standard.removeObject(forKey: CONSTANT_EN.MY_ID)
         let loginVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.LOGIN) as? LoginViewController
         UIApplication.shared.windows.first?.rootViewController = loginVC
         UIApplication.shared.windows.first?.makeKeyAndVisible()

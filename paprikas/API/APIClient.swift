@@ -110,7 +110,7 @@ class APIClient {
     static func requestNewContetn(text: String, photos: [Data], completion: @escaping (Result<Data?, AFError>) -> Void) {
         let headers: HTTPHeaders = [
             "Content-type": "multipart/form-data",
-            "Authorization": UserDefaults.standard.string(forKey: CONSTANT_EN.USER_TOKEN)!
+            "Authorization": UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN)!
         ]
 
         AF.upload( multipartFormData: { multipartFormData in

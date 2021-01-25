@@ -42,8 +42,9 @@ class LoginPresenter {
             LoginService.requestLogin(nickname: nickname, pwd: pwd, whenIfFailed: { error in
                 print("error :\(error)")
             }, completionHandler: { result in
-                UserDefaults.standard.set(result.token, forKey: CONSTANT_EN.USER_TOKEN)
-                UserDefaults.standard.set(result.userphoto, forKey: "userphoto")
+                UserDefaults.standard.set(result.token, forKey: CONSTANT_EN.MY_TOKEN)
+                UserDefaults.standard.set(result.userphoto, forKey: CONSTANT_EN.MY_PHOTO)
+                UserDefaults.standard.set(result.userid, forKey: CONSTANT_EN.MY_ID)
                 self.LoginView?.goToMainTab()
             })
         }
