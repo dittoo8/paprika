@@ -91,6 +91,14 @@ class APIClient {
                 completion(response.result)
             }
     }
+    static func requestFarm(isTo: Bool, completion: @escaping (Result<FarmResult, AFError>) -> Void) {
+            let jsonDecoder = JSONDecoder()
+        AF.request(APIRouter.farm(isTo: isTo))
+            .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<FarmResult, AFError>) in
+                print("requestFarm - response : \(response)")
+                completion(response.result)
+            }
+    }
     static func requestFollow(userId: Int, isUnFollow: Bool, completion: @escaping (Result<ResponseModel, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()
         AF.request(APIRouter.follow(userId: userId, isUnfollow: isUnFollow))

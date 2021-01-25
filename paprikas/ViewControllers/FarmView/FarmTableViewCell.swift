@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 class FarmTableViewCell: UITableViewCell {
 
     @IBOutlet weak var badgeImgView: UIImageView!
@@ -18,7 +18,9 @@ class FarmTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var userNicknameLabel: UILabel!
 
-    func configureCell(userId: Int, userphoto: URL, rank: Int) {
-
+    func configureCell(userId: Int, nickname: String, userphoto: URL) {
+        tag = userId
+        userProfileImgView.kf.setImage(with: userphoto)
+        userNicknameLabel.text = nickname
     }
 }

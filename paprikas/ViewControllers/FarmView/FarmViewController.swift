@@ -10,26 +10,40 @@ import UIKit
 class FarmViewController: BaseViewController {
     @IBOutlet weak var farmTableView: UITableView!
     let presenter = FarmPresenter(farmService: FarmService())
-    private let sections: [String] = ["iOS", "AOS"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(view: self)
-//        farmTableView.dataSource = self
-//        farmTableView.delegate = self
+        farmTableView.dataSource = self
+        farmTableView.delegate = self
+        self.navigationItem.title = CONSTANT_KO.MY_FARM
+        presenter.requestFarmData()
     }
 
 }
 extension FarmViewController: FarmView {
+    func setFarmData() {
+        farmTableView.reloadData()
+        print("set  farm")
+    }
 
 }
-// extension FarmViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//
-//
-// }
+ extension FarmViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter.numberOfRows(in: section)
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FarmTableViewCell", for: indexPath) as! FarmTableViewCell
+
+        presenter.configureCell(cell, forRowAt: indexPath)
+        return cell
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return presenter.numberOfSections()
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return presenter.titleForHeaderSection(section: section)
+    }
+
+ }

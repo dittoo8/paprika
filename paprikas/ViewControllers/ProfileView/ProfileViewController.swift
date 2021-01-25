@@ -46,25 +46,20 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     // MARK: - Profile Header Methods
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CONSTANT_VC.PROFILE_HEADER_CELL, for: indexPath) as! ProfileHeaderCell
-            presenter.configureHeader(headerView: headerView)
-            let showFollowerTap = goToFollowTap(target: self, action: #selector(goToFollowVC(param:)))
-            showFollowerTap.userId = headerView.tag
-            showFollowerTap.isFollowing = false
-            headerView.followerInfoView.addGestureRecognizer(showFollowerTap)
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CONSTANT_VC.PROFILE_HEADER_CELL, for: indexPath) as! ProfileHeaderCell
+        presenter.configureHeader(headerView: headerView)
+        let showFollowerTap = goToFollowTap(target: self, action: #selector(goToFollowVC(param:)))
+        showFollowerTap.userId = headerView.tag
+        showFollowerTap.isFollowing = false
+        headerView.followerInfoView.addGestureRecognizer(showFollowerTap)
 
-            let showFollowingTap = goToFollowTap(target: self, action: #selector(goToFollowVC(param:)))
-            showFollowingTap.userId = headerView.tag
-            showFollowingTap.isFollowing = true
-            headerView.followingInfoView.addGestureRecognizer(showFollowingTap)
+        let showFollowingTap = goToFollowTap(target: self, action: #selector(goToFollowVC(param:)))
+        showFollowingTap.userId = headerView.tag
+        showFollowingTap.isFollowing = true
+        headerView.followingInfoView.addGestureRecognizer(showFollowingTap)
 
-            headerView.followOrSettingBtn.addTarget(self, action: #selector(followOrSetBtnClicked(sender:)), for: .touchUpInside)
-            return headerView
-        default:
-            assert(false)
-        }
+        headerView.followOrSettingBtn.addTarget(self, action: #selector(followOrSetBtnClicked(sender:)), for: .touchUpInside)
+        return headerView
     }
 
     // MARK: - Profile Feed Methods

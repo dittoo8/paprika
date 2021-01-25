@@ -66,6 +66,9 @@ enum CONSTANT_KO {
     }
     static let NO_COMMENT = "아직 댓글이 없습니다."
     static let FIRST_COMMENT = "첫번째 댓글을 작성해보세요."
+    static let BEST_FRIEND_TO = "내가 가장 관심을 많이 가진 친구 TOP 5"
+    static let BEST_FRIEND_FROM = "나에게 가장 관심을 많이 가진 친구 TOP 5"
+    static let MY_FARM = "나의 농장"
 
 }
 enum CONSTANT_EN {
