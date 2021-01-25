@@ -12,6 +12,14 @@ import Alamofire
 class LoginViewController: BaseViewController {
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTetField: UITextField!
+    @IBOutlet weak var loginBtn: UIButton! {
+        didSet {
+            self.loginBtn.layer.cornerRadius = self.loginBtn.frame.height/2
+            self.loginBtn.layer.borderWidth = 1
+            self.loginBtn.layer.borderColor = UIColor.systemGray.cgColor
+            self.loginBtn.clipsToBounds = true
+        }
+    }
 
     let presenter = LoginPresenter(LoginService: LoginService())
 

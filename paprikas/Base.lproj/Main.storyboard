@@ -18,38 +18,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID를 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="29O-YU-7es">
-                                <rect key="frame" x="100" y="337" width="214" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID를 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="29O-YU-7es">
+                                <rect key="frame" x="100" y="387" width="214" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호를 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1WC-d7-RPi">
-                                <rect key="frame" x="100" y="395" width="214" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호를 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1WC-d7-RPi">
+                                <rect key="frame" x="100" y="436" width="214" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGB-Bl-qj3">
-                                <rect key="frame" x="184" y="475" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGB-Bl-qj3">
+                                <rect key="frame" x="100" y="490" width="214" height="30"/>
+                                <state key="normal" title="로그인"/>
                                 <connections>
                                     <action selector="loginBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0ni-HH-Oje"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="paprika" translatesAutoresizingMaskIntoConstraints="NO" id="cPK-9G-XM8">
+                                <rect key="frame" x="87" y="186" width="240" height="199"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1WC-d7-RPi" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="5C4-ga-kSf"/>
+                            <constraint firstItem="1WC-d7-RPi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9xP-78-Vk3"/>
+                            <constraint firstItem="1WC-d7-RPi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="Jbz-ER-THT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1WC-d7-RPi" secondAttribute="trailing" constant="100" id="Lx5-Xt-cco"/>
+                            <constraint firstItem="1WC-d7-RPi" firstAttribute="top" secondItem="29O-YU-7es" secondAttribute="bottom" constant="15" id="bd5-kN-YuU"/>
+                            <constraint firstItem="29O-YU-7es" firstAttribute="trailing" secondItem="1WC-d7-RPi" secondAttribute="trailing" id="cP9-ZY-XJo"/>
+                            <constraint firstItem="yGB-Bl-qj3" firstAttribute="top" secondItem="1WC-d7-RPi" secondAttribute="bottom" constant="20" id="e2l-dt-dNG"/>
+                            <constraint firstItem="29O-YU-7es" firstAttribute="leading" secondItem="1WC-d7-RPi" secondAttribute="leading" id="iVO-9f-igG"/>
+                            <constraint firstItem="yGB-Bl-qj3" firstAttribute="leading" secondItem="1WC-d7-RPi" secondAttribute="leading" id="jWr-4P-HnG"/>
+                            <constraint firstItem="yGB-Bl-qj3" firstAttribute="trailing" secondItem="1WC-d7-RPi" secondAttribute="trailing" id="jrS-Ps-pci"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="idTextField" destination="29O-YU-7es" id="Hys-g9-GOE"/>
+                        <outlet property="loginBtn" destination="yGB-Bl-qj3" id="Cze-8E-NhC"/>
                         <outlet property="passwordTetField" destination="1WC-d7-RPi" id="UIj-aJ-Q8p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1835" y="-327"/>
+            <point key="canvasLocation" x="1834.7826086956522" y="-327.45535714285711"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="QQW-vh-pVz">
@@ -978,6 +992,7 @@
         <image name="FullHeartButton" width="981" height="798"/>
         <image name="HeartButton" width="980" height="858"/>
         <image name="gallery" width="512" height="512"/>
+        <image name="paprika" width="400" height="400"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
