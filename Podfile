@@ -14,6 +14,8 @@ target 'paprikas' do
   pod 'SwiftLint'
 	pod 'YPImagePicker'
   pod 'PromisedFuture'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
 
   target 'paprikasTests' do
     inherit! :search_paths
