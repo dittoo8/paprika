@@ -17,6 +17,9 @@ class FarmViewController: BaseViewController {
         farmTableView.dataSource = self
         farmTableView.delegate = self
         self.navigationItem.title = CONSTANT_KO.MY_FARM
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         presenter.requestFarmData()
     }
 
@@ -35,8 +38,11 @@ extension FarmViewController: FarmView {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FarmTableViewCell", for: indexPath) as! FarmTableViewCell
-
         presenter.configureCell(cell, forRowAt: indexPath)
+        let userProfileTap = goToProfileTap(target: self, action: #selector(goToProfileVC(param:)))
+        userProfileTap.userId = cell.tag
+        cell.isUserInteractionEnabled = true
+        cell.contentView.addGestureRecognizer(userProfileTap)
         return cell
     }
     func numberOfSections(in tableView: UITableView) -> Int {
