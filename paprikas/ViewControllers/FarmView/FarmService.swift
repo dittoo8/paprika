@@ -30,7 +30,7 @@ protocol FarmView: class {
 class FarmPresenter {
     private let farmService: FarmService
     private weak var farmView: FarmView?
-    private let sections: [String] = [CONSTANT_KO.BEST_FRIEND_TO, CONSTANT_KO.BEST_FRIEND_FROM]
+    private let sections: [String] = ["알 수도 있는 친구", CONSTANT_KO.BEST_FRIEND_TO, CONSTANT_KO.BEST_FRIEND_FROM]
     private var fromMeList = [User]()
     private var toMeList = [User]()
     init(farmService: FarmService) {
@@ -58,21 +58,25 @@ class FarmPresenter {
     // MARK: - TableView Methods
     func numberOfRows(in section: Int) -> Int {
         if section == 0 {
-            return toMeList.count
+            return 1
         } else if section == 1 {
+            return toMeList.count
+        } else if section == 2 {
             return fromMeList.count
         } else {
             return 0
         }
     }
-    func configureCell(_ cell: FarmTableViewCell, forRowAt indexPath: IndexPath) {
+    func configureRankingCell(_ cell: FarmTableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
+            cell.backgroundColor = .blue
+        } else if indexPath.section == 1 {
             let user = toMeList[indexPath.row]
             if let userId = user.userid, let nickname = user.nickname, let photo = user.userphoto {
                 guard let photoUrl = URL(string: photo) else { return }
                 cell.configureCell(userId: userId, nickname: nickname, userphoto: photoUrl)
             }
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 2 {
             let user = fromMeList[indexPath.row]
             if let userId = user.userid, let nickname = user.nickname, let photo = user.userphoto {
                 guard let photoUrl = URL(string: photo) else { return }

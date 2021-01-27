@@ -14,6 +14,8 @@
 		CE90CBA925B80A4D001B22E4 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90CBA825B80A4D001B22E4 /* ProfileService.swift */; };
 		CE90CBDB25B857EB001B22E4 /* NewContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90CBDA25B857EB001B22E4 /* NewContentService.swift */; };
 		CEF6EF4725C131C50090D122 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6EF4625C131C50090D122 /* CategoryCollectionViewCell.swift */; };
+		CEF6EF4C25C1A2980090D122 /* FoFTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6EF4B25C1A2980090D122 /* FoFTableViewCell.swift */; };
+		CEF6EF5125C1A6120090D122 /* FoFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6EF5025C1A6120090D122 /* FoFCollectionViewCell.swift */; };
 		DC3DDC7D25B952CE00DE6745 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3DDC7C25B952CE00DE6745 /* LoginService.swift */; };
 		DC433C6C259C18BF00B0B083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6B259C18BF00B0B083 /* AppDelegate.swift */; };
 		DC433C6E259C18BF00B0B083 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6D259C18BF00B0B083 /* SceneDelegate.swift */; };
@@ -89,6 +91,8 @@
 		CE90CBDA25B857EB001B22E4 /* NewContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContentService.swift; sourceTree = "<group>"; };
 		CEF6EF4225C103DB0090D122 /* paprikasRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = paprikasRelease.entitlements; sourceTree = "<group>"; };
 		CEF6EF4625C131C50090D122 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		CEF6EF4B25C1A2980090D122 /* FoFTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoFTableViewCell.swift; sourceTree = "<group>"; };
+		CEF6EF5025C1A6120090D122 /* FoFCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoFCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC3DDC7C25B952CE00DE6745 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		DC433C68259C18BF00B0B083 /* paprikas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = paprikas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC433C6B259C18BF00B0B083 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 				DC74DE4625A2E088002353D7 /* FarmViewController.swift */,
 				DCF4C01F25BE5767007A4033 /* FarmService.swift */,
 				DCF4C02425BE5D11007A4033 /* FarmTableViewCell.swift */,
+				CEF6EF4B25C1A2980090D122 /* FoFTableViewCell.swift */,
+				CEF6EF5025C1A6120090D122 /* FoFCollectionViewCell.swift */,
 			);
 			path = FarmView;
 			sourceTree = "<group>";
@@ -659,6 +665,7 @@
 				DC6A760625AF4D35001740D0 /* extensions.swift in Sources */,
 				CE90CBA425B808FF001B22E4 /* Customs.swift in Sources */,
 				DCC82DC625AEB0AB006C5F4C /* CommentViewController.swift in Sources */,
+				CEF6EF5125C1A6120090D122 /* FoFCollectionViewCell.swift in Sources */,
 				DCC82D9925AB8737006C5F4C /* ContentDetailService.swift in Sources */,
 				DC5230B825A364950075FE48 /* ContentDetailViewController.swift in Sources */,
 				DCDEA32925C03AEF006742BE /* SearchService.swift in Sources */,
@@ -679,6 +686,7 @@
 				DC5230AE25A354360075FE48 /* FeedCollectionViewCell.swift in Sources */,
 				DCC7553325BC1E4100E093E9 /* FollowService.swift in Sources */,
 				CE90CBA925B80A4D001B22E4 /* ProfileService.swift in Sources */,
+				CEF6EF4C25C1A2980090D122 /* FoFTableViewCell.swift in Sources */,
 				DC74DE4C25A2E0B8002353D7 /* ProfileViewController.swift in Sources */,
 				DC5230B325A3582F0075FE48 /* Post.swift in Sources */,
 				DCF4C02025BE5767007A4033 /* FarmService.swift in Sources */,
