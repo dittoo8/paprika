@@ -116,7 +116,7 @@ extension NewContentViewController: NewContentView {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = UIColor.systemFill
         }
 
     }

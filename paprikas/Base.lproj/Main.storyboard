@@ -19,32 +19,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID를 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="29O-YU-7es">
-                                <rect key="frame" x="100" y="387" width="214" height="34"/>
+                                <rect key="frame" x="100" y="365" width="214" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호를 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1WC-d7-RPi">
-                                <rect key="frame" x="100" y="436" width="214" height="34"/>
+                                <rect key="frame" x="100" y="414" width="214" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGB-Bl-qj3">
-                                <rect key="frame" x="100" y="490" width="214" height="30"/>
+                                <rect key="frame" x="100" y="468" width="214" height="30"/>
                                 <state key="normal" title="로그인"/>
                                 <connections>
                                     <action selector="loginBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0ni-HH-Oje"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="paprika" translatesAutoresizingMaskIntoConstraints="NO" id="cPK-9G-XM8">
-                                <rect key="frame" x="87" y="186" width="240" height="199"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paprika" translatesAutoresizingMaskIntoConstraints="NO" id="cPK-9G-XM8">
+                                <rect key="frame" x="87" y="166" width="240" height="199"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Pl3-4U-7Nc"/>
+                                    <constraint firstAttribute="height" constant="199" id="TTT-AC-3oI"/>
+                                    <constraint firstAttribute="width" secondItem="cPK-9G-XM8" secondAttribute="height" multiplier="240:199" id="nIw-SG-qMQ"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1WC-d7-RPi" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="5C4-ga-kSf"/>
                             <constraint firstItem="1WC-d7-RPi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9xP-78-Vk3"/>
+                            <constraint firstItem="29O-YU-7es" firstAttribute="top" secondItem="cPK-9G-XM8" secondAttribute="bottom" id="FZZ-58-aXU"/>
                             <constraint firstItem="1WC-d7-RPi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="Jbz-ER-THT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1WC-d7-RPi" secondAttribute="trailing" constant="100" id="Lx5-Xt-cco"/>
                             <constraint firstItem="1WC-d7-RPi" firstAttribute="top" secondItem="29O-YU-7es" secondAttribute="bottom" constant="15" id="bd5-kN-YuU"/>
@@ -53,6 +57,8 @@
                             <constraint firstItem="29O-YU-7es" firstAttribute="leading" secondItem="1WC-d7-RPi" secondAttribute="leading" id="iVO-9f-igG"/>
                             <constraint firstItem="yGB-Bl-qj3" firstAttribute="leading" secondItem="1WC-d7-RPi" secondAttribute="leading" id="jWr-4P-HnG"/>
                             <constraint firstItem="yGB-Bl-qj3" firstAttribute="trailing" secondItem="1WC-d7-RPi" secondAttribute="trailing" id="jrS-Ps-pci"/>
+                            <constraint firstItem="yGB-Bl-qj3" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="30" id="wiM-ZJ-8W4"/>
+                            <constraint firstItem="cPK-9G-XM8" firstAttribute="centerX" secondItem="29O-YU-7es" secondAttribute="centerX" id="xTJ-Vj-l2w"/>
                         </constraints>
                     </view>
                     <connections>

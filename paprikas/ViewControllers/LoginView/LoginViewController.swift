@@ -38,6 +38,8 @@ class LoginViewController: BaseViewController {
         print("LoginViewController - loginBtnClicked")
         presenter.userLoginAction(nickname: self.idTextField.text!, pwd: self.passwordTetField.text!)
     }
+    override func keyboardWillShowHandle(notification: NSNotification) {
+    }
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         view.endEditing(true)
