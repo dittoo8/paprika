@@ -38,6 +38,12 @@ class LoginViewController: BaseViewController {
         print("LoginViewController - loginBtnClicked")
         presenter.userLoginAction(nickname: self.idTextField.text!, pwd: self.passwordTetField.text!)
     }
+    @IBAction func signUpBtnClicked(_ sender: Any) {
+        guard let url = URL(string: "http://paprika-auth.onstove.com:8000/auth/sign") else { return }
+        UIApplication.shared.open(url)
+    }
+    override func keyboardWillShowHandle(notification: NSNotification) {
+    }
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         view.endEditing(true)

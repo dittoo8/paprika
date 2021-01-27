@@ -13,6 +13,7 @@
 		CE90CBA425B808FF001B22E4 /* Customs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90CBA325B808FF001B22E4 /* Customs.swift */; };
 		CE90CBA925B80A4D001B22E4 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90CBA825B80A4D001B22E4 /* ProfileService.swift */; };
 		CE90CBDB25B857EB001B22E4 /* NewContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90CBDA25B857EB001B22E4 /* NewContentService.swift */; };
+		CEF6EF4725C131C50090D122 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6EF4625C131C50090D122 /* CategoryCollectionViewCell.swift */; };
 		DC3DDC7D25B952CE00DE6745 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3DDC7C25B952CE00DE6745 /* LoginService.swift */; };
 		DC433C6C259C18BF00B0B083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6B259C18BF00B0B083 /* AppDelegate.swift */; };
 		DC433C6E259C18BF00B0B083 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6D259C18BF00B0B083 /* SceneDelegate.swift */; };
@@ -86,6 +87,8 @@
 		CE90CBA325B808FF001B22E4 /* Customs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customs.swift; sourceTree = "<group>"; };
 		CE90CBA825B80A4D001B22E4 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		CE90CBDA25B857EB001B22E4 /* NewContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContentService.swift; sourceTree = "<group>"; };
+		CEF6EF4225C103DB0090D122 /* paprikasRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = paprikasRelease.entitlements; sourceTree = "<group>"; };
+		CEF6EF4625C131C50090D122 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC3DDC7C25B952CE00DE6745 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		DC433C68259C18BF00B0B083 /* paprikas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = paprikas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC433C6B259C18BF00B0B083 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -213,6 +216,7 @@
 			children = (
 				DC74DE4125A2E07D002353D7 /* NewContentViewController.swift */,
 				CE90CBDA25B857EB001B22E4 /* NewContentService.swift */,
+				CEF6EF4625C131C50090D122 /* CategoryCollectionViewCell.swift */,
 			);
 			path = NewContentView;
 			sourceTree = "<group>";
@@ -292,7 +296,7 @@
 		DC433C6A259C18BF00B0B083 /* paprikas */ = {
 			isa = PBXGroup;
 			children = (
-				DCF4C08D25BEB095007A4033 /* paprikasDebug.entitlements */,
+				CEF6EF4225C103DB0090D122 /* paprikasRelease.entitlements */,
 				DCF1BC9325B736A300465348 /* API */,
 				DC74DE3325A2DF9E002353D7 /* ViewControllers */,
 				DC74DDF625A2D76E002353D7 /* Utils */,
@@ -302,6 +306,7 @@
 				DC433C71259C18BF00B0B083 /* Main.storyboard */,
 				DC433C74259C18C100B0B083 /* Assets.xcassets */,
 				DC433C76259C18C100B0B083 /* LaunchScreen.storyboard */,
+				DCF4C08D25BEB095007A4033 /* paprikasDebug.entitlements */,
 				DCF4C06F25BEAAA8007A4033 /* GoogleService-Info.plist */,
 				DC433C79259C18C100B0B083 /* Info.plist */,
 			);
@@ -662,6 +667,7 @@
 				CE90CBDB25B857EB001B22E4 /* NewContentService.swift in Sources */,
 				DC74DE5825A2E83D002353D7 /* User.swift in Sources */,
 				DCE0DF0D25B5B4850038E718 /* CommentService.swift in Sources */,
+				CEF6EF4725C131C50090D122 /* CategoryCollectionViewCell.swift in Sources */,
 				DCC82D8425A971A4006C5F4C /* Content.swift in Sources */,
 				DC433C70259C18BF00B0B083 /* LoginViewController.swift in Sources */,
 				DC74DE3D25A2E050002353D7 /* SearchViewController.swift in Sources */,
@@ -880,6 +886,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = paprikas/paprikasRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = QTE4V4C639;

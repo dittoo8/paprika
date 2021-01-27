@@ -39,6 +39,18 @@ class APIClient {
                 }
             }
     }
+    static func logout(completion: @escaping (Result<ResponseModel, AFError>) -> Void) {
+        let jsonDecoder = JSONDecoder()
+        AF.request(APIRouter.logout)
+            .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<ResponseModel, AFError>) in
+                if response.response?.statusCode != nil {
+                    print("logout - response : \(response.result)")
+                    completion(response.result)
+                } else {
+                    makeErrorToast(error: response.error?.errorDescription! ?? "")
+                }
+            }
+    }
 
     static func requestComment(contentId: Int? = nil, commentId: Int? = nil, text: String? = nil, method: HTTPMethod, completion: @escaping (Result<CommentResult, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()
@@ -88,6 +100,19 @@ class APIClient {
                     }
         }
     }
+    static func requestCategory(completion: @escaping (Result<CategoryResult, AFError>) -> Void) {
+            let jsonDecoder = JSONDecoder()
+        AF.request(APIRouter.category)
+                .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<CategoryResult, AFError>) in
+                    print("response ~~~ : \(response)")
+                    if response.response?.statusCode != nil {
+                        print("requestCategory - response : \(response.result)")
+                        completion(response.result)
+                    } else {
+                        makeErrorToast(error: response.error?.errorDescription! ?? "")
+                    }
+        }
+    }
     static func requestContent(contentId: Int, method: HTTPMethod, completion: @escaping (Result<ContentResult, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()
         AF.request(APIRouter.content(contentId: contentId, method: method))
@@ -120,7 +145,7 @@ class APIClient {
                 completion(response.result)
             }
     }
-    static func requestNewContetn(text: String, photos: [Data], completion: @escaping (Result<Data?, AFError>) -> Void) {
+    static func requestNewContetn(text: String, photos: [Data], category: [String], completion: @escaping (Result<Data?, AFError>) -> Void) {
         let headers: HTTPHeaders = [
             "Content-type": "multipart/form-data",
             "Authorization": UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN)!
@@ -131,6 +156,15 @@ class APIClient {
                 for (idx, img) in photos.enumerated() {
                     multipartFormData.append(img, withName: "photos", fileName: "file[\(idx)].jpeg", mimeType: "image/jpeg")
                 }
+            if category.count == 0 {
+                multipartFormData.append("".data(using: .utf8)!, withName: "category")
+            } else {
+                for item in category {
+                    if let categoryArray = item.data(using: .utf8) {
+                        multipartFormData.append(categoryArray, withName: "category" )
+                    }
+                }
+            }
         }, to: API.API_BASE + "/content", method: .post, headers: headers)
             .response { response in
                 print("newContent result : \(response.debugDescription)")

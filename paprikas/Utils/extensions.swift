@@ -45,7 +45,6 @@ extension UILabel {
 extension UIViewController {
     @objc func keyboardWillShowHandle(notification: NSNotification) {
         print("baseVC - keyboardWillShowHandle() called")
-        // 키보드 사이즈 가져오기
         let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
 
         if self.view.frame.origin.y == 0 {

@@ -14,6 +14,8 @@ class NewContentViewController: BaseViewController {
 
     @IBOutlet weak var firstImgView: ImageSlideshow!
     @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var categoryCollectionView: UICollectionView!
+    @IBOutlet weak var selectImgInfoLabel: UILabel!
 
     let presenter = NewContentPresenter(NewContentService: NewContentService())
     override func viewDidLoad() {
@@ -23,7 +25,13 @@ class NewContentViewController: BaseViewController {
         self.view.addGestureRecognizer(keyboardDismissTapGesture)
         contentTextView.delegate = self
         contentTextView.text = CONSTANT_KO.NEW_CONTENT_PLACEHOLDER
-        contentTextView.textColor = UIColor.lightGray
+        presenter.getCategorys()
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        categoryCollectionView.collectionViewLayout = layout
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = self
+        self.selectImgInfoLabel.text = CONSTANT_KO.SELECT_PHOTO_INFO
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -50,14 +58,39 @@ class NewContentViewController: BaseViewController {
                 self.tabBarController?.selectedIndex = 0
 
                 self.presenter.removePhotos()
-                self.contentTextView.text = ""
+                self.contentTextView.text = CONSTANT_KO.NEW_CONTENT_PLACEHOLDER
+                self.selectImgInfoLabel.isHidden = false
             }
         }
     }
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        view.endEditing(true)
-        return true
+        if touch.view?.isDescendant(of: self.categoryCollectionView) == true {
+            return false
+        } else {
+            view.endEditing(true)
+            return true
+        }
+    }
+}
+extension NewContentViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return presenter.numberOfRows(in: section)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: CONSTANT_VC.CATEGORY_COLLECTION_CELL, for: indexPath) as! CategoryCollectionViewCell
+        presenter.configureCell(cell, forRowAt: indexPath)
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = categoryCollectionView.cellForItem(at: indexPath) as! CategoryCollectionViewCell
+        presenter.didSelectCollectionViewRowAt(cell, indexPath: indexPath)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 80, height: 40)
     }
 }
 extension NewContentViewController: NewContentView {
@@ -72,6 +105,9 @@ extension NewContentViewController: NewContentView {
             slidePhotos.append(ImageSource(image: img))
         }
         self.firstImgView.setImageInputs(slidePhotos)
+        if selectedImg.count > 0 {
+            self.selectImgInfoLabel.isHidden = true
+        }
     }
     func showImagePicker() {
         var config = YPImagePickerConfiguration()
@@ -110,21 +146,21 @@ extension NewContentViewController: NewContentView {
 
         self.present(newContentActionSheetController, animated: true, completion: nil)
     }
+    func refreshCategorys() {
+        self.categoryCollectionView.reloadData()
+    }
 }
  extension NewContentViewController: UITextViewDelegate {
     // TextView Place Holder
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.text == CONSTANT_KO.NEW_CONTENT_PLACEHOLDER {
             textView.text = nil
-            textView.textColor = UIColor.black
         }
-
     }
     // TextView Place Holder
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = CONSTANT_KO.NEW_CONTENT_PLACEHOLDER
-            textView.textColor = UIColor.lightGray
         }
     }
  }
