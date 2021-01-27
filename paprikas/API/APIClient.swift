@@ -39,6 +39,18 @@ class APIClient {
                 }
             }
     }
+    static func logout(completion: @escaping (Result<ResponseModel, AFError>) -> Void) {
+        let jsonDecoder = JSONDecoder()
+        AF.request(APIRouter.logout)
+            .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<ResponseModel, AFError>) in
+                if response.response?.statusCode != nil {
+                    print("logout - response : \(response.result)")
+                    completion(response.result)
+                } else {
+                    makeErrorToast(error: response.error?.errorDescription! ?? "")
+                }
+            }
+    }
 
     static func requestComment(contentId: Int? = nil, commentId: Int? = nil, text: String? = nil, method: HTTPMethod, completion: @escaping (Result<CommentResult, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()

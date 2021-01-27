@@ -48,6 +48,20 @@ class ProfileService {
             }
         }
     }
+    func requestLogout(whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping () -> Void) {
+        APIClient.logout { result in
+            switch result {
+            case .success(let result):
+                if APIClient.networkingResult(statusCode: result.status!, msg: result.message!) {
+                    completionHandler()
+                }
+            case .failure(let error):
+                print("error : \(error.localizedDescription)")
+                whenIfFailed(error)
+            }
+
+        }
+    }
 }
 protocol ProfileView: class {
     func setProfileData(profileData: ProfileInfoDate)
@@ -95,7 +109,12 @@ class ProfilePresenter {
     func followOrSetBtnAction() {
         if (profileInfoData?.isMe)! {
             // 로그아웃
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION.API.AUTH_FAIL), object: nil, userInfo: nil)
+            profileService.requestLogout(whenIfFailed: { _ in
+
+            }, completionHandler: {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION.API.AUTH_FAIL), object: nil, userInfo: nil)
+            })
+
         } else {
             if (profileInfoData?.isFollowed)! {
                 // 팔로우 끊기

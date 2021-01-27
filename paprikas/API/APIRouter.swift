@@ -9,6 +9,7 @@ import Alamofire
 
 enum APIRouter: URLRequestConvertible {
     case login(nickname: String, pwd: String)
+    case logout
     case content(contentId: Int, method: HTTPMethod)
     case comment(contentId: Int? = nil, method: HTTPMethod, commentId: Int? = nil, text: String? = nil)
     case like(contentId: Int, isLike: Bool)
@@ -30,7 +31,7 @@ enum APIRouter: URLRequestConvertible {
             return method
         case .like(let contentId, let isLike):
             return .post
-        case .followList, .profileInfo, .profileFeed, .farm, .category:
+        case .followList, .profileInfo, .profileFeed, .farm, .category, .logout:
             return .get
         }
     }
@@ -40,6 +41,8 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .login:
             return "/login"
+        case .logout:
+            return "/logout"
         case .content(let contentId, let method):
             return "/content/\(contentId)"
         case .comment(let contentId, let method, let commentId, let text):
@@ -96,7 +99,7 @@ enum APIRouter: URLRequestConvertible {
         case .login(let nickname, let pwd):
 //            return ["nickname": nickname, "pwd": pwd, "devicetoken": UserDefaults.standard.string(forKey: CONSTANT_EN.DEVICE_TOKEN)!]
             return ["nickname": nickname, "pwd": pwd, "devicetoken": "gdgd"]
-        case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm, .category:
+        case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm, .category, .logout:
             return nil
         case .comment(let contentId, let method, let commentId, let text):
             switch method {
@@ -114,7 +117,7 @@ enum APIRouter: URLRequestConvertible {
     func asURLRequest() throws -> URLRequest {
 //        let url = try API.API_BASE.asURL()
         var url: URL?
-        if path == "/login" {
+        if path == "/login" || path == "/logout" {
             url = try API.AUTH_BASE.asURL()
         } else {
             url = try API.API_BASE.asURL()
