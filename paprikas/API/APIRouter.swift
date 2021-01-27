@@ -17,6 +17,7 @@ enum APIRouter: URLRequestConvertible {
     case profileFeed(userId: Int)
     case follow(userId: Int, isUnfollow: Bool)
     case farm(isTo: Bool)
+    case category
 
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -29,7 +30,7 @@ enum APIRouter: URLRequestConvertible {
             return method
         case .like(let contentId, let isLike):
             return .post
-        case .followList, .profileInfo, .profileFeed, .farm:
+        case .followList, .profileInfo, .profileFeed, .farm, .category:
             return .get
         }
     }
@@ -84,6 +85,8 @@ enum APIRouter: URLRequestConvertible {
             case false:
                 return "/farm/best/from"
             }
+        case .category:
+            return "/content/get/category"
         }
     }
 
@@ -91,8 +94,9 @@ enum APIRouter: URLRequestConvertible {
     private var parameters: Parameters? {
         switch self {
         case .login(let nickname, let pwd):
-            return ["nickname": nickname, "pwd": pwd, "devicetoken": UserDefaults.standard.string(forKey: CONSTANT_EN.DEVICE_TOKEN)!]
-        case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm:
+//            return ["nickname": nickname, "pwd": pwd, "devicetoken": UserDefaults.standard.string(forKey: CONSTANT_EN.DEVICE_TOKEN)!]
+            return ["nickname": nickname, "pwd": pwd, "devicetoken": "gdgd"]
+        case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm, .category:
             return nil
         case .comment(let contentId, let method, let commentId, let text):
             switch method {
