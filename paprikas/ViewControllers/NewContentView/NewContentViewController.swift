@@ -15,6 +15,7 @@ class NewContentViewController: BaseViewController {
     @IBOutlet weak var firstImgView: ImageSlideshow!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
+    @IBOutlet weak var selectImgInfoLabel: UILabel!
 
     let presenter = NewContentPresenter(NewContentService: NewContentService())
     override func viewDidLoad() {
@@ -28,9 +29,9 @@ class NewContentViewController: BaseViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         categoryCollectionView.collectionViewLayout = layout
-
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
+        self.selectImgInfoLabel.text = CONSTANT_KO.SELECT_PHOTO_INFO
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -57,7 +58,8 @@ class NewContentViewController: BaseViewController {
                 self.tabBarController?.selectedIndex = 0
 
                 self.presenter.removePhotos()
-                self.contentTextView.text = ""
+                self.contentTextView.text = CONSTANT_KO.NEW_CONTENT_PLACEHOLDER
+                self.selectImgInfoLabel.isHidden = false
             }
         }
     }
@@ -77,13 +79,12 @@ extension NewContentViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
+        let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: CONSTANT_VC.CATEGORY_COLLECTION_CELL, for: indexPath) as! CategoryCollectionViewCell
         presenter.configureCell(cell, forRowAt: indexPath)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("didselect vc")
         let cell = categoryCollectionView.cellForItem(at: indexPath) as! CategoryCollectionViewCell
         presenter.didSelectCollectionViewRowAt(cell, indexPath: indexPath)
     }
@@ -104,6 +105,9 @@ extension NewContentViewController: NewContentView {
             slidePhotos.append(ImageSource(image: img))
         }
         self.firstImgView.setImageInputs(slidePhotos)
+        if selectedImg.count > 0 {
+            self.selectImgInfoLabel.isHidden = true
+        }
     }
     func showImagePicker() {
         var config = YPImagePickerConfiguration()
@@ -152,7 +156,6 @@ extension NewContentViewController: NewContentView {
         if textView.text == CONSTANT_KO.NEW_CONTENT_PLACEHOLDER {
             textView.text = nil
         }
-
     }
     // TextView Place Holder
     func textViewDidEndEditing(_ textView: UITextView) {

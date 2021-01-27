@@ -411,16 +411,24 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이곳에 사진을 추가하세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py3-SX-13V">
+                                <rect key="frame" x="119" y="295.5" width="176" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7aN-fV-Rke"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fbD-9a-pIt" firstAttribute="leading" secondItem="7aN-fV-Rke" secondAttribute="leading" constant="15" id="3dP-Yf-kL1"/>
                             <constraint firstItem="7lH-yf-dKU" firstAttribute="leading" secondItem="fbD-9a-pIt" secondAttribute="leading" id="6US-7H-VpX"/>
+                            <constraint firstItem="Py3-SX-13V" firstAttribute="centerY" secondItem="fbD-9a-pIt" secondAttribute="centerY" id="7Jl-Py-mxm"/>
                             <constraint firstItem="uKv-s0-Xw5" firstAttribute="leading" secondItem="7aN-fV-Rke" secondAttribute="leading" constant="15" id="Imc-8U-MKY"/>
                             <constraint firstItem="7lH-yf-dKU" firstAttribute="trailing" secondItem="fbD-9a-pIt" secondAttribute="trailing" id="MZO-Hm-shO"/>
                             <constraint firstItem="7aN-fV-Rke" firstAttribute="trailing" secondItem="uKv-s0-Xw5" secondAttribute="trailing" constant="15" id="R1F-X7-B7w"/>
                             <constraint firstItem="fbD-9a-pIt" firstAttribute="centerX" secondItem="aqd-Bo-Cyl" secondAttribute="centerX" id="SwE-LA-jYQ"/>
+                            <constraint firstItem="Py3-SX-13V" firstAttribute="centerX" secondItem="fbD-9a-pIt" secondAttribute="centerX" id="VLD-4T-I4K"/>
                             <constraint firstItem="uKv-s0-Xw5" firstAttribute="top" secondItem="7aN-fV-Rke" secondAttribute="top" constant="15" id="Y5S-pL-f2P"/>
                             <constraint firstItem="fbD-9a-pIt" firstAttribute="top" secondItem="uKv-s0-Xw5" secondAttribute="bottom" constant="15" id="mZd-Pa-kGJ"/>
                             <constraint firstItem="7lH-yf-dKU" firstAttribute="top" secondItem="fbD-9a-pIt" secondAttribute="bottom" constant="15" id="wYD-IC-Kvx"/>
@@ -439,6 +447,7 @@
                         <outlet property="categoryCollectionView" destination="uKv-s0-Xw5" id="aPc-Xo-Q6f"/>
                         <outlet property="contentTextView" destination="7lH-yf-dKU" id="OEB-xW-KU1"/>
                         <outlet property="firstImgView" destination="fbD-9a-pIt" id="BB2-9W-D8R"/>
+                        <outlet property="selectImgInfoLabel" destination="Py3-SX-13V" id="UrZ-py-KSa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21g-hd-nhN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

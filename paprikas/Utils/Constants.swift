@@ -22,9 +22,11 @@ enum CONSTANT_VC {
     static let FOLLOW_TABLE_CELL = "FollowTableViewCell"
     static let PROFILE_HEADER_CELL = "ProfileHeaderCell"
     static let PROFILE_COLLECTION_FEED_CELL = "ProfileCollectionFeedCell"
+    static let CATEGORY_COLLECTION_CELL = "CategoryCollectionViewCell"
 }
 enum CONSTANT_KO {
     static let NEW_CONTENT_PLACEHOLDER: String = "이곳에 내용을 입력해주세요."
+    static let SELECT_PHOTO_INFO: String = "이 곳에 사진을 추가해보세요."
     static let NEW_CONTENT: String = "새 게시물"
     static let PHOTO_PREVIEW: String = "사진 미리보기"
     static let RESELECT_PHOTO: String = "사진 재선택"
