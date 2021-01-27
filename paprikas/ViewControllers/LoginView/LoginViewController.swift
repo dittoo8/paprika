@@ -27,6 +27,7 @@ class LoginViewController: BaseViewController {
         super.viewDidLoad()
         print("LoginViewController - viewDidLoad")
         presenter.attachView(view: self)
+        self.view.addGestureRecognizer(keyboardDismissTapGesture)
         if UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN) != nil {
             print("token : \(UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN))")
             goToMainTab()
@@ -36,6 +37,11 @@ class LoginViewController: BaseViewController {
     @IBAction func loginBtnClicked(_ sender: Any) {
         print("LoginViewController - loginBtnClicked")
         presenter.userLoginAction(nickname: self.idTextField.text!, pwd: self.passwordTetField.text!)
+    }
+    // MARK: - UIGestureRecognizerDelegate
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        view.endEditing(true)
+        return true
     }
 }
 extension LoginViewController: LoginView {

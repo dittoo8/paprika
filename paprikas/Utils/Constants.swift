@@ -75,6 +75,7 @@ enum CONSTANT_EN {
     static let MY_TOKEN: String = "myToken"
     static let MY_PHOTO: String = "myPhoto"
     static let MY_ID: String = "myId"
+    static let DEVICE_TOKEN: String = "devicetoken"
     static let MESSAGE: String = "message"
 }
 enum API {

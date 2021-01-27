@@ -9,14 +9,18 @@ import Foundation
 import Alamofire
 class LoginService {
     func requestLogin(nickname: String, pwd: String, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (UserToken) -> Void) {
+        print("ddasgdlagsdljkadgsasdgklj")
         APIClient.login(nickname: nickname, pwd: pwd) { result in
+            print("result ??? : \(result)")
+            print("====")
             switch result {
             case .success(let authResult):
                 if  APIClient.networkingResult(statusCode: authResult.status!, msg: authResult.message!) {
                     completionHandler(authResult.data!)
                 }
             case .failure(let error):
-                print("error : \(error.localizedDescription)")
+                print("gggg")
+//                print("error : \(error.localizedDescription)")
                 whenIfFailed(error)
             }
         }
@@ -42,6 +46,7 @@ class LoginPresenter {
             LoginService.requestLogin(nickname: nickname, pwd: pwd, whenIfFailed: { error in
                 print("error :\(error)")
             }, completionHandler: { result in
+                UserDefaults.standard.set(result.token, forKey: CONSTANT_EN.DEVICE_TOKEN)
                 UserDefaults.standard.set(result.token, forKey: CONSTANT_EN.MY_TOKEN)
                 UserDefaults.standard.set(result.userphoto, forKey: CONSTANT_EN.MY_PHOTO)
                 UserDefaults.standard.set(result.userid, forKey: CONSTANT_EN.MY_ID)

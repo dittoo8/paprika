@@ -91,7 +91,7 @@ enum APIRouter: URLRequestConvertible {
     private var parameters: Parameters? {
         switch self {
         case .login(let nickname, let pwd):
-            return ["nickname": nickname, "pwd": pwd]
+            return ["nickname": nickname, "pwd": pwd, "devicetoken": UserDefaults.standard.string(forKey: CONSTANT_EN.DEVICE_TOKEN)!]
         case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm:
             return nil
         case .comment(let contentId, let method, let commentId, let text):
