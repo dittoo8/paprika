@@ -13,8 +13,6 @@ class ProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(view: self)
-//        presenter.loadProfileInfoData()
-//        presenter.loadProfileFeedData()
     }
     @IBOutlet weak var profileCollectionView: UICollectionView!
     override func viewWillAppear(_ animated: Bool) {

@@ -17,7 +17,7 @@ class ProfileHeaderCell: UICollectionReusableView {
     }
     @IBOutlet weak var followOrSettingBtn: UIButton! {
         didSet {
-            self.followOrSettingBtn.layer.cornerRadius = 5
+            self.followOrSettingBtn.layer.cornerRadius = 10
             self.followOrSettingBtn.clipsToBounds = true
             self.followOrSettingBtn.layer.borderWidth = 1
             self.followOrSettingBtn.layer.borderColor = UIColor.darkGray.cgColor
@@ -35,7 +35,7 @@ class ProfileHeaderCell: UICollectionReusableView {
         userProfileImgView.kf.setImage(with: userPhoto)
         contentInfoLabel.text = CONSTANT_KO.CONTENT_COUNT(count: contentCount)
         followerInfoLabel.text = CONSTANT_KO.FOLLOWER_COUNT(count: followerCount)
-        followingInfoLabel.text = CONSTANT_KO.FOLLOWER_COUNT(count: followingCount)
+        followingInfoLabel.text = CONSTANT_KO.FOLLOWING_COUNT(count: followingCount)
         if isMe {
             followOrSettingBtn.text(CONSTANT_KO.LOG_OUT)
         } else {
