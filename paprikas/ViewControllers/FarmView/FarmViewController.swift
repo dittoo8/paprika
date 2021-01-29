@@ -8,6 +8,7 @@
 import UIKit
 
 class FarmViewController: BaseViewController {
+
     @IBOutlet weak var farmTableView: UITableView!
     let presenter = FarmPresenter(farmService: FarmService())
 
@@ -22,12 +23,18 @@ class FarmViewController: BaseViewController {
         super.viewWillAppear(true)
         presenter.requestFarmData()
     }
-
 }
 extension FarmViewController: FarmView {
     func setFarmData() {
         farmTableView.reloadData()
-        print("set  farm")
+    }
+    func goToProfile(userId: Int) {
+        let profileVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.PROFILE) as! ProfileViewController
+        let navVC = UIApplication.shared.keyWindow?.rootViewController as! MainTabBarController
+        let farmNC = navVC.selectedViewController as! UINavigationController
+        let farmVC = farmNC.viewControllers.first as! FarmViewController
+        profileVC.presenter.setProfileConfig(userId: userId)
+        farmVC.navigationController?.pushViewController(profileVC, animated: true)
     }
 
 }
@@ -61,5 +68,14 @@ extension FarmViewController: FarmView {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return presenter.titleForHeaderSection(section: section)
     }
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return 120
+        case 1, 2:
+            return 80
+        default:
+            return 80
+        }
+    }
  }

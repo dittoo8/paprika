@@ -26,6 +26,7 @@ class FarmService {
 }
 protocol FarmView: class {
     func setFarmData()
+    func goToProfile(userId: Int)
 }
 class FarmPresenter {
     private let farmService: FarmService

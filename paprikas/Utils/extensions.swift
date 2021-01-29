@@ -68,7 +68,9 @@ extension UIViewController {
         print("go to profile vc userid : \(param.userId)")
         let profileVC = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
         profileVC.presenter.setProfileConfig(userId: param.userId!)
+        print("self nav : \(self.navigationController)")
         self.navigationController?.pushViewController(profileVC, animated: true)
+        print("ggg")
     }
     func goToContentDetailVC(contentId: Int) {
         let contentDetailVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.CONTENT_DETAIL) as! ContentDetailViewController
