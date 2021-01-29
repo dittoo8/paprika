@@ -19,7 +19,7 @@ class APIClient {
         switch statusCode {
         case 200:
             return true
-        case 400..<420:
+        case 401..<420:
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION.API.AUTH_FAIL), object: nil, userInfo: nil)
         default:
             makeErrorToast(error: msg)
@@ -45,6 +45,17 @@ class APIClient {
             .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<ResponseModel, AFError>) in
                 if response.response?.statusCode != nil {
                     print("logout - response : \(response.result)")
+                    completion(response.result)
+                } else {
+                    makeErrorToast(error: response.error?.errorDescription! ?? "")
+                }
+            }
+    }
+    static func requestFeed(cursor: String, completion: @escaping (Result<FeedResult, AFError>) -> Void) {
+        let jsonDecoder = JSONDecoder()
+        AF.request(APIRouter.feed(cursor: cursor))
+            .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<FeedResult, AFError>) in
+                if response.response?.statusCode != nil {
                     completion(response.result)
                 } else {
                     makeErrorToast(error: response.error?.errorDescription! ?? "")

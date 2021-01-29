@@ -45,7 +45,7 @@ class FeedViewController: BaseViewController {
 
     @objc func likeBtnClicked(sender: UIButton) {
         sender.isSelected.toggle()
-        presenter.sendLikeAction(method: sender.isSelected, idx: sender.tag)
+        presenter.sendLikeAction(isLike: sender.isSelected, index: sender.tag)
     }
 }
 extension FeedViewController: FeedView {
@@ -81,7 +81,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = feedCollectionView.dequeueReusableCell(withReuseIdentifier: CONSTANT_VC.FEED_COLLECTION_CELL, for: indexPath) as! FeedCollectionViewCell
         presenter.configureCell(cell, forRowAt: indexPath)
-
+        cell.likeBtn.tag = indexPath.row
         cell.likeBtn.addTarget(self, action: #selector(likeBtnClicked(sender: )), for: .touchUpInside)
 
         let newCommentTap = goToCommentTap(target: self, action: #selector(goToCommentVC(param:)))

@@ -19,6 +19,7 @@ enum APIRouter: URLRequestConvertible {
     case follow(userId: Int, isUnfollow: Bool)
     case farm(isTo: Bool)
     case category
+    case feed(cursor: String)
 
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -31,7 +32,7 @@ enum APIRouter: URLRequestConvertible {
             return method
         case .like(let contentId, let isLike):
             return .post
-        case .followList, .profileInfo, .profileFeed, .farm, .category, .logout:
+        case .followList, .profileInfo, .profileFeed, .farm, .category, .logout, .feed:
             return .get
         }
     }
@@ -90,6 +91,8 @@ enum APIRouter: URLRequestConvertible {
             }
         case .category:
             return "/content/get/category"
+        case .feed:
+            return "/feed"
         }
     }
 
@@ -98,7 +101,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .login(let nickname, let pwd):
             return ["nickname": nickname, "pwd": pwd, "devicetoken": UserDefaults.standard.string(forKey: CONSTANT_EN.DEVICE_TOKEN)!]
-        case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm, .category, .logout:
+        case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm, .category, .logout, .feed:
             return nil
         case .comment(let contentId, let method, let commentId, let text):
             switch method {
@@ -114,11 +117,11 @@ enum APIRouter: URLRequestConvertible {
 
     // MARK: - URLRequestConvertible
     func asURLRequest() throws -> URLRequest {
-//        let url = try API.API_BASE.asURL()
         var url: URL?
-        if path == "/login" || path == "/logout" {
+        switch self {
+        case .login, .logout:
             url = try API.AUTH_BASE.asURL()
-        } else {
+        default:
             url = try API.API_BASE.asURL()
         }
         var urlRequest = URLRequest(url: url!.appendingPathComponent(path))
@@ -127,7 +130,14 @@ enum APIRouter: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
         // Common Headers
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
-        if path != "/login" {
+
+        switch self {
+        case .feed(let cursor):
+            urlRequest.setValue(UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN), forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
+            urlRequest.setValue(cursor, forHTTPHeaderField: "cursor")
+        case .login:
+            break
+        default:
             urlRequest.setValue(UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN), forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
         }
 

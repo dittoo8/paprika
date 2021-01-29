@@ -7,10 +7,8 @@
 import Foundation
 import UIKit
 import ImageSlideshow
-protocol FeedCellType {
-    func configureWith(contentId: Int, userId: Int, contentText: String)
-}
-class FeedCollectionViewCell: UICollectionViewCell, FeedCellType {
+import Kingfisher
+class FeedCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var userDetailView: UIView!
     @IBOutlet weak var userProfileImgView: UIImageView! {
@@ -30,17 +28,35 @@ class FeedCollectionViewCell: UICollectionViewCell, FeedCellType {
     @IBOutlet weak var commentBtn: UIButton!
     @IBOutlet weak var contentDetailContainView: UIView!
 
-    // parameter 더 추가될 예정
-    func configureWith(contentId: Int, userId: Int, contentText: String) {
+    func configureWith(content: Content) {
+        var contentImgs = [KingfisherSource]()
+        guard let imgList = content.photo else { return }
+        for img in imgList {
+            let imgurl = URL(string: img)
+            contentImgs.append(KingfisherSource(url: imgurl!))
+        }
         contentImgSlideView.contentScaleMode = .scaleAspectFill
-        contentImgSlideView.setImageInputs([ImageSource(image: UIImage(named: "meta1.jpg")!), ImageSource(image: UIImage(named: "meta2.jpg")!)])
+        contentImgSlideView.setImageInputs(contentImgs)
+
+        userNickNameLabel.text = content.user?.nickname
+        guard let profileImgUrl = URL(string: (content.user?.userphoto)!) else { return }
+        userProfileImgView.kf.setImage(with: profileImgUrl)
+
         let attributedString = NSMutableAttributedString()
-            .bold("ggggg", fontSize: 17)
-            .normal(" \(contentText)", fontSize: 17)
+            .bold((content.user?.nickname)!, fontSize: 17)
+            .normal(" \(content.content?.text ?? "")", fontSize: 17)
         contentTextLabel.attributedText = attributedString
-        // tag 는 게시물 id 로 수정해야함
-        tag = contentId
-        likeBtn.tag = contentId
-        userDetailView.tag = userId
+        tag = (content.content?.contentid)!
+        likeCountLabel.text = CONSTANT_KO.PEOPLE_LIKE_COUNT(count: content.likeCount ?? 0)
+        likeBtn.isSelected = content.isLike!
+        likeBtn.tag = (content.content?.contentid)!
+        commentBtn.tag = (content.content?.contentid!)!
+        if content.commentCount != 0 {
+            commentCountLabel.text = CONSTANT_KO.SHOW_ALL_COMMENT(count: content.commentCount ?? 0)
+        } else {
+            commentCountLabel.text = CONSTANT_KO.NO_COMMENT
+        }
+        contentDateLabel.text = content.date
+        userDetailView.tag = (content.user?.userid)!
     }
 }
