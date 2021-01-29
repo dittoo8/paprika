@@ -22,7 +22,6 @@ class FeedViewController: BaseViewController {
 
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
-
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         feedCollectionView.refreshControl = refreshControl
@@ -74,7 +73,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.view.frame.width
-        let height = width + 300
+        let height = width + 255
         let cellsize = CGSize(width: width, height: height)
         return cellsize
     }

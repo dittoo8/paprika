@@ -161,8 +161,8 @@
                                                     <constraints>
                                                         <constraint firstItem="VWj-AP-gsx" firstAttribute="centerY" secondItem="PeI-Tv-Snw" secondAttribute="centerY" id="1Z2-wy-ldr"/>
                                                         <constraint firstItem="PeI-Tv-Snw" firstAttribute="centerY" secondItem="xiK-hE-X85" secondAttribute="centerY" id="240-AP-ovj"/>
-                                                        <constraint firstItem="VWj-AP-gsx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PeI-Tv-Snw" secondAttribute="trailing" symbolic="YES" id="fxx-cx-YUU"/>
-                                                        <constraint firstAttribute="trailing" secondItem="VWj-AP-gsx" secondAttribute="trailing" constant="255" id="kar-nB-xjv"/>
+                                                        <constraint firstItem="VWj-AP-gsx" firstAttribute="leading" secondItem="PeI-Tv-Snw" secondAttribute="trailing" constant="10" id="fxx-cx-YUU"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VWj-AP-gsx" secondAttribute="trailing" constant="10" id="kar-nB-xjv"/>
                                                         <constraint firstItem="PeI-Tv-Snw" firstAttribute="leading" secondItem="xiK-hE-X85" secondAttribute="leading" constant="10" id="uH8-kR-GMW"/>
                                                         <constraint firstAttribute="height" constant="70" id="wNF-jC-0MB"/>
                                                     </constraints>
@@ -175,7 +175,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Je-Uo-c1q">
-                                                    <rect key="frame" x="0.0" y="544" width="414" height="145"/>
+                                                    <rect key="frame" x="0.0" y="544" width="414" height="125"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10명이 좋아합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hno-GS-USz">
                                                             <rect key="frame" x="15" y="0.0" width="130" height="21"/>
@@ -186,8 +186,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" text="UserName slksdgjgasdlkjasd sdfklgsdajlasdg sdgkljgasdjlkasdgljkags" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnI-Mt-BZO">
-                                                            <rect key="frame" x="15" y="31" width="384" height="41"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" text="UserName slksdgjgasdlkjasd sdfklgsdajlasdg sdgkljgasdjlkasdgljkags" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnI-Mt-BZO">
+                                                            <rect key="frame" x="15" y="31" width="384" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="41" id="Cbw-rA-Fet"/>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="zdH-wu-i7P"/>
@@ -198,13 +198,13 @@
                                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.12.31 18:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oe3-aU-sK7">
-                                                            <rect key="frame" x="15" y="113" width="384" height="21"/>
+                                                            <rect key="frame" x="15" y="93" width="384" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="댓글 5개 모두보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUC-Oe-GTA">
-                                                            <rect key="frame" x="15" y="82" width="384" height="21"/>
+                                                            <rect key="frame" x="15" y="62" width="384" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -225,6 +225,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="Oe3-aU-sK7" secondAttribute="bottom" constant="11" id="mAB-Hb-bgA"/>
                                                         <constraint firstItem="Oe3-aU-sK7" firstAttribute="top" secondItem="QUC-Oe-GTA" secondAttribute="bottom" constant="10" id="nBe-Tz-DSd"/>
                                                         <constraint firstItem="Oe3-aU-sK7" firstAttribute="trailing" secondItem="QUC-Oe-GTA" secondAttribute="trailing" id="rQm-Kf-32I"/>
+                                                        <constraint firstAttribute="height" constant="125" id="zdO-Uu-F6b"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>

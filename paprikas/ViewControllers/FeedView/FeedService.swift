@@ -90,7 +90,6 @@ class FeedPresenter {
         let post = contentList[indexPath.row]
         cell.configureWith(content: post)
         if feedInfo?.hasNextPage ?? true && indexPath.row >= self.contentList.count - 1 {
-            print("load more data")
             loadMoreData()
         }
     }
