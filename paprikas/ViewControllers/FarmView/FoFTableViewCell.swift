@@ -10,6 +10,7 @@ import UIKit
 class FoFTableViewCell: UITableViewCell {
     var fofList = [User]()
     @IBOutlet weak var fofCollectionView: UICollectionView!
+    @IBOutlet weak var noFoFLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         fofCollectionView.delegate = self
@@ -19,6 +20,11 @@ class FoFTableViewCell: UITableViewCell {
 }
  extension FoFTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if fofList.count == 0 {
+            noFoFLabel.isHidden = false
+        } else {
+            noFoFLabel.isHidden = true
+        }
         return fofList.count
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

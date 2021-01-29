@@ -105,9 +105,20 @@ class NewContentPresenter {
             cell.unselectCell()
         } else {
             self.selectedCategory.append(category)
-            cell.contentView.backgroundColor = UIColor.systemGreen
             cell.selectCell()
         }
         print("all : \(self.selectedCategory)")
+    }
+    func willDisplayCell(_ cell: CategoryCollectionViewCell, indexPath: IndexPath) {
+//        print("willdisplay : \(indexPath.row)")
+//        let category = categorys[indexPath.row]
+//        if self.selectedCategory.contains(category) {
+//            print("select ")
+//            cell.contentView.backgroundColor = UIColor.systemGreen
+//        } else {
+//            print("unselect ")
+//            cell.contentView.backgroundColor = UIColor.systemGray2
+//        }
+//        print("all : \(self.selectedCategory)")
     }
 }

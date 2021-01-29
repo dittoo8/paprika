@@ -83,7 +83,10 @@ extension NewContentViewController: UICollectionViewDelegate, UICollectionViewDa
         presenter.configureCell(cell, forRowAt: indexPath)
         return cell
     }
-
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: CONSTANT_VC.CATEGORY_COLLECTION_CELL, for: indexPath) as! CategoryCollectionViewCell
+        presenter.willDisplayCell(cell, indexPath: indexPath)
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = categoryCollectionView.cellForItem(at: indexPath) as! CategoryCollectionViewCell
         presenter.didSelectCollectionViewRowAt(cell, indexPath: indexPath)

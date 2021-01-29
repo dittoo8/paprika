@@ -541,16 +541,25 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 알 수도 있는 친구가 없어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6V-wC-A8f">
+                                                    <rect key="frame" x="98" y="49.5" width="218" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="YBG-Y6-zzY" secondAttribute="trailing" constant="10" id="56z-Mw-lPY"/>
+                                                <constraint firstItem="s6V-wC-A8f" firstAttribute="centerX" secondItem="1yj-ks-djm" secondAttribute="centerX" id="80s-OD-zp0"/>
                                                 <constraint firstItem="YBG-Y6-zzY" firstAttribute="leading" secondItem="1yj-ks-djm" secondAttribute="leading" constant="10" id="FXs-cz-8kh"/>
+                                                <constraint firstItem="s6V-wC-A8f" firstAttribute="centerY" secondItem="1yj-ks-djm" secondAttribute="centerY" id="a5J-8s-1a1"/>
                                                 <constraint firstItem="YBG-Y6-zzY" firstAttribute="top" secondItem="1yj-ks-djm" secondAttribute="top" id="mnG-3B-hQr"/>
                                                 <constraint firstAttribute="bottom" secondItem="YBG-Y6-zzY" secondAttribute="bottom" id="zWT-NN-lIa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="fofCollectionView" destination="YBG-Y6-zzY" id="yCo-XX-0rj"/>
+                                            <outlet property="noFoFLabel" destination="s6V-wC-A8f" id="jH6-EP-JPa"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FarmTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FarmTableViewCell" rowHeight="80" id="401-7g-CEZ" customClass="FarmTableViewCell" customModule="paprikas" customModuleProvider="target">
