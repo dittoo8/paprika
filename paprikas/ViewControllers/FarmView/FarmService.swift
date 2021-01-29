@@ -96,13 +96,13 @@ class FarmPresenter {
             let user = toMeList[indexPath.row]
             if let userId = user.userid, let nickname = user.nickname, let photo = user.userphoto {
                 guard let photoUrl = URL(string: photo) else { return }
-                cell.configureCell(userId: userId, nickname: nickname, userphoto: photoUrl)
+                cell.configureCell(userId: userId, nickname: nickname, userphoto: photoUrl, rank: indexPath.row)
             }
         } else if indexPath.section == 2 {
             let user = fromMeList[indexPath.row]
             if let userId = user.userid, let nickname = user.nickname, let photo = user.userphoto {
                 guard let photoUrl = URL(string: photo) else { return }
-                cell.configureCell(userId: userId, nickname: nickname, userphoto: photoUrl)
+                cell.configureCell(userId: userId, nickname: nickname, userphoto: photoUrl, rank: indexPath.row)
             }
         }
     }

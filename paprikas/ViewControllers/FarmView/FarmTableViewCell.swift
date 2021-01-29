@@ -18,9 +18,19 @@ class FarmTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var userNicknameLabel: UILabel!
 
-    func configureCell(userId: Int, nickname: String, userphoto: URL) {
+    func configureCell(userId: Int, nickname: String, userphoto: URL, rank: Int) {
         tag = userId
         userProfileImgView.kf.setImage(with: userphoto)
         userNicknameLabel.text = nickname
+        switch rank {
+        case 0:
+            badgeImgView.image = UIImage(named: "medal_1st.png")
+        case 1:
+            badgeImgView.image = UIImage(named: "medal_2nd.png")
+        case 2:
+            badgeImgView.image = UIImage(named: "medal_3rd.png")
+        default:
+            break
+        }
     }
 }
