@@ -182,9 +182,9 @@ class APIClient {
             if category.count == 0 {
                 multipartFormData.append("".data(using: .utf8)!, withName: "category")
             } else {
-                for item in category {
+                for (idx, item) in category.enumerated() {
                     if let categoryArray = item.data(using: .utf8) {
-                        multipartFormData.append(categoryArray, withName: "category" )
+                        multipartFormData.append(categoryArray, withName: "category[\(idx)]" )
                     }
                 }
             }
