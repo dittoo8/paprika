@@ -62,6 +62,18 @@ class APIClient {
                 }
             }
     }
+    static func requestFOF(completion: @escaping (Result<FoFResult, AFError>) -> Void) {
+        let jsonDecoder = JSONDecoder()
+        AF.request(APIRouter.friendOfFriend)
+            .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<FoFResult, AFError>) in
+                if response.response?.statusCode != nil {
+                    print("requestFOF - response : \(response.result)")
+                    completion(response.result)
+                } else {
+                    makeErrorToast(error: response.error?.errorDescription! ?? "")
+                }
+            }
+    }
 
     static func requestComment(contentId: Int? = nil, commentId: Int? = nil, text: String? = nil, method: HTTPMethod, completion: @escaping (Result<CommentResult, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()

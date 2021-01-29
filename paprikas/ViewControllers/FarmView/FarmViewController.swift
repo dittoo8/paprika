@@ -48,6 +48,8 @@ extension FarmViewController: FarmView {
         switch indexPath.section {
         case 0:
             let fofCell = tableView.dequeueReusableCell(withIdentifier: "FoFTableViewCell", for: indexPath) as! FoFTableViewCell
+            presenter.configureFoFCell(fofCell, forRowAt: indexPath)
+            fofCell.fofCollectionView.reloadData()
             return fofCell
         case 1, 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "FarmTableViewCell", for: indexPath) as! FarmTableViewCell
@@ -71,7 +73,7 @@ extension FarmViewController: FarmView {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 120
+            return 130
         case 1, 2:
             return 80
         default:

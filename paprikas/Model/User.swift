@@ -29,6 +29,12 @@ struct FollowData: Codable {
     let followCount: Int?
     let followList: [User]?
 }
+struct FoFResult: Codable {
+    let status: Int?
+    let success: Bool?
+    let message: String?
+    let data: [User]?
+}
 struct FarmResult: Codable {
     let status: Int?
     let success: Bool?
@@ -39,6 +45,7 @@ struct User: Codable {
     let userphoto: String?
     let nickname: String?
     let userid: Int?
+    let acquaintance: Int?
 }
 struct ProfileInfoResult: Codable {
     let status: Int?

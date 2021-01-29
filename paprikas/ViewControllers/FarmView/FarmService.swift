@@ -21,7 +21,20 @@ class FarmService {
             }
 
         }
+    }
+    func requestFOFUser(whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping ([User]) -> Void) {
+        APIClient.requestFOF { result in
+            switch result {
+            case .success(let fofResult):
+                if APIClient.networkingResult(statusCode: fofResult.status!, msg: fofResult.message!) {
+                    completionHandler(fofResult.data!)
+                }
+            case .failure(let error):
+                print("error : \(error.localizedDescription)")
+                whenIfFailed(error)
+            }
 
+        }
     }
 }
 protocol FarmView: class {
@@ -34,6 +47,7 @@ class FarmPresenter {
     private let sections: [String] = ["알 수도 있는 친구", CONSTANT_KO.BEST_FRIEND_TO, CONSTANT_KO.BEST_FRIEND_FROM]
     private var fromMeList = [User]()
     private var toMeList = [User]()
+    private var fofList = [User]()
     init(farmService: FarmService) {
         self.farmService = farmService
     }
@@ -54,6 +68,12 @@ class FarmPresenter {
                 self.farmView?.setFarmData()
             })
         })
+        farmService.requestFOFUser(whenIfFailed: { _ in
+
+        }, completionHandler: { fofResult in
+            self.fofList = fofResult
+            self.farmView?.setFarmData()
+        })
     }
 
     // MARK: - TableView Methods
@@ -68,10 +88,11 @@ class FarmPresenter {
             return 0
         }
     }
+    func configureFoFCell(_ cell: FoFTableViewCell, forRowAt indexPath: IndexPath) {
+        cell.fofList = self.fofList
+    }
     func configureRankingCell(_ cell: FarmTableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            cell.backgroundColor = .blue
-        } else if indexPath.section == 1 {
+        if indexPath.section == 1 {
             let user = toMeList[indexPath.row]
             if let userId = user.userid, let nickname = user.nickname, let photo = user.userphoto {
                 guard let photoUrl = URL(string: photo) else { return }
