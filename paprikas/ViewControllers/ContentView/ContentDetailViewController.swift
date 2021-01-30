@@ -42,11 +42,11 @@ class ContentDetailViewController: BaseViewController {
     }
 
     @IBAction func removeBtnClicked(_ sender: Any) {
-        let alert = UIAlertController(title: "게시글을 삭제할까요?", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "네", style: .default, handler: { _ in
+        let alert = UIAlertController(title: CONSTANT_KO.REMOVE_CONTENT, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: CONSTANT_KO.YES, style: .default, handler: { _ in
             self.presenter.removeContentAction()
         }))
-        alert.addAction(UIAlertAction(title: "아니요", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: CONSTANT_KO.NO, style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
     @IBAction func likeBtnClicked(_ sender: UIButton) {

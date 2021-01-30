@@ -44,7 +44,7 @@ protocol FarmView: class {
 class FarmPresenter {
     private let farmService: FarmService
     private weak var farmView: FarmView?
-    private let sections: [String] = ["알 수도 있는 친구", CONSTANT_KO.BEST_FRIEND_TO, CONSTANT_KO.BEST_FRIEND_FROM]
+    private let sections: [String] = [CONSTANT_KO.FRIENDS_OF_FRIENDS, CONSTANT_KO.BEST_FRIEND_TO, CONSTANT_KO.BEST_FRIEND_FROM]
     private var fromMeList = [User]()
     private var toMeList = [User]()
     private var fofList = [User]()
@@ -59,12 +59,10 @@ class FarmPresenter {
             print("to farm service error - \(error)")
         }, completionHandler: { toMeResult in
             self.toMeList = toMeResult
-            print("request to farm")
             self.farmService.requestFarmUser(isTo: false, whenIfFailed: { error in
                 print("to farm service error - \(error)")
             }, completionHandler: { fromMeResult in
                 self.fromMeList = fromMeResult
-                print("request from farm")
                 self.farmView?.setFarmData()
             })
         })

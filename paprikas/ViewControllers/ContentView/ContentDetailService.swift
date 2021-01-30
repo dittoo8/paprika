@@ -85,7 +85,6 @@ class ContentDetailPresenter {
             contentDetailService.requestContentData(contentId: contentId, whenIfFailed: {error in
                 print("error : \(error)")
             }, completionHandler: { content in
-                print("result content : \(content)")
                 self.content = content
                 self.contentDetailView?.setContentViewData(content: content)
                 self.contentDetailView?.setTapGesture(userId: (self.content?.user?.userid)!)
@@ -97,7 +96,6 @@ class ContentDetailPresenter {
             contentDetailService.requestRemoveContent(contentId: contentId, whenIfFailed: {error in
                 print("error : \(error)")
             }, completionHandler: {
-                print("remove ok")
                 self.contentDetailView?.popContentDetailView()
             })
         }

@@ -33,7 +33,7 @@ class FoFTableViewCell: UITableViewCell {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = fofCollectionView.dequeueReusableCell(withReuseIdentifier: "FoFCollectionViewCell", for: indexPath) as! FoFCollectionViewCell
+        let cell = fofCollectionView.dequeueReusableCell(withReuseIdentifier: CONSTANT_VC.FOF_COLLECTION_CELL, for: indexPath) as! FoFCollectionViewCell
         let user = fofList[indexPath.row]
 
         let photoUrl = URL(string: user.userphoto!)!

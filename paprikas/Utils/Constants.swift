@@ -23,6 +23,9 @@ enum CONSTANT_VC {
     static let PROFILE_HEADER_CELL = "ProfileHeaderCell"
     static let PROFILE_COLLECTION_FEED_CELL = "ProfileCollectionFeedCell"
     static let CATEGORY_COLLECTION_CELL = "CategoryCollectionViewCell"
+    static let FOF_TABLE_CELL = "FoFTableViewCell"
+    static let FOF_COLLECTION_CELL = "FoFCollectionViewCell"
+    static let FARM_TALBE_CELL = "FarmTableViewCell"
 }
 enum CONSTANT_KO {
     static let NEW_CONTENT_PLACEHOLDER: String = "이곳에 내용을 입력해주세요."
@@ -39,6 +42,9 @@ enum CONSTANT_KO {
     static let DO_UN_FOLLOW = "팔로우 끊기"
     static let DO_FOLLOW = "팔로우 하기"
     static let LOG_OUT = "로그아웃"
+    static let REMOVE_CONTENT = "게시글을 삭제할까요?"
+    static let YES = "네"
+    static let NO = "아니요"
     static func USERS_CONTENT(user: String) -> String {
         return "\(user)님의 게시물"
     }
@@ -66,8 +72,12 @@ enum CONSTANT_KO {
     static func FOLLOWING_COUNT(count: Int) -> String {
         return "\(count)\n팔로잉"
     }
+    static func FOF_COUNT(count: Int) -> String {
+        return "함께 아는 친구 \(count)명"
+    }
     static let NO_COMMENT = "아직 댓글이 없습니다."
     static let FIRST_COMMENT = "첫번째 댓글을 작성해보세요."
+    static let FRIENDS_OF_FRIENDS = "알 수도 있는 친구"
     static let BEST_FRIEND_TO = "내가 가장 관심을 많이 가진 친구 TOP 5"
     static let BEST_FRIEND_FROM = "나에게 가장 관심을 많이 가진 친구 TOP 5"
     static let MY_FARM = "나의 농장"
@@ -90,6 +100,7 @@ enum API {
     // direct url
     static let AUTH_BASE: String = "http://paprika-auth.onstove.com:8000/auth"
     static let API_BASE: String = "http://paprika-api.onstove.com:8000/api"
+    static let SIGN_UP_URL: String = "http://paprika-auth.onstove.com:8000/auth/sign"
 }
 
 enum NOTIFICATION {

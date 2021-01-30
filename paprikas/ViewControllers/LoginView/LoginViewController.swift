@@ -39,7 +39,7 @@ class LoginViewController: BaseViewController {
         presenter.userLoginAction(nickname: self.idTextField.text!, pwd: self.passwordTetField.text!)
     }
     @IBAction func signUpBtnClicked(_ sender: Any) {
-        guard let url = URL(string: "http://paprika-auth.onstove.com:8000/auth/sign") else { return }
+        guard let url = URL(string: API.SIGN_UP_URL) else { return }
         UIApplication.shared.open(url)
     }
     override func keyboardWillShowHandle(notification: NSNotification) {

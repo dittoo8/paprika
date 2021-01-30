@@ -72,7 +72,6 @@ class FeedPresenter {
     }
 
     func sendLikeAction(isLike: Bool, index: Int) {
-        print("method : \(isLike), idx : \(index)")
         FeedService.requestPostLike(contentId: (self.contentList[index].content?.contentid)!, isLike: isLike, whenIfFailed: {_ in
             // 에러발생
         }, completionHandler: {

@@ -47,12 +47,12 @@ extension FarmViewController: FarmView {
 
         switch indexPath.section {
         case 0:
-            let fofCell = tableView.dequeueReusableCell(withIdentifier: "FoFTableViewCell", for: indexPath) as! FoFTableViewCell
+            let fofCell = tableView.dequeueReusableCell(withIdentifier: CONSTANT_VC.FOF_TABLE_CELL, for: indexPath) as! FoFTableViewCell
             presenter.configureFoFCell(fofCell, forRowAt: indexPath)
             fofCell.fofCollectionView.reloadData()
             return fofCell
         case 1, 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FarmTableViewCell", for: indexPath) as! FarmTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CONSTANT_VC.FARM_TALBE_CELL, for: indexPath) as! FarmTableViewCell
             presenter.configureRankingCell(cell, forRowAt: indexPath)
             let userProfileTap = goToProfileTap(target: self, action: #selector(goToProfileVC(param:)))
             userProfileTap.userId = cell.tag
@@ -60,7 +60,7 @@ extension FarmViewController: FarmView {
             cell.contentView.addGestureRecognizer(userProfileTap)
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FarmTableViewCell", for: indexPath) as! FarmTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CONSTANT_VC.FARM_TALBE_CELL, for: indexPath) as! FarmTableViewCell
             return cell
         }
     }

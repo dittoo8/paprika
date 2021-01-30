@@ -121,7 +121,6 @@ class ProfilePresenter {
                 profileService.requestFollow(userId: self.userId!, isUnFollow: true, whenIfFailed: {_ in
 
                 }, completionHandler: {
-                    print("팔로우 끊음")
                     self.loadProfileInfoData()
                 })
             } else {
@@ -129,7 +128,6 @@ class ProfilePresenter {
                 profileService.requestFollow(userId: self.userId!, isUnFollow: false, whenIfFailed: {_ in
 
                 }, completionHandler: {
-                    print("팔로우 함")
                     self.loadProfileInfoData()
                 })
 

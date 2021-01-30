@@ -21,7 +21,7 @@ class FoFCollectionViewCell: UICollectionViewCell {
         userProfileImgView.layer.cornerRadius = userProfileImgView.frame.height/2
         userProfileImgView.kf.setImage(with: userProto)
 
-        fofCountLabel.text = "함께 아는 친구 \(acquaintance)명"
+        fofCountLabel.text = CONSTANT_KO.FOF_COUNT(count: acquaintance)
         userNameLabel.text = nickname
     }
 }
