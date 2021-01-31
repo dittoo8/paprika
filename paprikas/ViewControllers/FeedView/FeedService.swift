@@ -64,9 +64,11 @@ class FeedPresenter {
             // 에러발생
 
         }, completionHandler: { feedResult in
-            self.contentList += feedResult.contents!
-            self.feedInfo = feedResult.pageInfo
-            self.FeedView?.stopNetworking()
+            if feedResult.contents?.count ?? 0 > 0 {
+                self.contentList += feedResult.contents!
+                self.feedInfo = feedResult.pageInfo
+                self.FeedView?.stopNetworking()
+            }
         })
 
     }

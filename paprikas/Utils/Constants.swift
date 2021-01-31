@@ -18,6 +18,7 @@ enum CONSTANT_VC {
     static let MAIN_TAB_BAR = "MainTabBar"
     static let CONTENT_DETAIL = "ContentDetailVC"
     static let FEED_COLLECTION_CELL = "FeedCollectionViewCell"
+    static let COMMENT_DETAIL = "CommentVC"
     static let COMMENT_TALBE_CELL = "CommentTableViewCell"
     static let FOLLOW_TABLE_CELL = "FollowTableViewCell"
     static let PROFILE_HEADER_CELL = "ProfileHeaderCell"

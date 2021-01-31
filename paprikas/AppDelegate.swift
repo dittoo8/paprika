@@ -115,7 +115,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
     // Print full message.
     print(userInfo)
-
     // Change this to your preferred presentation option
     completionHandler([[.alert, .sound]])
   }
@@ -132,8 +131,46 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // With swizzling disabled you must let Messaging know about the message, for Analytics
     // Messaging.messaging().appDidReceiveMessage(userInfo)
     // Print full message.
+    print("====")
     print(userInfo)
-
+//    if let userid = userInfo["userid"] {
+//        print(type(of: userid))
+//        if userid as! String != "nil" {
+//            print("user id ~ : \(userid)")
+////            let mainTab = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CONSTANT_VC.MAIN_TAB_BAR) as? MainTabBarController
+////            UIApplication.shared.windows.first?.rootViewController = mainTab
+////            UIApplication.shared.windows.first?.makeKeyAndVisible()
+////            mainTab?.selectedIndex = 0
+////            let feedVC = mainTab?.presentedViewController as! FeedViewController
+//
+//        }
+//    }
+    guard let type = userInfo["type"] as? String else { return }
+    switch type {
+    case "user":
+        if let user_id = (userInfo["value"] as? NSString)?.doubleValue {
+            let topVC = UIApplication.topViewController()
+            let ProfileVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CONSTANT_VC.PROFILE) as! ProfileViewController
+            ProfileVC.presenter.setProfileConfig(userId: Int(user_id))
+            topVC?.navigationController?.pushViewController(ProfileVC, animated: true)
+        }
+    case "content":
+        if let content_id = (userInfo["value"] as? NSString)?.doubleValue {
+            let topVC = UIApplication.topViewController()
+            let ContentVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: CONSTANT_VC.CONTENT_DETAIL) as! ContentDetailViewController
+            ContentVC.presenter.setContentConfig(contentId: Int(content_id))
+            topVC?.navigationController?.pushViewController(ContentVC, animated: true)
+        }
+    case "comment":
+        if let content_id = (userInfo["value"] as? NSString)?.doubleValue {
+            let topVC = UIApplication.topViewController()
+            let CommentVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: CONSTANT_VC.COMMENT_DETAIL) as! CommentViewController
+            CommentVC.presenter.setContentConfig(contentId: Int(content_id), isWrite: false)
+            topVC?.navigationController?.pushViewController(CommentVC, animated: true)
+        }
+    default:
+        break
+    }
     completionHandler()
   }
 }
@@ -151,4 +188,20 @@ extension AppDelegate: MessagingDelegate {
     // Note: This callback is fired at each app startup and whenever a new token is generated.
   }
   // [END refresh_token]
+}
+extension UIApplication {
+    class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController {
+                return topViewController(base: selected)
+            }
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
+        }
+        return base
+    }
 }

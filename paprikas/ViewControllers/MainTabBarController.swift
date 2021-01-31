@@ -41,7 +41,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         if beforeVC == 0 && selectedIndex == 0 {
             let feedNC = tabBarController.selectedViewController as! UINavigationController
                 let feedVC = feedNC.viewControllers.first as? FeedViewController
-            feedVC?.feedCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            feedVC?.feedCollectionView?.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         }
         beforeVC = selectedIndex
     }

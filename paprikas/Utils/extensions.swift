@@ -58,7 +58,7 @@ extension UIViewController {
     }
     @objc func goToCommentVC(param: goToCommentTap) {
         print("go to comment vc content id : \(param.contentId)")
-        let commentVC = storyboard?.instantiateViewController(withIdentifier: "CommentVC") as! CommentViewController
+        let commentVC = storyboard?.instantiateViewController(withIdentifier: CONSTANT_VC.COMMENT_DETAIL) as! CommentViewController
         commentVC.presenter.setContentConfig(contentId: param.contentId!, isWrite: param.isWrite!)
         commentVC.presenter.loadCommentData(closure: {
             self.navigationController?.pushViewController(commentVC, animated: true)
