@@ -42,7 +42,6 @@ protocol FeedView: class {
     func finUploadContent()
 }
 class FeedPresenter {
-    var page = 1
     var contentList = [Content]()
     var feedInfo: pageInfoData?
     private let FeedService: FeedService

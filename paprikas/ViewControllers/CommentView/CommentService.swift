@@ -8,9 +8,8 @@
 import Foundation
 import Alamofire
 class CommentService {
-
-    func requestCommentList(contentId: Int, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (CommentList) -> Void) {
-        APIClient.requestComment(contentId: contentId, method: .get) { result in
+    func requestCommentList(contentId: Int, cursor: String, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (CommentList) -> Void) {
+        APIClient.requestComment(contentId: contentId, cursor: cursor, method: .get) { result in
             switch result {
             case .success(let commentResult):
                 if  APIClient.networkingResult(statusCode: commentResult.status!, msg: commentResult.message!) {
@@ -59,7 +58,8 @@ protocol CommentView: class {
 class CommentPresenter {
     var contentId: Int?
     var isWrite = false
-    var comments: CommentList?
+    var comments = [Comment]()
+    var commentInfo: pageInfoData?
     private let CommentService: CommentService
     private weak var CommentView: CommentView?
     init(CommentService: CommentService) {
@@ -78,13 +78,21 @@ class CommentPresenter {
     func toggleIsWrite() {
         isWrite = !isWrite
     }
+    func refreshData() {
+        comments.removeAll()
+        commentInfo?.cursor = nil
+        commentInfo?.hasNextPage = nil
+        loadCommentData {}
+    }
     func loadCommentData(closure: @escaping () -> Void) {
         if let contentId = contentId {
-            CommentService.requestCommentList(contentId: contentId, whenIfFailed: { error in
+            CommentService.requestCommentList(contentId: contentId, cursor: commentInfo?.cursor ?? "null", whenIfFailed: { error in
                 print("error : \(error)")
             }, completionHandler: { commentList in
-                self.comments = commentList
-                self.CommentView?.stopNetworking()
+                if commentList.comment?.count ?? 0 > 0 {
+                    self.comments += commentList.comment!
+                    self.CommentView?.stopNetworking()
+                }
                 closure()
             })
         }
@@ -103,34 +111,34 @@ class CommentPresenter {
 
     // MARK: - TableView Methods
     func numberOfRows(in section: Int) -> Int {
-        let commentCount = comments?.comment?.count ?? 0
+        let commentCount = comments.count
         if commentCount > 0 {
             CommentView?.toggleTableView(method: false)
         } else {
             CommentView?.toggleTableView(method: true)
         }
-        return comments?.comment?.count ?? 0
+        return comments.count
     }
 
     func configureCell(_ cell: CommentTableViewCell, forRowAt indexPath: IndexPath) {
-        let comment = comments?.comment?[indexPath.row]
-        if let commentID = comment?.com?.commentid, let text = comment?.com?.text, let userID = comment?.user?.userid, let userNickname = comment?.user?.nickname, let userPhoto = comment?.user?.userphoto, let date = comment?.date, let isWriter = comment?.isWriter {
+        let comment = comments[indexPath.row]
+        if let commentID = comment.com?.commentid, let text = comment.com?.text, let userID = comment.user?.userid, let userNickname = comment.user?.nickname, let userPhoto = comment.user?.userphoto, let date = comment.date, let isWriter = comment.isWriter {
             guard let userPhotourl = URL(string: userPhoto) else { return }
             cell.configureWith(commentID: commentID, text: text, userID: userID, userNickname: userNickname, userPhoto: userPhotourl, date: date, isWriter: isWriter)
         }
     }
     func checkEditRow(_ cell: CommentTableViewCell, forRowAt indexPath: IndexPath) -> Bool {
-        let comment = comments?.comment?[indexPath.row]
-        return (comment?.isWriter)!
+        let comment = comments[indexPath.row]
+        return comment.isWriter ?? false
     }
 
     func removeCommentCell(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if let commentId = comments?.comment?[indexPath.row].com?.commentid {
+        if let commentId = comments[indexPath.row].com?.commentid {
             CommentService.requestRemoveComment(commentId: commentId, whenIfFailed: { _ in
                 // 통신 실패
             }, completionHandler: {
                 tableView.beginUpdates()
-                self.comments?.comment?.remove(at: indexPath.row)
+                self.comments.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .left)
                 tableView.endUpdates()
             })

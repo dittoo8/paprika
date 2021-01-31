@@ -16,6 +16,7 @@ struct CommentResult: Codable {
 struct CommentList: Codable {
     let commentCount: Int?
     var comment: [Comment]?
+    var pageInfo: pageInfoData?
 }
 struct Comment: Codable {
     let com: commentDetail?

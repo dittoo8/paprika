@@ -54,7 +54,7 @@ class CommentViewController: BaseViewController {
     }
     // MARK: - selector Methods
     @objc fileprivate func handleRefresh() {
-        presenter.loadCommentData {}
+        presenter.refreshData()
     }
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {

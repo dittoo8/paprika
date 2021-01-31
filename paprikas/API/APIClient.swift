@@ -75,9 +75,9 @@ class APIClient {
             }
     }
 
-    static func requestComment(contentId: Int? = nil, commentId: Int? = nil, text: String? = nil, method: HTTPMethod, completion: @escaping (Result<CommentResult, AFError>) -> Void) {
+    static func requestComment(contentId: Int? = nil, commentId: Int? = nil, cursor: String? = nil, text: String? = nil, method: HTTPMethod, completion: @escaping (Result<CommentResult, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()
-        AF.request(APIRouter.comment(contentId: contentId, method: method, commentId: commentId, text: text))
+        AF.request(APIRouter.comment(contentId: contentId, method: method, commentId: commentId, text: text, cursor: cursor))
                 .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<CommentResult, AFError>) in
                     if response.response?.statusCode != nil {
                         print("requestComment - response : \(response.result)")

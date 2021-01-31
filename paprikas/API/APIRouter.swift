@@ -11,7 +11,7 @@ enum APIRouter: URLRequestConvertible {
     case login(nickname: String, pwd: String)
     case logout
     case content(contentId: Int, method: HTTPMethod)
-    case comment(contentId: Int? = nil, method: HTTPMethod, commentId: Int? = nil, text: String? = nil)
+    case comment(contentId: Int? = nil, method: HTTPMethod, commentId: Int? = nil, text: String? = nil, cursor: String? = nil)
     case like(contentId: Int, isLike: Bool)
     case followList(userId: Int, isFollowing: Bool)
     case profileInfo(userId: Int)
@@ -29,7 +29,7 @@ enum APIRouter: URLRequestConvertible {
             return .post
         case .content(let contentId, let method):
             return method
-        case .comment(let contentId, let method, let commentId, let text):
+        case .comment(let contentId, let method, let commentId, let text, let cursor):
             return method
         case .like(let contentId, let isLike):
             return .post
@@ -47,7 +47,7 @@ enum APIRouter: URLRequestConvertible {
             return "/logout"
         case .content(let contentId, let method):
             return "/content/\(contentId)"
-        case .comment(let contentId, let method, let commentId, let text):
+        case .comment(let contentId, let method, let commentId, let text, let cursur):
             switch method {
             case .get:
                 return "/comment/\(contentId!)"
@@ -106,7 +106,7 @@ enum APIRouter: URLRequestConvertible {
             return ["nickname": nickname, "pwd": pwd, "devicetoken": UserDefaults.standard.string(forKey: CONSTANT_EN.DEVICE_TOKEN)!]
         case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm, .category, .logout, .feed, .friendOfFriend:
             return nil
-        case .comment(let contentId, let method, let commentId, let text):
+        case .comment(let contentId, let method, let commentId, let text, let cursor):
             switch method {
             case .get, .delete:
                 return nil
@@ -138,6 +138,11 @@ enum APIRouter: URLRequestConvertible {
         case .feed(let cursor):
             urlRequest.setValue(UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN), forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
             urlRequest.setValue(cursor, forHTTPHeaderField: "cursor")
+        case .comment(let contentId, let method, let commentId, let text, let cursor):
+            urlRequest.setValue(UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN), forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
+            if method == .get {
+                urlRequest.setValue(cursor, forHTTPHeaderField: "cursor")
+            }
         case .login:
             break
         default:
