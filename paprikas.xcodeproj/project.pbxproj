@@ -39,6 +39,7 @@
 		DC74DE4C25A2E0B8002353D7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE4B25A2E0B8002353D7 /* ProfileViewController.swift */; };
 		DC74DE5825A2E83D002353D7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74DE5725A2E83D002353D7 /* User.swift */; };
 		DCAB277E25A58DF60028F248 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAB277D25A58DF60028F248 /* MainTabBarController.swift */; };
+		DCACAEC225C738EA004EACCE /* RecommendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCACAEC125C738EA004EACCE /* RecommendCollectionCell.swift */; };
 		DCC7552825BC18E800E093E9 /* ProfileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC7552725BC18E800E093E9 /* ProfileHeaderCell.swift */; };
 		DCC7552E25BC1E0E00E093E9 /* FollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC7552D25BC1E0E00E093E9 /* FollowViewController.swift */; };
 		DCC7553325BC1E4100E093E9 /* FollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC7553225BC1E4100E093E9 /* FollowService.swift */; };
@@ -122,6 +123,7 @@
 		DC74DE4B25A2E0B8002353D7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DC74DE5725A2E83D002353D7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DCAB277D25A58DF60028F248 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		DCACAEC125C738EA004EACCE /* RecommendCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionCell.swift; sourceTree = "<group>"; };
 		DCC7552725BC18E800E093E9 /* ProfileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCell.swift; sourceTree = "<group>"; };
 		DCC7552D25BC1E0E00E093E9 /* FollowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewController.swift; sourceTree = "<group>"; };
 		DCC7553225BC1E4100E093E9 /* FollowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowService.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				DC74DE3C25A2E050002353D7 /* SearchViewController.swift */,
 				DCDEA32825C03AEF006742BE /* SearchService.swift */,
+				DCACAEC125C738EA004EACCE /* RecommendCollectionCell.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				DC5230AE25A354360075FE48 /* FeedCollectionViewCell.swift in Sources */,
 				DCC7553325BC1E4100E093E9 /* FollowService.swift in Sources */,
 				CE90CBA925B80A4D001B22E4 /* ProfileService.swift in Sources */,
+				DCACAEC225C738EA004EACCE /* RecommendCollectionCell.swift in Sources */,
 				CEF6EF4C25C1A2980090D122 /* FoFTableViewCell.swift in Sources */,
 				DC74DE4C25A2E0B8002353D7 /* ProfileViewController.swift in Sources */,
 				DC5230B325A3582F0075FE48 /* Post.swift in Sources */,

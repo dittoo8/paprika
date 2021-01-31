@@ -31,13 +31,13 @@ class ContentDetailViewController: BaseViewController {
     let presenter = ContentDetailPresenter(contentDetailService: ContentDetailService())
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = false
         presenter.attachView(view: self)
         likeBtn.setImage(UIImage(named: "HeartButton.png"), for: .normal)
         likeBtn.setImage(UIImage(named: "FullHeartButton.png"), for: .selected)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        navigationController?.isNavigationBarHidden = false
         presenter.getContentData()
     }
 

@@ -27,6 +27,7 @@ enum CONSTANT_VC {
     static let FOF_TABLE_CELL = "FoFTableViewCell"
     static let FOF_COLLECTION_CELL = "FoFCollectionViewCell"
     static let FARM_TALBE_CELL = "FarmTableViewCell"
+    static let RECOMMEND_COLLECTION_CELL = "RecommendCollectionCell"
 }
 enum CONSTANT_KO {
     static let NEW_CONTENT_PLACEHOLDER: String = "이곳에 내용을 입력해주세요."
