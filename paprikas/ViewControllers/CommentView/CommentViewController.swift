@@ -72,6 +72,7 @@ class CommentViewController: BaseViewController {
             presenter.addNewComment(text: newCommentTextField.text!) {
                 self.newCommentTextField.text = ""
                 self.view.endEditing(true)
+                self.keyboardWillHideHandle()
             }
         }
     }

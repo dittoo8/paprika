@@ -30,7 +30,7 @@ class FarmTableViewCell: UITableViewCell {
         case 2:
             badgeImgView.image = UIImage(named: "medal_3rd.png")
         default:
-            break
+            badgeImgView.image = nil
         }
     }
 }

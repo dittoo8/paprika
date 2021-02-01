@@ -810,6 +810,12 @@
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="게시물이 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rob-K4-Cxi">
+                                <rect key="frame" x="143.5" y="443" width="127" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GKC-a7-TNf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -819,7 +825,9 @@
                             <constraint firstItem="tiD-m9-JlC" firstAttribute="top" secondItem="GKC-a7-TNf" secondAttribute="top" id="VQW-zs-vgl"/>
                             <constraint firstItem="tiD-m9-JlC" firstAttribute="leading" secondItem="GKC-a7-TNf" secondAttribute="leading" id="dnN-aq-09M"/>
                             <constraint firstItem="GKC-a7-TNf" firstAttribute="bottom" secondItem="tiD-m9-JlC" secondAttribute="bottom" id="hCG-o9-2Kr"/>
+                            <constraint firstItem="Rob-K4-Cxi" firstAttribute="centerX" secondItem="GKC-a7-TNf" secondAttribute="centerX" id="n3p-lw-a4Q"/>
                             <constraint firstItem="tiD-m9-JlC" firstAttribute="trailing" secondItem="GKC-a7-TNf" secondAttribute="trailing" id="rDQ-mQ-Xch"/>
+                            <constraint firstItem="Rob-K4-Cxi" firstAttribute="centerY" secondItem="GKC-a7-TNf" secondAttribute="centerY" id="sat-Fm-ZmH"/>
                             <constraint firstItem="tiD-m9-JlC" firstAttribute="leading" secondItem="GKC-a7-TNf" secondAttribute="leading" id="u2Q-Zw-K7K"/>
                         </constraints>
                     </view>

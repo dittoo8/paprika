@@ -89,7 +89,7 @@ class FeedPresenter {
     func configureCell(_ cell: FeedCollectionViewCell, forRowAt indexPath: IndexPath) {
         let post = contentList[indexPath.row]
         cell.configureWith(content: post)
-        if feedInfo?.hasNextPage ?? true && indexPath.row >= self.contentList.count - 1 {
+        if feedInfo?.hasNextPage ?? false && indexPath.row >= self.contentList.count - 1 {
             loadMoreData()
         }
     }

@@ -102,7 +102,8 @@ class CommentPresenter {
                 _ in
                 // 통신 실패
             }, completionHandler: {
-                self.loadCommentData()
+                self.refreshData()
+                closure()
             })
         }
     }
@@ -123,6 +124,9 @@ class CommentPresenter {
         if let commentID = comment.com?.commentid, let text = comment.com?.text, let userID = comment.user?.userid, let userNickname = comment.user?.nickname, let userPhoto = comment.user?.userphoto, let date = comment.date, let isWriter = comment.isWriter {
             guard let userPhotourl = URL(string: userPhoto) else { return }
             cell.configureWith(commentID: commentID, text: text, userID: userID, userNickname: userNickname, userPhoto: userPhotourl, date: date, isWriter: isWriter)
+        }
+        if commentInfo?.hasNextPage ?? false && indexPath.row >= self.comments.count - 1 {
+            loadCommentData()
         }
     }
     func checkEditRow(_ cell: CommentTableViewCell, forRowAt indexPath: IndexPath) -> Bool {
