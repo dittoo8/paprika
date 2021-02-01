@@ -82,9 +82,9 @@ class CommentPresenter {
         comments.removeAll()
         commentInfo?.cursor = nil
         commentInfo?.hasNextPage = nil
-        loadCommentData {}
+        loadCommentData()
     }
-    func loadCommentData(closure: @escaping () -> Void) {
+    func loadCommentData() {
         if let contentId = contentId {
             CommentService.requestCommentList(contentId: contentId, cursor: commentInfo?.cursor ?? "null", whenIfFailed: { error in
                 print("error : \(error)")
@@ -93,7 +93,6 @@ class CommentPresenter {
                     self.comments += commentList.comment!
                     self.CommentView?.stopNetworking()
                 }
-                closure()
             })
         }
     }
@@ -103,8 +102,7 @@ class CommentPresenter {
                 _ in
                 // 통신 실패
             }, completionHandler: {
-                self.loadCommentData {}
-                closure()
+                self.loadCommentData()
             })
         }
     }

@@ -163,6 +163,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         }
     case "comment":
         if let content_id = (userInfo["value"] as? NSString)?.doubleValue {
+            print("contentid : \(content_id)")
             let topVC = UIApplication.topViewController()
             let CommentVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: CONSTANT_VC.COMMENT_DETAIL) as! CommentViewController
             CommentVC.presenter.setContentConfig(contentId: Int(content_id), isWrite: false)

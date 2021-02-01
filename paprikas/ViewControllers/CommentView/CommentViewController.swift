@@ -42,6 +42,7 @@ class CommentViewController: BaseViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = CONSTANT_KO.COMMENT
+        presenter.loadCommentData()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)

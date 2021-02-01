@@ -368,6 +368,7 @@
                     <navigationItem key="navigationItem" id="caW-CP-yeA"/>
                     <connections>
                         <outlet property="recommendCollectionView" destination="4eB-cQ-8T6" id="now-da-pyV"/>
+                        <outlet property="userSearchBar" destination="p9Z-Vp-Ts9" id="BKX-qp-EyJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0d-ND-4e0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
