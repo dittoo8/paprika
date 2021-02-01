@@ -16,6 +16,7 @@
 		CEF6EF4725C131C50090D122 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6EF4625C131C50090D122 /* CategoryCollectionViewCell.swift */; };
 		CEF6EF4C25C1A2980090D122 /* FoFTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6EF4B25C1A2980090D122 /* FoFTableViewCell.swift */; };
 		CEF6EF5125C1A6120090D122 /* FoFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6EF5025C1A6120090D122 /* FoFCollectionViewCell.swift */; };
+		DC1ECBDB25C83CC60036E8C9 /* SearchResultContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1ECBDA25C83CC60036E8C9 /* SearchResultContainerViewController.swift */; };
 		DC3DDC7D25B952CE00DE6745 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3DDC7C25B952CE00DE6745 /* LoginService.swift */; };
 		DC433C6C259C18BF00B0B083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6B259C18BF00B0B083 /* AppDelegate.swift */; };
 		DC433C6E259C18BF00B0B083 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC433C6D259C18BF00B0B083 /* SceneDelegate.swift */; };
@@ -93,6 +94,7 @@
 		CEF6EF4625C131C50090D122 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEF6EF4B25C1A2980090D122 /* FoFTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoFTableViewCell.swift; sourceTree = "<group>"; };
 		CEF6EF5025C1A6120090D122 /* FoFCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoFCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC1ECBDA25C83CC60036E8C9 /* SearchResultContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultContainerViewController.swift; sourceTree = "<group>"; };
 		DC3DDC7C25B952CE00DE6745 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		DC433C68259C18BF00B0B083 /* paprikas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = paprikas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC433C6B259C18BF00B0B083 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				DC74DE3C25A2E050002353D7 /* SearchViewController.swift */,
 				DCDEA32825C03AEF006742BE /* SearchService.swift */,
 				DCACAEC125C738EA004EACCE /* RecommendCollectionCell.swift */,
+				DC1ECBDA25C83CC60036E8C9 /* SearchResultContainerViewController.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				DC433C70259C18BF00B0B083 /* LoginViewController.swift in Sources */,
 				DC74DE3D25A2E050002353D7 /* SearchViewController.swift in Sources */,
 				DC74DE4225A2E07D002353D7 /* NewContentViewController.swift in Sources */,
+				DC1ECBDB25C83CC60036E8C9 /* SearchResultContainerViewController.swift in Sources */,
 				DC433C6C259C18BF00B0B083 /* AppDelegate.swift in Sources */,
 				DCC7553825BC21FE00E093E9 /* FollowTableViewCell.swift in Sources */,
 				DC74DE3825A2E00F002353D7 /* FeedViewController.swift in Sources */,

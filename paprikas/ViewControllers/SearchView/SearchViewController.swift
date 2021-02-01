@@ -11,6 +11,7 @@ class SearchViewController: BaseViewController {
 
     @IBOutlet weak var userSearchBar: UISearchBar!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
+    @IBOutlet weak var UserListContainer: UIView!
     let presenter = SearchPresenter(searchService: SearchService())
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,11 +91,20 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension SearchViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("text : \(searchBar.searchTextField.text)")
+//        print("text : \(searchBar.searchTextField.text)")
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.searchTextField.text != "" {
-            presenter.loadSearchData(name: searchBar.searchTextField.text!)
-        }
+//        if searchBar.searchTextField.text != "" {
+//            presenter.loadSearchData(name: searchBar.searchTextField.text!)
+//        }
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        print("")
+//        UserListContainer.isHidden = false
+//        recommendCollectionView.isHidden = true
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//        UserListContainer.isHidden = true
+//        recommendCollectionView.isHidden = false
     }
 }
