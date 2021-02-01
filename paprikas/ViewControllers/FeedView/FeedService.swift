@@ -66,8 +66,8 @@ class FeedPresenter {
             if feedResult.contents?.count ?? 0 > 0 {
                 self.contentList += feedResult.contents!
                 self.feedInfo = feedResult.pageInfo
-                self.FeedView?.stopNetworking()
             }
+            self.FeedView?.stopNetworking()
         })
 
     }

@@ -63,11 +63,12 @@ class SearchPresenter {
             // 에러
             print("error : \(error)")
         }, completionHandler: { feedData in
+            print("feed data : \(feedData)")
             if feedData.photos?.count ?? 0 > 0 {
                 self.recommendFeedData += feedData.photos!
                 self.recommendPageInfo = feedData.pageInfo
-                self.searchView?.stopNetworking()
             }
+            self.searchView?.stopNetworking()
         })
     }
     func loadSearchData(name: String) {

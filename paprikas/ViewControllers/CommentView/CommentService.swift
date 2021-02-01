@@ -92,8 +92,8 @@ class CommentPresenter {
                 if commentList.comment?.count ?? 0 > 0 {
                     self.comments += commentList.comment!
                     self.commentInfo = commentList.pageInfo
-                    self.CommentView?.stopNetworking()
                 }
+                self.CommentView?.stopNetworking()
             })
         }
     }

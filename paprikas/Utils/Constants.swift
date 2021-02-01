@@ -97,12 +97,12 @@ enum API {
     // mock url
 //    static let API_BASE: String = "https://00fcb098-a0d7-4420-ad47-d0b48c9fc87b.mock.pstmn.io/api"
     // gateway url
-//    static let AUTH_BASE: String = "http://paprika.onstove.com:8282/auth"
-//    static let API_BASE: String = "http://paprika.onstove.com:8282/api"
+    static let AUTH_BASE: String = "http://paprika.onstove.com:8282/auth"
+    static let API_BASE: String = "http://paprika.onstove.com:8282/api"
 
     // direct url
-    static let AUTH_BASE: String = "http://paprika-auth.onstove.com:8000/auth"
-    static let API_BASE: String = "http://paprika-api.onstove.com:8000/api"
+//    static let AUTH_BASE: String = "http://paprika-auth.onstove.com:8000/auth"
+//    static let API_BASE: String = "http://paprika-api.onstove.com:8000/api"
     static let SIGN_UP_URL: String = "http://paprika-auth.onstove.com:8000/auth/sign"
 }
 
