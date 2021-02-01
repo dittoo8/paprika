@@ -61,13 +61,14 @@ struct ProfileInfoDate: Codable {
     let followingCount: Int?
     let isFollowed: Bool?
 }
-struct ProfileFeedResult: Codable {
+struct PhotoFeedResult: Codable {
     let status: Int?
     let success: Bool?
     let message: String?
     let data: Photos?
 }
 struct Photos: Codable {
+    let pageInfo: pageInfoData?
     let photos: [PhotoData]?
 }
 struct PhotoData: Codable {

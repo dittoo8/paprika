@@ -111,10 +111,23 @@ class APIClient {
                     }
         }
     }
-    static func requestProfileFeed(userId: Int, completion: @escaping (Result<ProfileFeedResult, AFError>) -> Void) {
+    static func requestProfileFeed(userId: Int, completion: @escaping (Result<PhotoFeedResult, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()
         AF.request(APIRouter.profileFeed(userId: userId))
-                .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<ProfileFeedResult, AFError>) in
+                .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<PhotoFeedResult, AFError>) in
+                    if response.response?.statusCode != nil {
+//                        print("requestProfileFeed - response : \(response.result)")
+                        completion(response.result)
+                    } else {
+                        makeErrorToast(error: response.error?.errorDescription! ?? "")
+                    }
+        }
+    }
+
+    static func requestRecommendFeed(cursor: String, completion: @escaping (Result<PhotoFeedResult, AFError>) -> Void) {
+            let jsonDecoder = JSONDecoder()
+        AF.request(APIRouter.recommend(cursor: cursor))
+                .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<PhotoFeedResult, AFError>) in
                     if response.response?.statusCode != nil {
 //                        print("requestProfileFeed - response : \(response.result)")
                         completion(response.result)

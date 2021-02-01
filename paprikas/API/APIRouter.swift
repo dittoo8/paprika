@@ -21,6 +21,7 @@ enum APIRouter: URLRequestConvertible {
     case category
     case feed(cursor: String)
     case friendOfFriend
+    case recommend(cursor: String)
 
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -33,7 +34,7 @@ enum APIRouter: URLRequestConvertible {
             return method
         case .like(let contentId, let isLike):
             return .post
-        case .followList, .profileInfo, .profileFeed, .farm, .category, .logout, .feed, .friendOfFriend:
+        case .followList, .profileInfo, .profileFeed, .farm, .category, .logout, .feed, .friendOfFriend, .recommend:
             return .get
         }
     }
@@ -96,6 +97,8 @@ enum APIRouter: URLRequestConvertible {
             return "/feed"
         case .friendOfFriend:
             return "/farm/know"
+        case .recommend:
+            return "/recommend/contents"
         }
     }
 
@@ -104,7 +107,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .login(let nickname, let pwd):
             return ["nickname": nickname, "pwd": pwd, "devicetoken": UserDefaults.standard.string(forKey: CONSTANT_EN.DEVICE_TOKEN)!]
-        case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm, .category, .logout, .feed, .friendOfFriend:
+        case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm, .category, .logout, .feed, .friendOfFriend, .recommend:
             return nil
         case .comment(let contentId, let method, let commentId, let text, let cursor):
             switch method {
@@ -143,6 +146,9 @@ enum APIRouter: URLRequestConvertible {
             if method == .get {
                 urlRequest.setValue(cursor, forHTTPHeaderField: "cursor")
             }
+        case .recommend(let cursor):
+            urlRequest.setValue(UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN), forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
+            urlRequest.setValue(cursor, forHTTPHeaderField: "cursor")
         case .login:
             break
         default:

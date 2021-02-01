@@ -20,11 +20,20 @@ class SearchViewController: BaseViewController {
         recommendCollectionView.delegate = self
         recommendCollectionView.dataSource = self
         userSearchBar.delegate = self
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        recommendCollectionView.refreshControl = refreshControl
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = true
-        presenter.loadRecommendFeedData()
+        handleRefresh()
+    }
+    // MARK: - selector Methods
+    @objc func handleRefresh() {
+        print("searchVC - handleRefresh")
+        presenter.refreshData()
     }
     override func keyboardWillShowHandle(notification: NSNotification) {
     }
@@ -36,6 +45,11 @@ class SearchViewController: BaseViewController {
 
 }
 extension SearchViewController: SearchView {
+    func stopNetworking() {
+        self.recommendCollectionView.reloadData()
+        self.recommendCollectionView?.refreshControl?.endRefreshing()
+    }
+
     func setRecommendFeed() {
         self.recommendCollectionView.reloadData()
     }
@@ -43,6 +57,7 @@ extension SearchViewController: SearchView {
     func goToContentDetail(contentId: Int) {
         goToContentDetailVC(contentId: contentId)
     }
+
 }
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
