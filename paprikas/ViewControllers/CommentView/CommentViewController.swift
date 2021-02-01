@@ -36,13 +36,13 @@ class CommentViewController: BaseViewController {
         commentTableView.refreshControl = refreshControl
         self.noCommentLabel.text = CONSTANT_KO.FIRST_COMMENT
         self.myProfileImgView.kf.setImage(with: UserDefaults.standard.url(forKey: CONSTANT_EN.MY_PHOTO))
+        presenter.loadCommentData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = CONSTANT_KO.COMMENT
-        presenter.loadCommentData()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
