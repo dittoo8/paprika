@@ -22,9 +22,9 @@ struct FollowResult: Codable {
     let status: Int?
     let success: Bool?
     let message: String?
-    let data: FollowData?
+    let data: UserListData?
 }
-struct FollowData: Codable {
+struct UserListData: Codable {
     let nickname: String?
     let followCount: Int?
     let followList: [User]?
@@ -35,7 +35,7 @@ struct FoFResult: Codable {
     let message: String?
     let data: [User]?
 }
-struct FarmResult: Codable {
+struct UserResult: Codable {
     let status: Int?
     let success: Bool?
     let message: String?

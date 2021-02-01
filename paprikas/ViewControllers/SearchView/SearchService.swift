@@ -20,7 +20,19 @@ class SearchService {
                 whenIfFailed(error)
             }
         }
-
+    }
+    func requestSearchUser(name: String, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping ([User]) -> Void) {
+        APIClient.requestSearchUser(name: name) { result in
+            switch result {
+            case .success(let userListResult):
+                if  APIClient.networkingResult(statusCode: userListResult.status!, msg: userListResult.message!) {
+                    completionHandler(userListResult.data!)
+                }
+            case .failure(let error):
+                print("error : \(error.localizedDescription)")
+                whenIfFailed(error)
+            }
+        }
     }
 }
 protocol SearchView: class {
@@ -31,6 +43,7 @@ protocol SearchView: class {
 class SearchPresenter {
     var recommendFeedData = [PhotoData]()
     var recommendPageInfo: pageInfoData?
+    var searchUserList = [User]()
     private let SearchService: SearchService
     private weak var searchView: SearchView?
     init(searchService: SearchService) {
@@ -55,6 +68,14 @@ class SearchPresenter {
                 self.recommendPageInfo = feedData.pageInfo
                 self.searchView?.stopNetworking()
             }
+        })
+    }
+    func loadSearchData(name: String) {
+        SearchService.requestSearchUser(name: name, whenIfFailed: { error in
+            print("error : \(error)")
+        }, completionHandler: { userList in
+            self.searchUserList = userList
+//          self.searchView?.setFollowViewData()
         })
     }
     // MARK: - Collection view Methods

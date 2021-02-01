@@ -25,7 +25,7 @@ class FollowViewController: BaseViewController {
 
 }
 extension FollowViewController: FollowView {
-    func setFollowViewData(followData: FollowData, isFollowing: Bool) {
+    func setFollowViewData(followData: UserListData, isFollowing: Bool) {
         self.navigationItem.title = CONSTANT_KO.USER_FOLLOW(nickname: followData.nickname!, isFollowing: isFollowing)
         self.followListTableView.reloadData()
     }

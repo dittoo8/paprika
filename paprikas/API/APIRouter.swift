@@ -22,6 +22,7 @@ enum APIRouter: URLRequestConvertible {
     case feed(cursor: String)
     case friendOfFriend
     case recommend(cursor: String)
+    case search(name: String)
 
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -34,7 +35,7 @@ enum APIRouter: URLRequestConvertible {
             return method
         case .like(let contentId, let isLike):
             return .post
-        case .followList, .profileInfo, .profileFeed, .farm, .category, .logout, .feed, .friendOfFriend, .recommend:
+        case .followList, .profileInfo, .profileFeed, .farm, .category, .logout, .feed, .friendOfFriend, .recommend, .search:
             return .get
         }
     }
@@ -99,6 +100,8 @@ enum APIRouter: URLRequestConvertible {
             return "/farm/know"
         case .recommend:
             return "/recommend/contents"
+        case .search(let name):
+            return "/search/user/\(name)"
         }
     }
 
@@ -107,7 +110,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .login(let nickname, let pwd):
             return ["nickname": nickname, "pwd": pwd, "devicetoken": UserDefaults.standard.string(forKey: CONSTANT_EN.DEVICE_TOKEN)!]
-        case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm, .category, .logout, .feed, .friendOfFriend, .recommend:
+        case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm, .category, .logout, .feed, .friendOfFriend, .recommend, .search:
             return nil
         case .comment(let contentId, let method, let commentId, let text, let cursor):
             switch method {

@@ -8,7 +8,7 @@
 import Foundation
 
  class FollowService {
-    func requestFollowList(userId: Int, isFollowing: Bool, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (FollowData) -> Void) {
+    func requestFollowList(userId: Int, isFollowing: Bool, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (UserListData) -> Void) {
         APIClient.requestFollowList(userId: userId, isFollowing: isFollowing) { result in
             switch result {
             case .success(let followResult):
@@ -23,12 +23,12 @@ import Foundation
     }
  }
  protocol FollowView: class {
-    func setFollowViewData(followData: FollowData, isFollowing: Bool)
+    func setFollowViewData(followData: UserListData, isFollowing: Bool)
  }
  class FollowPresenter {
     var userId: Int?
     var isFollowing: Bool?
-    var follows: FollowData?
+    var follows: UserListData?
     private let followService: FollowService
     private weak var followView: FollowView?
     init(followService: FollowService) {

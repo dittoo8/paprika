@@ -129,7 +129,19 @@ class APIClient {
         AF.request(APIRouter.recommend(cursor: cursor))
                 .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<PhotoFeedResult, AFError>) in
                     if response.response?.statusCode != nil {
-//                        print("requestProfileFeed - response : \(response.result)")
+//                        print("requestRecommendFeed - response : \(response.result)")
+                        completion(response.result)
+                    } else {
+                        makeErrorToast(error: response.error?.errorDescription! ?? "")
+                    }
+        }
+    }
+    static func requestSearchUser(name: String, completion: @escaping (Result<UserResult, AFError>) -> Void) {
+            let jsonDecoder = JSONDecoder()
+        AF.request(APIRouter.search(name: name))
+                .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<UserResult, AFError>) in
+                    if response.response?.statusCode != nil {
+                        print("requestSearchUser - response : \(response.result)")
                         completion(response.result)
                     } else {
                         makeErrorToast(error: response.error?.errorDescription! ?? "")
@@ -157,10 +169,10 @@ class APIClient {
                 completion(response.result)
             }
     }
-    static func requestFarm(isTo: Bool, completion: @escaping (Result<FarmResult, AFError>) -> Void) {
+    static func requestFarm(isTo: Bool, completion: @escaping (Result<UserResult, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()
         AF.request(APIRouter.farm(isTo: isTo))
-            .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<FarmResult, AFError>) in
+            .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<UserResult, AFError>) in
                 print("requestFarm - response : \(response)")
                 completion(response.result)
             }

@@ -93,6 +93,8 @@ extension SearchViewController: UISearchBarDelegate {
         print("text : \(searchBar.searchTextField.text)")
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("did change : \(searchBar.searchTextField.text )")
+        if searchBar.searchTextField.text != "" {
+            presenter.loadSearchData(name: searchBar.searchTextField.text!)
+        }
     }
 }
