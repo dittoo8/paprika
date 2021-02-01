@@ -45,6 +45,7 @@ enum CONSTANT_KO {
     static let DO_FOLLOW = "팔로우 하기"
     static let LOG_OUT = "로그아웃"
     static let REMOVE_CONTENT = "게시글을 삭제할까요?"
+    static let NO_CONTENT = "게시물이 없습니다."
     static let YES = "네"
     static let NO = "아니요"
     static func USERS_CONTENT(user: String) -> String {

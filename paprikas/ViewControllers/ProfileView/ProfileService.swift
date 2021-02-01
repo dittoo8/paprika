@@ -67,6 +67,7 @@ protocol ProfileView: class {
     func setProfileData(profileData: ProfileInfoDate)
     func setProfileFeed()
     func goToContentDetail(contentId: Int)
+    func setNocontentLabel(method: Bool)
 }
 class ProfilePresenter {
     var userId: Int?
@@ -136,6 +137,7 @@ class ProfilePresenter {
     }
     // MARK: - Collection view Methods
     func numberOfRows(in section: Int) -> Int {
+        profileView?.setNocontentLabel(method: profileFeedData.count > 0)
         return profileFeedData.count
     }
     func configureHeader(headerView: ProfileHeaderCell) {

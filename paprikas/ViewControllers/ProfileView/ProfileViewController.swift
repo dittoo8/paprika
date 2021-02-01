@@ -9,10 +9,12 @@ import UIKit
 
 class ProfileViewController: BaseViewController {
 
+    @IBOutlet weak var noContentLabel: UILabel!
     let presenter = ProfilePresenter(profileService: ProfileService())
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(view: self)
+        self.noContentLabel.text = CONSTANT_KO.NO_CONTENT
     }
     @IBOutlet weak var profileCollectionView: UICollectionView!
     override func viewWillAppear(_ animated: Bool) {
@@ -28,6 +30,10 @@ class ProfileViewController: BaseViewController {
     }
 }
 extension ProfileViewController: ProfileView {
+    func setNocontentLabel(method: Bool) {
+        self.noContentLabel.isHidden = method
+    }
+
     func setProfileFeed() {
         self.profileCollectionView.reloadData()
     }
@@ -39,6 +45,7 @@ extension ProfileViewController: ProfileView {
     func goToContentDetail(contentId: Int) {
         goToContentDetailVC(contentId: contentId)
     }
+
 }
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK: - Profile Header Methods
