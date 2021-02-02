@@ -9,22 +9,24 @@ import UIKit
 
 class SearchViewController: BaseViewController {
 
-    @IBOutlet weak var userSearchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
-    @IBOutlet weak var UserListContainer: UIView!
+    @IBOutlet weak var searchResultTableView: UITableView!
     let presenter = SearchPresenter(searchService: SearchService())
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(view: self)
-        self.view.addGestureRecognizer(keyboardDismissTapGesture)
         keyboardDismissTapGesture.cancelsTouchesInView = false
         recommendCollectionView.delegate = self
         recommendCollectionView.dataSource = self
-        userSearchBar.delegate = self
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         recommendCollectionView.refreshControl = refreshControl
-
+        searchBar.delegate = self
+        searchResultTableView.delegate = self
+        searchResultTableView.dataSource = self
+        searchResultTableView.isHidden = true
+//        searchBar.showsCancelButton = false
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -38,12 +40,6 @@ class SearchViewController: BaseViewController {
     }
     override func keyboardWillShowHandle(notification: NSNotification) {
     }
-    // MARK: - UIGestureRecognizerDelegate
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        view.endEditing(true)
-        return true
-    }
-
 }
 extension SearchViewController: SearchView {
     func stopNetworking() {
@@ -57,6 +53,9 @@ extension SearchViewController: SearchView {
 
     func goToContentDetail(contentId: Int) {
         goToContentDetailVC(contentId: contentId)
+    }
+    func setSearchResult() {
+        self.searchResultTableView.reloadData()
     }
 
 }
@@ -88,23 +87,44 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return presenter.numberOfRows(in: section)
     }
 }
-extension SearchViewController: UISearchBarDelegate {
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter.numberOfSearchResultRows(in: section)
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultTableViewCell", for: indexPath) as! SearchResultTableViewCell
+        presenter.configureResultTableCell(cell, forRowAt: indexPath)
 
+        let userProfileTap = goToProfileTap(target: self, action: #selector(goToProfileVC(param:)))
+        userProfileTap.userId = cell.tag
+        cell.isUserInteractionEnabled = true
+        cell.contentView.addGestureRecognizer(userProfileTap)
+        return cell
+    }
+
+}
+extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        print("text : \(searchBar.searchTextField.text)")
+        if searchBar.searchTextField.text != "" {
+            presenter.loadSearchData(name: searchBar.searchTextField.text!)
+        }
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchBar.searchTextField.text != "" {
-//            presenter.loadSearchData(name: searchBar.searchTextField.text!)
-//        }
+        if searchBar.searchTextField.text != "" {
+            presenter.loadSearchData(name: searchBar.searchTextField.text!)
+        }
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        print("")
-//        UserListContainer.isHidden = false
-//        recommendCollectionView.isHidden = true
+        searchBar.setShowsCancelButton(true, animated: true)
+        searchResultTableView.isHidden = false
+        recommendCollectionView.isHidden = true
     }
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//        UserListContainer.isHidden = true
-//        recommendCollectionView.isHidden = false
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
+        searchResultTableView.isHidden = true
+        recommendCollectionView.isHidden = false
+        searchBar.searchTextField.text = ""
+        presenter.removeSearchResult()
     }
 }

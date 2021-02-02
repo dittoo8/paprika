@@ -39,6 +39,7 @@ protocol SearchView: class {
     func setRecommendFeed()
     func goToContentDetail(contentId: Int)
     func stopNetworking()
+    func setSearchResult()
 }
 class SearchPresenter {
     var recommendFeedData = [PhotoData]()
@@ -76,13 +77,14 @@ class SearchPresenter {
             print("error : \(error)")
         }, completionHandler: { userList in
             self.searchUserList = userList
-//          self.searchView?.setFollowViewData()
+          self.searchView?.setSearchResult()
         })
     }
     // MARK: - Collection view Methods
     func numberOfRows(in section: Int) -> Int {
         return recommendFeedData.count
     }
+
     func configureCell(_ cell: RecommendCollectionCell, forRowAt indexPath: IndexPath) {
         let photo = recommendFeedData[indexPath.row]
         guard let photoUrl = URL(string: (photo.url!)) else { return }
@@ -94,5 +96,20 @@ class SearchPresenter {
     func didSelectCollectionViewRowAt(indexPath: IndexPath) {
         let selectedPhoto = recommendFeedData[indexPath.row]
         self.searchView?.goToContentDetail(contentId: selectedPhoto.contentId!)
+    }
+    // MARK: - Search TableView Methods
+    func removeSearchResult() {
+        self.searchUserList.removeAll()
+        self.searchView?.setSearchResult()
+    }
+    func numberOfSearchResultRows(in section: Int) -> Int {
+        return searchUserList.count
+    }
+    func configureResultTableCell(_ cell: SearchResultTableViewCell, forRowAt indexPath: IndexPath) {
+        let user = searchUserList[indexPath.row]
+        if let userid = user.userid, let userNickname = user.nickname, let photo = user.userphoto {
+            guard let photoUrl = URL(string: photo) else { return }
+            cell.configureWith(userID: userid, userNickname: userNickname, userPhoto: photoUrl)
+        }
     }
 }
