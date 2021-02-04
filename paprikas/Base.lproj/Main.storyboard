@@ -1009,8 +1009,10 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="JFs-kZ-hQb" secondAttribute="height" multiplier="1.5:1" id="fVF-5V-bBk"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
-                                                <state key="normal" title="🚮"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="삭제하기">
+                                                    <color key="titleColor" systemColor="systemGrayColor"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="removeBtnClicked:" destination="lQ3-Jq-VSJ" eventType="touchUpInside" id="dKQ-4q-2Dd"/>
                                                 </connections>
@@ -1139,7 +1141,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUD-Mv-9Nj">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUD-Mv-9Nj">
                                 <rect key="frame" x="207" y="453" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
