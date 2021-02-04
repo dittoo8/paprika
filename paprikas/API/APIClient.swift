@@ -124,9 +124,9 @@ class APIClient {
         }
     }
 
-    static func requestRecommendFeed(cursor: String, completion: @escaping (Result<PhotoFeedResult, AFError>) -> Void) {
+    static func requestRecommendFeed(completion: @escaping (Result<PhotoFeedResult, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()
-        AF.request(APIRouter.recommend(cursor: cursor))
+        AF.request(APIRouter.recommend)
                 .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<PhotoFeedResult, AFError>) in
                     if response.response?.statusCode != nil {
 //                        print("requestRecommendFeed - response : \(response.result)")

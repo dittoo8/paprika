@@ -26,7 +26,6 @@ class SearchViewController: BaseViewController {
         searchResultTableView.delegate = self
         searchResultTableView.dataSource = self
         searchResultTableView.isHidden = true
-//        searchBar.showsCancelButton = false
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -68,7 +67,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("did select")
         presenter.didSelectCollectionViewRowAt(indexPath: indexPath)
     }
 

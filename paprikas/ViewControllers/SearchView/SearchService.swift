@@ -8,8 +8,8 @@
 import Foundation
 
 class SearchService {
-    func requestRecommendFeed(cursor: String, whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (Photos) -> Void) {
-        APIClient.requestRecommendFeed(cursor: cursor) { result in
+    func requestRecommendFeed(whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping (Photos) -> Void) {
+        APIClient.requestRecommendFeed { result in
             switch result {
             case .success(let recommendFeedResult):
                 if  APIClient.networkingResult(statusCode: recommendFeedResult.status!, msg: recommendFeedResult.message!) {
@@ -43,7 +43,6 @@ protocol SearchView: class {
 }
 class SearchPresenter {
     var recommendFeedData = [PhotoData]()
-    var recommendPageInfo: pageInfoData?
     var searchUserList = [User]()
     private let SearchService: SearchService
     private weak var searchView: SearchView?
@@ -55,19 +54,13 @@ class SearchPresenter {
     }
     func refreshData() {
         recommendFeedData.removeAll()
-        recommendPageInfo?.cursor = nil
-        recommendPageInfo?.hasNextPage = nil
-        loadMoreData()
-    }
-    func loadMoreData() {
-        SearchService.requestRecommendFeed(cursor: recommendPageInfo?.cursor ?? "null", whenIfFailed: { error in
+        SearchService.requestRecommendFeed(whenIfFailed: { error in
             // 에러
             print("error : \(error)")
         }, completionHandler: { feedData in
             print("feed data : \(feedData)")
             if feedData.photos?.count ?? 0 > 0 {
-                self.recommendFeedData += feedData.photos!
-                self.recommendPageInfo = feedData.pageInfo
+                self.recommendFeedData = feedData.photos!
             }
             self.searchView?.stopNetworking()
         })
@@ -89,9 +82,6 @@ class SearchPresenter {
         let photo = recommendFeedData[indexPath.row]
         guard let photoUrl = URL(string: (photo.url!)) else { return }
         cell.configureWith(contentId: photo.contentId!, photoUrl: photoUrl, photoCount: photo.photoCount!)
-        if recommendPageInfo?.hasNextPage ?? false && indexPath.row >= self.recommendFeedData.count - 1 {
-            loadMoreData()
-        }
     }
     func didSelectCollectionViewRowAt(indexPath: IndexPath) {
         let selectedPhoto = recommendFeedData[indexPath.row]

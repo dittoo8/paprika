@@ -20,7 +20,7 @@ enum APIRouter: URLRequestConvertible {
     case farm(isTo: Bool)
     case feed(cursor: String?)
     case friendOfFriend
-    case recommend(cursor: String)
+    case recommend
     case search(name: String)
 
     // MARK: - HTTPMethod
@@ -159,9 +159,6 @@ enum APIRouter: URLRequestConvertible {
             if method == .get {
                 urlRequest.setValue(cursor, forHTTPHeaderField: "cursor")
             }
-        case .recommend(let cursor):
-            urlRequest.setValue(UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN), forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
-            urlRequest.setValue(cursor, forHTTPHeaderField: "cursor")
         case .login:
             break
         default:
