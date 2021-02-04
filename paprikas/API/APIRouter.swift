@@ -19,7 +19,7 @@ enum APIRouter: URLRequestConvertible {
     case follow(userId: Int, isUnfollow: Bool)
     case farm(isTo: Bool)
     case category
-    case feed(cursor: String)
+    case feed(cursor: String?)
     case friendOfFriend
     case recommend(cursor: String)
     case search(name: String)
@@ -109,8 +109,7 @@ enum APIRouter: URLRequestConvertible {
     private var parameters: Parameters? {
         switch self {
         case .login(let nickname, let pwd):
-//            return ["nickname": nickname, "pwd": pwd, "devicetoken": UserDefaults.standard.string(forKey: CONSTANT_EN.DEVICE_TOKEN)!]
-            return ["nickname": nickname, "pwd": pwd, "devicetoken": "gdgdg"]
+            return ["nickname": nickname, "pwd": pwd, "devicetoken": UserDefaults.standard.string(forKey: CONSTANT_EN.DEVICE_TOKEN)!]
         case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm, .category, .logout, .feed, .friendOfFriend, .recommend, .search:
             return nil
         case .comment(let contentId, let method, let commentId, let text, let cursor):
@@ -135,6 +134,22 @@ enum APIRouter: URLRequestConvertible {
             url = try API.API_BASE.asURL()
         }
         var urlRequest = URLRequest(url: url!.appendingPathComponent(path))
+        switch self {
+        case .feed(let cursor):
+            var urlComponents = URLComponents(url: url!.appendingPathComponent(path), resolvingAgainstBaseURL: true)
+            urlComponents?.queryItems = [
+                URLQueryItem(name: "cursorId", value: cursor)
+            ]
+            urlRequest = URLRequest(url: (urlComponents?.url!)!)
+        case .comment(let contentId, let method, let commentId, let text, let cursor):
+            var urlComponents = URLComponents(url: url!.appendingPathComponent(path), resolvingAgainstBaseURL: true)
+            urlComponents?.queryItems = [
+                URLQueryItem(name: "cursorId", value: cursor)
+            ]
+            urlRequest = URLRequest(url: (urlComponents?.url!)!)
+        default:
+            urlRequest = URLRequest(url: url!.appendingPathComponent(path))
+        }
 
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
@@ -142,9 +157,6 @@ enum APIRouter: URLRequestConvertible {
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
 
         switch self {
-        case .feed(let cursor):
-            urlRequest.setValue(UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN), forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
-            urlRequest.setValue(cursor, forHTTPHeaderField: "cursor")
         case .comment(let contentId, let method, let commentId, let text, let cursor):
             urlRequest.setValue(UserDefaults.standard.string(forKey: CONSTANT_EN.MY_TOKEN), forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
             if method == .get {

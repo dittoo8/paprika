@@ -86,7 +86,7 @@ class CommentPresenter {
     }
     func loadCommentData() {
         if let contentId = contentId {
-            CommentService.requestCommentList(contentId: contentId, cursor: commentInfo?.cursor ?? "null", whenIfFailed: { error in
+            CommentService.requestCommentList(contentId: contentId, cursor: commentInfo?.cursor ?? "", whenIfFailed: { error in
                 print("error : \(error)")
             }, completionHandler: { commentList in
                 if commentList.comment?.count ?? 0 > 0 {

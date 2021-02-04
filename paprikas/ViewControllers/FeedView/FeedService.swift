@@ -59,7 +59,7 @@ class FeedPresenter {
         loadMoreData()
     }
     func loadMoreData() {
-        FeedService.requestPosts(cursor: feedInfo?.cursor ?? "null", whenIfFailed: { _ in
+        FeedService.requestPosts(cursor: feedInfo?.cursor ?? "", whenIfFailed: { _ in
             // 에러발생
 
         }, completionHandler: { feedResult in
