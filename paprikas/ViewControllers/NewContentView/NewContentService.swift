@@ -18,21 +18,6 @@ class NewContentService {
             completionHandler()
         })
     }
-    func requestCategorys(whenIfFailed: @escaping (Error) -> Void, completionHandler: @escaping ([String]) -> Void) {
-        APIClient.requestCategory { categoryResult in
-            switch categoryResult {
-            case .success(let categoryResult):
-                if  APIClient.networkingResult(statusCode: categoryResult.status!, msg: categoryResult.message!) {
-                    completionHandler(categoryResult.data!)
-                }
-            case .failure(let error):
-                print("error : \(error.localizedDescription)")
-                whenIfFailed(error)
-            }
-        }
-
-    }
-
 }
 protocol NewContentView: class {
     func setImgSlide(selectedImg: [UIImage])
@@ -43,7 +28,7 @@ protocol NewContentView: class {
 }
 class NewContentPresenter {
     var postPhotos = [UIImage]()
-    var categorys = [String]()
+    var categorys: [String] = ["animal", "food", "travel", "culture", "home", "activity", "entertainment", "emotion", "fashion", "daily"]
     var selectedCategory = [String]()
     private let NewContentService: NewContentService
     private weak var NewContentView: NewContentView?
@@ -66,13 +51,7 @@ class NewContentPresenter {
         return postPhotos.isEmpty
     }
     func getCategorys() {
-        NewContentService.requestCategorys(whenIfFailed: { _ in
-            // error
-        }, completionHandler: { category in
-            self.categorys = category
-            self.NewContentView?.refreshCategorys()
-
-        })
+        self.NewContentView?.refreshCategorys()
     }
     func tapImgPreviewAction() {
         if getPhotosIsEmpty() {
@@ -108,17 +87,5 @@ class NewContentPresenter {
             cell.selectCell()
         }
         print("all : \(self.selectedCategory)")
-    }
-    func willDisplayCell(_ cell: CategoryCollectionViewCell, indexPath: IndexPath) {
-//        print("willdisplay : \(indexPath.row)")
-//        let category = categorys[indexPath.row]
-//        if self.selectedCategory.contains(category) {
-//            print("select ")
-//            cell.contentView.backgroundColor = UIColor.systemGreen
-//        } else {
-//            print("unselect ")
-//            cell.contentView.backgroundColor = UIColor.systemGray2
-//        }
-//        print("all : \(self.selectedCategory)")
     }
 }

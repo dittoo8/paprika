@@ -148,19 +148,6 @@ class APIClient {
                     }
         }
     }
-    static func requestCategory(completion: @escaping (Result<CategoryResult, AFError>) -> Void) {
-            let jsonDecoder = JSONDecoder()
-        AF.request(APIRouter.category)
-                .responseDecodable(decoder: jsonDecoder) { (response: DataResponse<CategoryResult, AFError>) in
-                    print("response ~~~ : \(response)")
-                    if response.response?.statusCode != nil {
-                        print("requestCategory - response : \(response.result)")
-                        completion(response.result)
-                    } else {
-                        makeErrorToast(error: response.error?.errorDescription! ?? "")
-                    }
-        }
-    }
     static func requestContent(contentId: Int, method: HTTPMethod, completion: @escaping (Result<ContentResult, AFError>) -> Void) {
             let jsonDecoder = JSONDecoder()
         AF.request(APIRouter.content(contentId: contentId, method: method))

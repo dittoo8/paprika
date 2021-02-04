@@ -18,7 +18,6 @@ enum APIRouter: URLRequestConvertible {
     case profileFeed(userId: Int)
     case follow(userId: Int, isUnfollow: Bool)
     case farm(isTo: Bool)
-    case category
     case feed(cursor: String?)
     case friendOfFriend
     case recommend(cursor: String)
@@ -35,7 +34,7 @@ enum APIRouter: URLRequestConvertible {
             return method
         case .like(let contentId, let isLike):
             return .post
-        case .followList, .profileInfo, .profileFeed, .farm, .category, .logout, .feed, .friendOfFriend, .recommend, .search:
+        case .followList, .profileInfo, .profileFeed, .farm, .logout, .feed, .friendOfFriend, .recommend, .search:
             return .get
         }
     }
@@ -92,8 +91,6 @@ enum APIRouter: URLRequestConvertible {
             case false:
                 return "/farm/best/from"
             }
-        case .category:
-            return "/content/get/category"
         case .feed:
             return "/feed"
         case .friendOfFriend:
@@ -110,7 +107,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .login(let nickname, let pwd):
             return ["nickname": nickname, "pwd": pwd, "devicetoken": UserDefaults.standard.string(forKey: CONSTANT_EN.DEVICE_TOKEN)!]
-        case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm, .category, .logout, .feed, .friendOfFriend, .recommend, .search:
+        case .content, .like, .followList, .profileInfo, .profileFeed, .follow, .farm, .logout, .feed, .friendOfFriend, .recommend, .search:
             return nil
         case .comment(let contentId, let method, let commentId, let text, let cursor):
             switch method {
