@@ -40,6 +40,7 @@ protocol FeedView: class {
     func goToContentDetail(contentId: Int)
     func stopNetworking()
     func finUploadContent()
+    func noContentLabelSet(method: Bool)
 }
 class FeedPresenter {
     var contentList = [Content]()
@@ -66,6 +67,9 @@ class FeedPresenter {
             if feedResult.contents?.count ?? 0 > 0 {
                 self.contentList += feedResult.contents!
                 self.feedInfo = feedResult.pageInfo
+                self.FeedView?.noContentLabelSet(method: true)
+            } else {
+                self.FeedView?.noContentLabelSet(method: false)
             }
             self.FeedView?.stopNetworking()
         })

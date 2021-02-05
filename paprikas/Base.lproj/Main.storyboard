@@ -261,19 +261,32 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhu-iN-KV2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <string key="text">아직 표시할 게시물이 없습니다.
+소식을 받아보고 싶은 계정을 팔로우해보세요!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TVw-wD-QJT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="TVw-wD-QJT" firstAttribute="bottom" secondItem="Vhu-iN-KV2" secondAttribute="bottom" id="0pN-yD-AUY"/>
                             <constraint firstItem="PI8-ZQ-dal" firstAttribute="leading" secondItem="TVw-wD-QJT" secondAttribute="leading" id="5cu-wv-6zx"/>
                             <constraint firstItem="PI8-ZQ-dal" firstAttribute="top" secondItem="TVw-wD-QJT" secondAttribute="top" id="5qg-Sq-uIR"/>
+                            <constraint firstItem="Vhu-iN-KV2" firstAttribute="top" secondItem="TVw-wD-QJT" secondAttribute="top" id="HCT-fh-djZ"/>
                             <constraint firstItem="TVw-wD-QJT" firstAttribute="bottom" secondItem="PI8-ZQ-dal" secondAttribute="bottom" id="Lam-dz-JhQ"/>
                             <constraint firstItem="TVw-wD-QJT" firstAttribute="trailing" secondItem="PI8-ZQ-dal" secondAttribute="trailing" id="NHf-9M-DTh"/>
+                            <constraint firstItem="Vhu-iN-KV2" firstAttribute="leading" secondItem="TVw-wD-QJT" secondAttribute="leading" id="rmg-cT-Izm"/>
+                            <constraint firstItem="TVw-wD-QJT" firstAttribute="trailing" secondItem="Vhu-iN-KV2" secondAttribute="trailing" id="y6d-Gy-sAx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5ag-aH-nRI"/>
                     <connections>
                         <outlet property="feedCollectionView" destination="PI8-ZQ-dal" id="waB-2g-bn9"/>
+                        <outlet property="noContentLabel" destination="Vhu-iN-KV2" id="eAt-cc-TaA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQe-6Z-ntD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -448,7 +461,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uKv-s0-Xw5">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uKv-s0-Xw5">
                                 <rect key="frame" x="15" y="59" width="384" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -551,7 +564,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YBG-Y6-zzY">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YBG-Y6-zzY">
                                                     <rect key="frame" x="10" y="0.0" width="394" height="120"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NkJ-XE-xGX">

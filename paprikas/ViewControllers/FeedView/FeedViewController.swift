@@ -13,6 +13,7 @@ import ImageSlideshow
 class FeedViewController: BaseViewController {
 
     @IBOutlet weak var feedCollectionView: UICollectionView!
+    @IBOutlet weak var noContentLabel: UILabel!
 
     let presenter = FeedPresenter(FeedService: FeedService())
 
@@ -61,6 +62,9 @@ extension FeedViewController: FeedView {
         self.makeToast(message: NOTIFICATION.TOAST.UPLOAD_SUCCESS)
         handleRefresh()
         self.feedCollectionView.contentOffset.y = 0
+    }
+    func noContentLabelSet(method: Bool) {
+        self.noContentLabel.isHidden = method
     }
 }
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
