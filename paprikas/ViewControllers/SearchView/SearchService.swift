@@ -53,7 +53,6 @@ class SearchPresenter {
         searchView = view
     }
     func refreshData() {
-        recommendFeedData.removeAll()
         SearchService.requestRecommendFeed(whenIfFailed: { error in
             // 에러
             print("error : \(error)")
